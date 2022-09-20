@@ -5,6 +5,8 @@ import com.app.backend.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientService {
     @Autowired
@@ -12,5 +14,8 @@ public class ClientService {
 
     public Client insertClient(Client obj) {
        return repo.save(obj);
+    }
+    public List<Client> findAll() {
+       return repo.findAll();
     }
 }
