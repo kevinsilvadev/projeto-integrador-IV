@@ -18,7 +18,6 @@ public class ClientControllers {
     @Autowired
     private ClientService clients;
 
-
     @GetMapping
     public ResponseEntity<List<Client>> findAll() {
         List<Client> clients1 = clients.findAll();
@@ -31,5 +30,13 @@ public class ClientControllers {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCpf()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
+
+    @GetMapping(value = "/clients/{id}")
+    public ResponseEntity<Client> findByCpf(@PathVariable String cpf) {
+        Client obj = clients.findByCpf(cpf);
+        return ResponseEntity.ok().body(obj);
+    }
+
+
 
 }
