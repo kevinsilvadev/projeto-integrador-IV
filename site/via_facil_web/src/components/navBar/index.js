@@ -1,42 +1,37 @@
-import "./NavBar.css"
-import { useState } from "react"
-import { MenuItems } from "./MenuItems"
+import "./NavBar.css";
+import { MenuItems } from "./MenuItems";
+import { useState } from "react";
+import { Button } from "../button";
 
 const NavBar = () => {
-  const [isNavExpanded, setIsNavExpanded] = useState(false)
+  const [state, setState] = useState({ clicked: false });
+
+  const handleClick = () => {
+    setState({ clicked: !state.clicked });
+  };
 
   return (
-    <div>
-        <nav className="navigation">
-      <a href="/" className="brand-name">
-        LOGO
-      </a>
-      <button
-        className="hamburger"
-        onClick={() => {
-          setIsNavExpanded(!isNavExpanded)
-        }}
-      >
-        {/* hamburger svg code... */}
-      </button>
-      <div
-        className={
-          isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
-        }
-      >
-        <ul>
-          {MenuItems.map((item, index) => {
-            return (
-              <li key={index}>
-                <a className={item.cName} href={item.url}>{item.title}</a>
-              </li>
-            )
-          })}
-        </ul>
+    <nav className="NavbarItems">
+      <h1 className="navbar-logo">
+        LOGO <i className="fab fa-react"></i>
+      </h1>
+      <div className="menu-icon" onClick={handleClick}>
+        <i className={state.clicked ? "fas fa-times" : "fas fa-bars"}></i>
       </div>
+      <ul className={state.clicked ? "nav-menu active" : "nav-menu"}>
+        {MenuItems.map((item, index) => {
+          return (
+            <li key={index}>
+              <a className={item.cName} href={item.url}>
+                {item.title}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <Button>Login</Button>
     </nav>
-    </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
