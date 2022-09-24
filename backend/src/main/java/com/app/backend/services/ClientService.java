@@ -4,11 +4,9 @@ import com.app.backend.model.Client;
 import com.app.backend.repository.ClientRepository;
 import com.app.backend.services.exception.ObjectError;
 import com.app.backend.services.exception.ObjectNotFoundException;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
