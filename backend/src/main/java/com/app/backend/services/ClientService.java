@@ -24,7 +24,7 @@ public class ClientService {
                 obj.getCpf() == "" ||
                 obj.getEmail() == null ||
                 obj.getEmail() == "") {
-                throw new ObjectError("SEXO");
+                throw new ObjectError("DADOS INVÁLIDOS PARA INSERÇÃO DO CLIENTE");
         }
        return repo.save(obj);
     }
@@ -33,7 +33,7 @@ public class ClientService {
     }
     public Client findByCpf(String cpf) {
         Optional<Client> obj = repo.findById(cpf);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("OBJETO NÃO ENCONTRADO"));
     }
     public void delete(String cpf) {
         if(!repo.existsById(cpf)) {

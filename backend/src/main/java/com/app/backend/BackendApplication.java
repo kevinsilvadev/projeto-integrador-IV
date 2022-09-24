@@ -10,7 +10,7 @@ public class BackendApplication {
 
 		SpringApplication.run(BackendApplication.class, args);
 
-		System.out.println("Hello World!");
+		System.out.println("Hello, World! do Thiago");
 
 	}
 

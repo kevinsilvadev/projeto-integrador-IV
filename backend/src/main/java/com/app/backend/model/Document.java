@@ -14,7 +14,7 @@ public class Document {
     private Company companyName;
 
     @NotBlank
-    private String adress;
+    private String address;
 
     @NotBlank
     private Data date;
