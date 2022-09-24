@@ -18,7 +18,9 @@ public class DocumentService {
     private DocumentRepository repo;
 
     public Document insertDocument(Document obj) throws Exception {
-        if (obj.getCompanyName() == null ||
+        if (obj.getCodigoDaVia() == null ||
+            obj.getCodigoDaVia() == "" ||
+            obj.getCompanyName() == null ||
             obj.getAddress() == null ||
             obj.getAddress() == "" ||
             obj.getDate() == null ||
@@ -30,6 +32,19 @@ public class DocumentService {
 
     public List<Document> findAll () {
         return repo.findAll();
+    }
+
+    public Document findByCodigoDaVia (String codigoDaVia) {
+        Optional<Document> obj = repo.findById(codigoDaVia);
+        return obj.orElseThrow(() -> new ObjectNotFoundException("OBJETO NÃO ENCONTRADO"));
+    }
+
+    public void delete(String codigoDaVia) {
+        if (!repo.existsById(codigoDaVia)) {
+            throw new ObjectNotFoundException("CÓDIGO DA VIA NÃO EXISTE NA BASE DE DADOS");
+        } else {
+            repo.deleteById(codigoDaVia);
+        }
     }
 
 

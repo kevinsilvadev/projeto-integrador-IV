@@ -36,5 +36,13 @@ public class CompanyService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("OBJETO NÃO ENCONTRADO"));
     }
 
+    public void delete(String cnpj) {
+        if(!repo.existsById(cnpj)) {
+            throw new ObjectNotFoundException("CNPJ NÃO EXISTE NA BASE DE DADOS");
+        } else {
+            repo.deleteById(cnpj);
+        }
+    }
+
 
 }

@@ -42,6 +42,7 @@ public class ClientService {
             repo.deleteById(cpf);
         }
     }
+
     public Client update(Client obj) {
         Client newObj = findByCpf(obj.getCpf());
         updateData(newObj, obj);
