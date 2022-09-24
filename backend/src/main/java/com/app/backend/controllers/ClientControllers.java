@@ -1,7 +1,6 @@
 package com.app.backend.controllers;
 
 import com.app.backend.model.Client;
-import com.app.backend.repository.ClientRepository;
 import com.app.backend.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,29 +14,29 @@ import java.util.List;
 public class ClientControllers {
 
     @Autowired
-    private ClientService clients;
+    private ClientService client;
 
-    @GetMapping(value = "/clients")
+    @GetMapping(value = "/client")
     public ResponseEntity<List<Client>> findAll() {
-        List<Client> clients1 = clients.findAll();
-        return ResponseEntity.ok().body(clients1);
+        List<Client> client1 = client.findAll();
+        return ResponseEntity.ok().body(client1);
     }
-    @PostMapping(value = "/clients")
+    @PostMapping(value = "/client")
     public ResponseEntity<Client> insert(@RequestBody Client obj) throws Exception {
-        obj = clients.insertClient(obj);
+        obj = client.insertClient(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{cpf}").buildAndExpand(obj.getCpf()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 
-    @GetMapping(value = "/clients/{cpf}")
+    @GetMapping(value = "/client/{cpf}")
     public ResponseEntity<Client> findByCpf(@PathVariable String cpf) {
-        Client obj = clients.findByCpf(cpf);
+        Client obj = client.findByCpf(cpf);
         return ResponseEntity.ok().body(obj);
     }
 
-    @DeleteMapping(value = "/clients/{cpf}")
+    @DeleteMapping(value = "/client/{cpf}")
     public ResponseEntity<Client> deleteByid(@PathVariable String cpf) {
-        clients.delete(cpf);
+        client.delete(cpf);
         return ResponseEntity.noContent().build();
     }
 
