@@ -1,10 +1,9 @@
 package com.app.backend.services;
 
-import com.app.backend.model.Client;
+import com.app.backend.error.ResourceInvalidDataException;
+import com.app.backend.error.ResourceNotFoundException;
 import com.app.backend.model.Company;
 import com.app.backend.repository.CompanyRepository;
-import com.app.backend.services.exception.ObjectError;
-import com.app.backend.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,7 @@ public class CompanyService {
             obj.getCnpj() == null ||
             obj.getCompanyName() == "" ||
             obj.getCnpj() == "") {
-            throw new ObjectError("DADOS DA EMPRESA INVÁLIDOS PARA INSERÇÃO");
+            throw new ResourceInvalidDataException("DADOS DA EMPRESA INVÁLIDOS PARA INSERÇÃO");
         }
         return repo.save(obj);
     }
@@ -31,14 +30,14 @@ public class CompanyService {
         return repo.findAll();
     }
 
-    public Company findByCnpj (String cnpj) {
-        Optional<Company> obj = repo.findById(cnpj);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("OBJETO NÃO ENCONTRADO"));
+    public Company findByCompanyName (String companyName) {
+        Optional<Company> obj = repo.findById(companyName);
+        return obj.orElseThrow(() -> new ResourceNotFoundException("CNPJ NÃO ENCONTRADO"));
     }
 
     public void delete(String cnpj) {
         if(!repo.existsById(cnpj)) {
-            throw new ObjectNotFoundException("CNPJ NÃO EXISTE NA BASE DE DADOS");
+            throw new ResourceNotFoundException("CNPJ NÃO EXISTE NA BASE DE DADOS");
         } else {
             repo.deleteById(cnpj);
         }

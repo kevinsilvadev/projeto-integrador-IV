@@ -1,5 +1,6 @@
 package com.app.backend.handler;
 
+import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
 import com.app.backend.model.ErrorDetail;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public  final ResponseEntity<ErrorDetail> errorDetail (Exception ex, WebRequest request) {
+    public  final ResponseEntity<ErrorDetail> resourceNotFoundException (Exception ex, WebRequest request) {
         ErrorDetail dt = new ErrorDetail(
                 new Date(),
                 ex.getMessage(),
@@ -33,4 +34,12 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity<>(dt, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(ResourceInvalidDataException.class)
+    public  final ResponseEntity<ErrorDetail> resourceInvalidDataException (Exception ex, WebRequest request) {
+        ErrorDetail dt = new ErrorDetail(
+                new Date(),
+                ex.getMessage(),
+                request.getDescription(false));
+        return new ResponseEntity<>(dt, HttpStatus.BAD_REQUEST);
+    }
 }

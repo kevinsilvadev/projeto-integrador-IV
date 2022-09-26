@@ -1,6 +1,7 @@
 package com.app.backend.controllers;
 
-import com.app.backend.model.Document;
+import com.app.backend.model.Company;
+import com.app.backend.model.SecondWay;
 import com.app.backend.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,27 +17,27 @@ public class DocumentControllers {
     @Autowired
     private DocumentService document;
 
-    @GetMapping(value = "/document")
-    public ResponseEntity<List<Document>> findAll() {
-        List<Document> document1 = document.findAll();
+    @GetMapping(value = "/documents")
+    public ResponseEntity<List<SecondWay>> findAll() {
+        List<SecondWay> document1 = document.findAll();
         return ResponseEntity.ok().body(document1);
     }
 
     @PostMapping(value = "/document")
-    public ResponseEntity<Document> insert(@RequestBody Document obj) throws Exception {
+    public ResponseEntity<SecondWay> insert(@RequestBody SecondWay obj) throws Exception {
         obj = document.insertDocument(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{codigoDaVia}").buildAndExpand(obj.getCodigoDaVia()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 
     @GetMapping(value = "/document/{codigoDaVia}")
-    public ResponseEntity<Document> findByCodigoDaVia(@PathVariable String codigoDaVia) {
-        Document obj = document.findByCodigoDaVia(codigoDaVia);
+    public ResponseEntity<SecondWay> findByCodigoDaVia(@PathVariable String codigoDaVia) {
+        SecondWay obj = document.findByCodigoDaVia(codigoDaVia);
         return ResponseEntity.ok().body(obj);
     }
 
     @DeleteMapping(value = "/document/{codigoDaVia}")
-    public ResponseEntity<Document> deleteById(@PathVariable String codigoDaVia) {
+    public ResponseEntity<SecondWay> deleteById(@PathVariable String codigoDaVia) {
         document.delete(codigoDaVia);
         return ResponseEntity.noContent().build();
     }

@@ -1,5 +1,7 @@
 package com.app.backend.services;
 
+import com.app.backend.error.ResourceInvalidDataException;
+import com.app.backend.error.ResourceNotFoundException;
 import com.app.backend.model.Client;
 import com.app.backend.repository.ClientRepository;
 import com.app.backend.services.exception.ObjectError;
@@ -21,28 +23,25 @@ public class ClientService {
                 obj.getCpf() == null ||
                 obj.getCpf() == "" ||
                 obj.getEmail() == null ||
-                obj.getEmail() == "") {
-                throw new ObjectError("DADOS INVÁLIDOS PARA INSERÇÃO DO CLIENTE");
+                obj.getEmail() == "" ) {
+                throw new ResourceInvalidDataException("DADOS INVÁLIDOS PARA INSERÇÃO DO CLIENTE");
         }
        return repo.save(obj);
     }
     public List<Client> findAll() {
        return repo.findAll();
     }
-    public Client findByCpf(String cpf) {
-        Optional<Client> obj = repo.findById(cpf);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("OBJETO NÃO ENCONTRADO"));
-    }
+
     public void delete(String cpf) {
         if(!repo.existsById(cpf)) {
-            throw new ObjectNotFoundException("CPF NÃO EXISTE NA BASE DE DADOS");
+            throw new ResourceNotFoundException("CPF NÃO EXISTE NA BASE DE DADOS");
         } else {
             repo.deleteById(cpf);
         }
     }
-
+/*
     public Client update(Client obj) {
-        Client newObj = findByCpf(obj.getCpf());
+         Client newObj = repo.findByCpf(obj.getCpf());
         updateData(newObj, obj);
         return repo.save(newObj);
     }
@@ -51,5 +50,6 @@ public class ClientService {
         newObj.setName(obj.getName());
         newObj.setEmail(obj.getEmail());
 
-    }
+    }*/
+
 }
