@@ -1,0 +1,17 @@
+.container-card-parcerias {
+  background: #fff;
+  width: 267px;
+  height: 243px;
+  border-radius: 4px;
+}
+
+.image-container2 {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container2 img {
+  margin-top: 90px;
+  overflow: hidden;
+  height: 140px;
+}
