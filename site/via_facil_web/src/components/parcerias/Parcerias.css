@@ -1,0 +1,22 @@
+.sections-parcerias h1 {
+  padding-left: 20%;
+  padding-top: 70px;
+}
+.parcerias-container {
+  display: flex;
+  justify-content: center;
+  column-count: 2;
+}
+
+.sections-parcerias p {
+  text-align: justify;
+  width: 550px;
+  margin-left: 20%;
+  padding-top: 5px;
+  color: #fff;
+}
+
+.sections-parcerias {
+  background: linear-gradient(165.09deg, #323233 6.23%, #1cd8e9 87.54%);
+  color: #fff;
+}

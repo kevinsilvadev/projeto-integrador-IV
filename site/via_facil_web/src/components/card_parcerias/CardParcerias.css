@@ -1,0 +1,35 @@
+.container-card-parcerias {
+  background: #fff;
+  width: 267px;
+  height: 243px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.404);
+  transition: 0.3s;
+  animation: ease-in;
+  border-radius: 4px;
+  margin: 20px;
+  border-radius: 8px;
+  align-self: center;
+}
+
+.image-container2 {
+  width: 267px;
+  height: 243px;
+  display: flex;
+  justify-content: center;
+}
+
+.image-container2 img {
+  align-self: center;
+  overflow: hidden;
+  height: 140px;
+}
+
+@media screen and (max-width: 920px) {
+  .parcerias-container {
+    flex-direction: column;
+  }
+
+  .card-container {
+  }
+}
