@@ -8,6 +8,7 @@
   animation: ease-in;
   margin: 20px;
   border-radius: 8px;
+  align-self: center;
 }
 
 .card-container:hover {
@@ -45,14 +46,10 @@ p {
 }
 
 @media screen and (max-width: 820px) {
-
   .vantagens-container {
     flex-direction: column;
-    
   }
 
   .card-container {
-    
   }
-
 }
