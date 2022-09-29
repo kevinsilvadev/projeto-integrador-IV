@@ -1,13 +1,11 @@
 import "../../App.css";
 import CardGlass from "../card_glass";
-import HeroSection from "../heroSection";
 
 export default function SignUp() {
   return (
-    <>
-      <HeroSection />
-      <h1>Cadastro</h1>
+    <div className="section-SignUp">
+      <video src="/videos/video-2.mp4" autoPlay loop muted />
       <CardGlass title="Entre e Acesse sua Conta!" />
-    </>
+    </div>
   );
 }

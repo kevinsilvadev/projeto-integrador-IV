@@ -11,3 +11,10 @@ body {
   color: #fff;
   background-repeat: repeat-y;
 }
+
+.section-SignUp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
