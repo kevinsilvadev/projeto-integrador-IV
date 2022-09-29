@@ -13,5 +13,14 @@
 
 .section-vantagens {
   background: #fff;
+  height: 80vh;
+  width: 100%;
 }
 
+@media screen and (max-width: 820px) {
+  .section-vantagens {
+    background: #fff;
+    height: 200vh;
+    width: 100%;
+  }
+}
