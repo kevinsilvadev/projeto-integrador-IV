@@ -9,11 +9,9 @@ import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-@EqualsAndHashCode(exclude = "codigoDaVia")
-@NoArgsConstructor
+
 @Document
+@Data
 public class SecondWay {
 
     @Id
@@ -30,6 +28,9 @@ public class SecondWay {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Data date;
 
+
     List<String> expenses =  new ArrayList<>();
+
+
 
 }

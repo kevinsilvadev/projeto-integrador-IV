@@ -4,8 +4,10 @@ import com.app.backend.model.Client;
 import com.app.backend.repository.ClientRepository;
 import com.app.backend.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -21,6 +23,7 @@ public class ClientControllers {
     @Autowired
     private ClientRepository clientRepository;
 
+
     @GetMapping(value = "/client")
     public ResponseEntity<List<Client>> findAll() {
         List<Client> client1 = client.findAll();
@@ -33,16 +36,16 @@ public class ClientControllers {
         return ResponseEntity.created(uri).body(obj);
     }
 
+
     @GetMapping(value = "/client/cpf")
     public ResponseEntity<List<Client>> findByCpf(@RequestParam  String cpf) {
         return new ResponseEntity<List<Client>>(clientRepository.findByCpf(cpf), HttpStatus.OK);
     }
-
-    @DeleteMapping(value = "/client/{cpf}")
-    public ResponseEntity<Client> deleteByid(@PathVariable String cpf) {
-        client.delete(cpf);
+    @PreAuthorize("hasRole('admin')")
+    @DeleteMapping(value = "/client/{id}")
+    public ResponseEntity<Client> deleteByid(@PathVariable String id) {
+        client.delete(id);
         return ResponseEntity.noContent().build();
     }
-
 }
 

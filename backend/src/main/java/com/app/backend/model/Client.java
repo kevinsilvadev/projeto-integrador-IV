@@ -14,11 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Getter
-@Setter
-@NoArgsConstructor
-@EqualsAndHashCode(exclude = "id")
+
 @Document
+@Data
 public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,8 +36,6 @@ public class Client implements Serializable {
     @NotBlank
     @NotNull
     private String email;
-
-
 
     public Client(String cpf, String name, String email) {
         this.cpf = cpf;

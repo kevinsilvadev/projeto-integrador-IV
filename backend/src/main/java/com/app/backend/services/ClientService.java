@@ -4,13 +4,12 @@ import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
 import com.app.backend.model.Client;
 import com.app.backend.repository.ClientRepository;
-import com.app.backend.services.exception.ObjectError;
-import com.app.backend.services.exception.ObjectNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ClientService {
@@ -32,11 +31,12 @@ public class ClientService {
        return repo.findAll();
     }
 
-    public void delete(String cpf) {
-        if(!repo.existsById(cpf)) {
-            throw new ResourceNotFoundException("CPF NÃO EXISTE NA BASE DE DADOS");
+    @PreAuthorize("hasRole('admin')")
+    public void delete(String id) {
+        if(!repo.existsById(id)) {
+            throw new ResourceNotFoundException("ID NOT FOUND");
         } else {
-            repo.deleteById(cpf);
+            repo.deleteById(id);
         }
     }
 /*

@@ -1,8 +1,7 @@
 package com.app.backend.controllers;
 
-import com.app.backend.model.Company;
 import com.app.backend.model.SecondWay;
-import com.app.backend.services.DocumentService;
+import com.app.backend.services.SecondWayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,7 @@ import java.util.List;
 public class DocumentControllers {
 
     @Autowired
-    private DocumentService document;
+    private SecondWayService document;
 
     @GetMapping(value = "/documents")
     public ResponseEntity<List<SecondWay>> findAll() {
