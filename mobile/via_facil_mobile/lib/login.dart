@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:via_facil_mobile/home.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -71,7 +72,9 @@ class LoginPage extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+                      },
                       color: Color(0xff0095FF),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
