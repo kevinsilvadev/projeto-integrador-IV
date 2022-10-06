@@ -3,8 +3,6 @@ package com.app.backend.model;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.FieldType;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -17,7 +15,7 @@ import java.util.List;
 
 @Document
 @Data
-public class Client implements Serializable {
+public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,7 +35,7 @@ public class Client implements Serializable {
     @NotNull
     private String email;
 
-    public Client(String cpf, String name, String email) {
+    public Customer(String cpf, String name, String email) {
         this.cpf = cpf;
         this.name = name;
         this.email = email;

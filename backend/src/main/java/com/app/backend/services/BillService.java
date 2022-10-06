@@ -2,8 +2,8 @@ package com.app.backend.services;
 
 import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
-import com.app.backend.model.SecondWay;
-import com.app.backend.repository.SecondWayRepository;
+import com.app.backend.model.Bill;
+import com.app.backend.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SecondWayService {
+public class BillService {
 
     @Autowired
-    private SecondWayRepository repo;
+    private BillRepository repo;
 
-    public SecondWay insertDocument(SecondWay obj) throws Exception {
+    public Bill insertBill(Bill obj) throws Exception {
         if (obj.getCodigoDaVia() == null ||
             obj.getCodigoDaVia() == "" ||
             obj.getCompanyName() == null ||
@@ -27,12 +27,12 @@ public class SecondWayService {
         return repo.save(obj);
     }
 
-    public List<SecondWay> findAll () {
+    public List<Bill> findAll () {
         return repo.findAll();
     }
 
-    public SecondWay findByCodigoDaVia (String codigoDaVia) {
-        Optional<SecondWay> obj = repo.findById(codigoDaVia);
+    public Bill findByCodigoDaVia (String codigoDaVia) {
+        Optional<Bill> obj = repo.findById(codigoDaVia);
         return obj.orElseThrow(() -> new ResourceNotFoundException("DOCUMENTO NÃO ENCONTRADO"));
     }
 

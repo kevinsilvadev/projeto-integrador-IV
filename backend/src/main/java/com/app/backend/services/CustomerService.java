@@ -2,8 +2,8 @@ package com.app.backend.services;
 
 import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
-import com.app.backend.model.Client;
-import com.app.backend.repository.ClientRepository;
+import com.app.backend.model.Customer;
+import com.app.backend.repository.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ClientService {
+public class CustomerService {
     @Autowired
-    private ClientRepository repo;
+    private CustomerRepository repo;
 
-    public Client insertClient(Client obj) throws Exception {
+    public Customer insertCustomer(Customer obj) throws Exception {
         if(obj.getName() == null ||
                 obj.getName() == "" ||
                 obj.getCpf() == null ||
@@ -27,7 +27,7 @@ public class ClientService {
         }
        return repo.save(obj);
     }
-    public List<Client> findAll() {
+    public List<Customer> findAll() {
        return repo.findAll();
     }
 

@@ -1,6 +1,5 @@
 package com.app.backend.repository;
 
-import com.app.backend.model.Client;
 import com.app.backend.model.Company;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

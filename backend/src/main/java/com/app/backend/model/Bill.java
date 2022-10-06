@@ -12,7 +12,7 @@ import java.util.List;
 
 @Document
 @Data
-public class SecondWay {
+public class Bill {
 
     @Id
     @NotBlank
