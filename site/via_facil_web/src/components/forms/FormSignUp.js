@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button } from "../button";
 import InputText from "../input";
-import "./CardGlass.css";
+import "./Form.css";
 
-const CardGlass = ({ title, imageUrl, body }) => {
+const FormSignUp = ({ title, body }) => {
 
   const [nome, setNome] = useState("");
 
@@ -20,23 +20,30 @@ const CardGlass = ({ title, imageUrl, body }) => {
           <p>{body}</p>
           <InputText
             obrigatorio={true}
-            label="Nome"
+            label="Nome:"
             placeholder="Username"
             valor={nome}
             aoAlterado={(valor) => setNome(valor)}
           />
           <InputText
             obrigatorio={true}
-            label="Senha"
+            label="Senha:"
             placeholder="Password"
             valor={nome}
             aoAlterado={(valor) => setNome(valor)}
           />
-          <Button buttonStyle={CardGlass}>Login</Button>
+          <InputText
+            obrigatorio={true}
+            label="CPF:"
+            placeholder="CPF"
+            valor={nome}
+            aoAlterado={(valor) => setNome(valor)}
+          />
+          <Button buttonStyle={FormSignUp}>Cadastrar</Button>
         </form>
       </div>
     </div>
   );
 };
 
-export default CardGlass;
+export default FormSignUp;

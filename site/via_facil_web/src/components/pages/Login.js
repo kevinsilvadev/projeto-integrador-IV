@@ -1,11 +1,11 @@
 import "../../App.css";
-import FormSignUp from "../forms/FormSignUp";
+import FormLogin from "../forms/FormLogin";
 
-export default function SignUp() {
+export default function Login() {
   return (
     <div className="section-form">
       <video src="/videos/video-2.mp4" autoPlay loop muted />
-      <FormSignUp title="Cadastre-se aqui!" />
+      <FormLogin title="Entre e Acesse sua Conta!" />
     </div>
   );
 }

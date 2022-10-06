@@ -6,7 +6,7 @@ export const MenuItems = [
   },
   {
     title: "Services",
-    url: "#",
+    url: "/home-user",
     cName: "nav-links",
   },
   {
@@ -16,12 +16,12 @@ export const MenuItems = [
   },
   {
     title: "Contact Us",
-    url: "#",
+    url: "sign-up",
     cName: "nav-links",
   },
   {
     title: "Login",
-    url: "/sign-up",
+    url: "/login",
     cName: "nav-links-mobile",
   },
 ];

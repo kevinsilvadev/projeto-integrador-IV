@@ -12,7 +12,7 @@ body {
   background-repeat: repeat-y;
 }
 
-.section-SignUp {
+.section-form {
   display: flex;
   justify-content: center;
   align-items: center;
