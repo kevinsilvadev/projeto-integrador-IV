@@ -6,6 +6,9 @@ import "./Form.css";
 const FormSignUp = ({ title, body }) => {
 
   const [nome, setNome] = useState("");
+  const [senha, setSenha] = useState("");
+  const [cpf, setCpf] = useState("");
+  
 
   return (
     <div className="card-container-glass">
@@ -23,21 +26,24 @@ const FormSignUp = ({ title, body }) => {
             label="Nome:"
             placeholder="Username"
             valor={nome}
-            aoAlterado={(valor) => setNome(valor)}
+            type={"text"}
+            aoAlterado={(valorNome) => setNome(valorNome)}
           />
           <InputText
             obrigatorio={true}
             label="Senha:"
             placeholder="Password"
-            valor={nome}
-            aoAlterado={(valor) => setNome(valor)}
+            valor={senha}
+            type={"password"}
+            aoAlterado={(valorSenha) => setSenha(valorSenha)}
           />
           <InputText
             obrigatorio={true}
             label="CPF:"
             placeholder="CPF"
-            valor={nome}
-            aoAlterado={(valor) => setNome(valor)}
+            valor={cpf}
+            type={"number"}
+            aoAlterado={(valorCpf) => setCpf(valorCpf)}
           />
           <Button buttonStyle={FormSignUp}>Cadastrar</Button>
         </form>

@@ -12,7 +12,7 @@ const InputText = (props) => {
             <label>
                 {props.label}
             </label>
-            <input value={props.valor} onChange={aoDigitado} required={props.obrigatorio} placeholder={placeholderModificada}/>
+            <input type={props.type} value={props.valor} onChange={aoDigitado} required={props.obrigatorio} placeholder={placeholderModificada}/>
         </div>
     )
 }

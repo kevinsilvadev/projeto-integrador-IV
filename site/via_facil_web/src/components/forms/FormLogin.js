@@ -6,6 +6,7 @@ import "./Form.css";
 const FormLogin = ({ title, body }) => {
 
   const [nome, setNome] = useState("");
+  const [senha, setSenha] = useState("");
 
   return (
     <div className="card-container-glass">
@@ -23,14 +24,16 @@ const FormLogin = ({ title, body }) => {
             label="Nome:"
             placeholder="Username"
             valor={nome}
-            aoAlterado={(valor) => setNome(valor)}
+            type={"text"}
+            aoAlterado={(valorNome) => setNome(valorNome)}
           />
           <InputText
             obrigatorio={true}
             label="Senha:"
             placeholder="Password"
-            valor={nome}
-            aoAlterado={(valor) => setNome(valor)}
+            valor={senha}
+            type={"password"}
+            aoAlterado={(valorSenha) => setSenha(valorSenha)}
           />
           <Button buttonStyle={FormLogin}>Login</Button>
         </form>

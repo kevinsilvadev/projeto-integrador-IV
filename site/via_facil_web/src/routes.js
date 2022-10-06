@@ -1,6 +1,5 @@
 import React from "react";
 
-import Navbar from "./components/navBar";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -15,7 +14,7 @@ function Rotas() {
   return (
     <>
       <Router>
-        <Navbar />
+        
         <Routes>
           <Route path="/" element={<Home />}>
             {" "}
