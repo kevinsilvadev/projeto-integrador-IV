@@ -1,3 +1,4 @@
+import Footer from "../footer";
 import HeroSection from "../heroSection";
 import NavBar from "../navBar";
 import Parcerias from "../parcerias";
@@ -11,6 +12,7 @@ function Home() {
       <HeroSection />
       <Vantagens/>
       <Parcerias/>
+      <Footer/>
     </>
   );
 }
