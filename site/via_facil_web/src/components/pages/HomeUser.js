@@ -9,15 +9,7 @@ function HomeUser() {
     <>
       <VerticalNavBar />
       <div className="HomeUser_content">
-        <Card />
-        <CardHomeUser title="Solicitações Recentes" body={"cu"} />
-        <h1>Conteúdo</h1>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis
-          libero sunt nemo illum ab ad aliquam, expedita voluptates rerum
-          delectus. Minus, earum numquam? Consectetur sunt, recusandae sapiente
-          alias minus excepturi.
-        </p>
+        <CardHomeUser title="Solicitações Recentes" />
         <Footer />
       </div>
     </>
