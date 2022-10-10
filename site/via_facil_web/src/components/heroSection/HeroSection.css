@@ -20,6 +20,7 @@ video {
   font-size: 4.5em;
   transition: transform 0.2s;
   margin-top: 12%;
+  color: #fff;
 }
 
 .heroSection p {

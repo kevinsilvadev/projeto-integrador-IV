@@ -3,14 +3,18 @@ import { useState } from "react";
 import { VerticalMenuItems } from "./VerticalMenuItems";
 
 const VerticalNavBar = () => {
+
   const [state, setState] = useState({ clicked: false });
 
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
+
+  
+
   return (
     <div className="nav-bar-vertical">
-      <div className="sidebar">
+      <div className={state.clicked ? "sidebar active" : "sidebar"}>
         <div className="logo_content">
           <div className="logo">
             <i className="fab fa-react"></i>
@@ -23,13 +27,9 @@ const VerticalNavBar = () => {
             ></i>
           </div>
         </div>
-        <ul
-          className={
-            state.clicked ? "vertical-nav-menu active" : "vertical-nav-menu"
-          }
-        >
+        <ul>
           <li>
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
             <input type="text" placeholder="Search..." />
           </li>
           {VerticalMenuItems.map((item, index) => {
@@ -39,6 +39,7 @@ const VerticalNavBar = () => {
                   <i className={item.icon}></i>
                   <span className="links_name">{item.title}</span>
                 </a>
+                <span className="tooltip">{item.title}</span>
               </li>
             );
           })}
