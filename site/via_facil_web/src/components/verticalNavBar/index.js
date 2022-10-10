@@ -29,7 +29,7 @@ const VerticalNavBar = () => {
         </div>
         <ul>
           <li>
-            <i className="fas fa-search"></i>
+            <i onClick={handleClick} className="fas fa-search"></i>
             <input type="text" placeholder="Search..." />
           </li>
           {VerticalMenuItems.map((item, index) => {
@@ -56,7 +56,7 @@ const VerticalNavBar = () => {
                 <div className="job">Web developer</div>
               </div>
             </div>
-            <i className="fas fa-sign-out-alt" id="log_out"></i>
+            <a href="/" className="fas fa-sign-out-alt" id="log_out"></a>
           </div>
         </div>
       </div>

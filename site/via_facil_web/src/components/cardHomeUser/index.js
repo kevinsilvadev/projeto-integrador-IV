@@ -8,7 +8,7 @@ const CardHomeUser = ({ title }) => {
         <div className="card-title-home-user">
           <h3>{title}</h3>
         </div>
-        <div class="divider div-transparent"></div>
+        <div className="divider div-transparent"></div>
         <ul className="card-body-home-user">
           <CompanyCardComponent
             title={"Sky"}
