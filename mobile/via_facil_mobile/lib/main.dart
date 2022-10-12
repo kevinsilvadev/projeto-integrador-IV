@@ -1,13 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:via_facil_mobile/screens/settings_screen.dart';
 import 'login.dart';
 import 'signup.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: HomePage(),
+    home: SettingsScreen(),
   ));
 }
 
