@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CompanyService {
@@ -16,23 +15,27 @@ public class CompanyService {
     @Autowired
     private CompanyRepository repo;
 
-    public Company insertCompany (Company obj) throws Exception{
-        if (obj.getCompanyName() == null ||
-            obj.getCnpj() == null ||
-            obj.getCompanyName() == "" ||
-            obj.getCnpj() == "") {
-            throw new ResourceInvalidDataException("DADOS DA EMPRESA INVÁLIDOS PARA INSERÇÃO");
-        }
+    public Company insertCompany (Company obj) {
+        isValid(obj);
         return repo.save(obj);
     }
 
-    public List<Company> findAll() {
-        return repo.findAll();
+    //Method for validation
+    private boolean isValid(Company company) {
+        if (company.getCompanyName() == null || company.getCnpj() == null || company.getCompanyName() == "" || company.getCnpj() == "")
+            throw new ResourceInvalidDataException("INVALID COMPANY DATA FOR INSERTION");
+        return false;
     }
 
-    public Company findByCompanyName (String companyName) {
-        Optional<Company> obj = repo.findById(companyName);
-        return obj.orElseThrow(() -> new ResourceNotFoundException("CNPJ NÃO ENCONTRADO"));
+/*
+    private boolean isValidDuplicateData(Company company) {
+        if(repo.existsById(String.valueOf(company.getCompanyName().contains(company.getCompanyName()))))
+            throw new ResourceInvalidDataException("SEXO");
+        return true;
+    }*/
+
+    public List<Company> findAll() {
+        return repo.findAll();
     }
 
     public void delete(String cnpj) {
@@ -42,6 +45,4 @@ public class CompanyService {
             repo.deleteById(cnpj);
         }
     }
-
-
 }

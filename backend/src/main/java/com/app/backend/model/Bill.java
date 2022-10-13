@@ -5,6 +5,8 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.web.PortResolverImpl;
+
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,8 @@ import java.util.List;
 public class Bill {
 
     @Id
+    private String id;
+
     @NotBlank
     private String codigoDaVia;
 
@@ -25,12 +29,9 @@ public class Bill {
     @NotBlank
     private String address;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Data date;
-
+    private String date;
 
     List<String> expenses =  new ArrayList<>();
-
 
 
 }

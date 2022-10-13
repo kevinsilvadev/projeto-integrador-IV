@@ -2,6 +2,7 @@ package com.app.backend.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Email;
@@ -24,6 +25,7 @@ public class Customer implements Serializable {
 
     @NotBlank
     @NotNull
+
     private String cpf;
 
     @NotBlank
@@ -41,8 +43,8 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-
     //List<SecondWay> secondWayList = new ArrayList<>();
 
+    @DBRef
     List<Company> companyList = new ArrayList<>();
 }

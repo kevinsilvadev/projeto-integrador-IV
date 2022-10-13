@@ -17,14 +17,15 @@ public class BillService {
     private BillRepository repo;
 
     public Bill insertBill(Bill obj) throws Exception {
-        if (obj.getCodigoDaVia() == null ||
-            obj.getCodigoDaVia() == "" ||
-            obj.getCompanyName() == null ||
-            obj.getAddress() == null ||
-            obj.getAddress() == "") {
-            throw new ResourceInvalidDataException("DOCUMENTO INVÁLIDO PARA INSERÇÃO");
-        }
+        isValid(obj);
         return repo.save(obj);
+    }
+
+    private boolean isValid(Bill bill) {
+        if (bill.getCodigoDaVia() == null || bill.getCodigoDaVia() == "" || bill.getCompanyName() == null || bill.getAddress() == null || bill.getAddress() == "") {
+            throw new ResourceInvalidDataException("INVALID DOCUMENT FOR INSERTION");
+        }
+        return false;
     }
 
     public List<Bill> findAll () {
@@ -33,12 +34,12 @@ public class BillService {
 
     public Bill findByCodigoDaVia (String codigoDaVia) {
         Optional<Bill> obj = repo.findById(codigoDaVia);
-        return obj.orElseThrow(() -> new ResourceNotFoundException("DOCUMENTO NÃO ENCONTRADO"));
+        return obj.orElseThrow(() -> new ResourceNotFoundException("DOCUMENT NOT FOUND"));
     }
 
     public void delete(String codigoDaVia) {
         if (!repo.existsById(codigoDaVia)) {
-            throw new ResourceNotFoundException("CÓDIGO DA VIA NÃO EXISTE NA BASE DE DADOS");
+            throw new ResourceNotFoundException("ROUTE CODE DOES NOT EXIST IN THE DATABASE");
         } else {
             repo.deleteById(codigoDaVia);
         }

@@ -16,16 +16,9 @@ public class CustomerService {
     @Autowired
     private CustomerRepository repo;
 
-    public Customer insertCustomer(Customer obj) throws Exception {
-        if(obj.getName() == null ||
-                obj.getName() == "" ||
-                obj.getCpf() == null ||
-                obj.getCpf() == "" ||
-                obj.getEmail() == null ||
-                obj.getEmail() == "" ) {
-                throw new ResourceInvalidDataException("DADOS INVÁLIDOS PARA INSERÇÃO DO CLIENTE");
-        }
-       return repo.save(obj);
+    public Customer insertCustomer(Customer obj)  {
+        isValid(obj);
+        return repo.save(obj);
     }
     public List<Customer> findAll() {
        return repo.findAll();
@@ -38,6 +31,13 @@ public class CustomerService {
         } else {
             repo.deleteById(id);
         }
+    }
+
+    private boolean isValid(Customer customer) {
+        if(customer.getName() == null || customer.getName() == "" || customer.getCpf() == null || customer.getCpf() == "" || customer.getEmail() == null || customer.getEmail() == "" ) {
+            throw new ResourceInvalidDataException("INVALID DATA FOR CUSTOMER INSERT");
+        }
+        return false;
     }
 /*
     public Client update(Client obj) {
