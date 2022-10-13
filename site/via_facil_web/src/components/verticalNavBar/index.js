@@ -3,14 +3,11 @@ import { useState } from "react";
 import { VerticalMenuItems } from "./VerticalMenuItems";
 
 const VerticalNavBar = () => {
-
   const [state, setState] = useState({ clicked: false });
 
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
-
-  
 
   return (
     <div className="nav-bar-vertical">

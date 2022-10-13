@@ -1,15 +1,23 @@
 import VerticalNavBar from "../verticalNavBar";
 import "../../App.css";
-import Footer from "../footer";
 import CardHomeUser from "../cardHomeUser";
+import Overview from "../overview";
 
 function HomeUser() {
   return (
     <>
       <div className="HomeUser_content">
-        <VerticalNavBar />
-        <CardHomeUser title="Solicitações Recentes" />
-        <Footer />
+        <div className="HomeUser_VerticalNavBar">
+          <VerticalNavBar />
+        </div>
+        <div className="Interativo">
+          <div className="HomeUser_Overview">
+            <Overview title="Suas Empresas Conectadas" />
+          </div>
+          <div className="HomeUser_SolicitacoesRecentes">
+            <CardHomeUser title="Solicitações Recentes" />
+          </div>
+        </div>
       </div>
     </>
   );
