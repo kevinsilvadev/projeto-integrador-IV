@@ -12,9 +12,13 @@ function HomeUser() {
         </div>
         <div className="Interativo">
           <div className="HomeUser_Overview">
+            <h2>Overview</h2>
             <Overview title="Suas Empresas Conectadas" />
           </div>
           <div className="HomeUser_SolicitacoesRecentes">
+            <div className="homeUser_UltimosAcessos">
+              <CardHomeUser title="Ultimos Acessos" />
+            </div>
             <CardHomeUser title="Solicitações Recentes" />
           </div>
         </div>

@@ -7,6 +7,7 @@ import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import SignUp from "./components/pages/SignUp";
 import HomeUser from "./components/pages/HomeUser";
+import Keychain from "./components/pages/KeychainUser";
 
 
 function Rotas() {
@@ -24,6 +25,9 @@ function Rotas() {
             {" "}
           </Route>
           <Route path="/home-user" element={<HomeUser />}>
+            {" "}
+          </Route>
+          <Route path="/keychain-user" element={<Keychain />}>
             {" "}
           </Route>
         </Routes>

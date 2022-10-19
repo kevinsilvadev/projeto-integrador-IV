@@ -2,13 +2,13 @@ export const VerticalMenuItems = [
     {
       icon: "fas fa-home",
       title: "Inicio",
-      url: "/",
+      url: "/home-user",
       cName: "nav-vertical-links",
     },
     {
-      icon: "fas fa-th-large",
-      title: "Dashboard",
-       url: "#",
+      icon: "fas fa-id-card-alt",
+      title: "Chaveiro",
+       url: "/keychain-user",
       cName: "nav-vertical-links",
     },
     {

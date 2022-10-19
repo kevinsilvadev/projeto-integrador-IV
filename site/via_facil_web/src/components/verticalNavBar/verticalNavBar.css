@@ -238,6 +238,11 @@
   text-decoration: none;
 }
 
+.profile #log_out:hover {
+  color: #11101d;
+  background: #fff;
+}
+
 .sidebar.active .profile #log_out {
   left: 88%;
 }
