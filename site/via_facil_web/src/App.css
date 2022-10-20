@@ -77,9 +77,66 @@
 .keychain-content {
   position: absolute;
   height: 100%;
-  width: calc(100% - 78px);
+  width: 100%;
   transition: all 0.5s ease;
   display: flex;
   align-items: top;
   justify-content: space-between;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ProfileCards */
+
+/* Create four equal columns that floats next to each other */
+
+.AboutUs-Title {
+  font-size: 46px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.column-profileCard {
+  float: left;
+  width: 33%;
+  padding: 10px;
+  height: 300px;
+}
+
+.row-profileCard:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row-profileCard h1 {
+  padding-left: 10%;
+  padding-top: 70px;
+  font-size: xxx-large;
+}
+
+.profileCard-container {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1280px) {
+  .column-profileCard {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+}
+@media screen and (max-width: 668px) {
+.column-profileCard {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
 }

@@ -23,7 +23,7 @@
 }
 
 .flip-card h1{
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 32px;
@@ -53,7 +53,7 @@
 }
 
 .flip-card-front {
-  background-color: blue;
+  background: linear-gradient(45deg, #445E9B 0%, #151C29 100%);
   color: black;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -74,10 +74,11 @@
 .flip-card-front h4 {
     color:#fff;
     margin-top:12px;
+    font-size:32px;
 }
 
 .flip-card-back {
-  background-color: blue;
+  background: linear-gradient(45deg, #5079D9 0%, #151C29 100%);
   color: white;
   transform: rotateY(180deg);
   border-radius: 10px;
@@ -87,8 +88,8 @@
 }
 
 .flip-card-front img {
-  height: 230px;
-  width: 230px;
+  height: 210px;
+  width: 210px;
   object-fit: cover;
   border-radius: 12px;
   margin-top:12px;
