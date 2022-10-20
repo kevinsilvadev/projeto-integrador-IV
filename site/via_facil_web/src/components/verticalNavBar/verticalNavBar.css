@@ -1,9 +1,3 @@
-.nav-bar-vertical {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
 
 .sidebar {
   position: fixed;
@@ -251,7 +245,9 @@
   background: none;
 }
 
-.sidebar.active ~ .HomeUser_content {
+.sidebar.active .HomeUser_content {
   width: calc(100% - 240px);
   left: 240px;
 }
+
+

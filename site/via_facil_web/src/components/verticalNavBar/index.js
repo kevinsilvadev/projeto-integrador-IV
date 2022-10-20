@@ -2,7 +2,9 @@ import "./verticalNavBar.css";
 import { useState } from "react";
 import { VerticalMenuItems } from "./VerticalMenuItems";
 
-const VerticalNavBar = () => {
+
+
+const VerticalNavBar = ({onClick}) => {
   const [state, setState] = useState({ clicked: false });
 
   const handleClick = () => {
@@ -19,7 +21,8 @@ const VerticalNavBar = () => {
           </div>
           <div className="vertical-menu-icon">
             <i
-              onClick={handleClick}
+              onClick={onClick}
+              onClickCapture={handleClick}
               className={state.clicked ? "fas fa-times" : "fas fa-bars"}
             ></i>
           </div>
