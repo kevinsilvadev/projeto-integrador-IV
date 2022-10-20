@@ -25,12 +25,15 @@ public class Customer implements Serializable {
 
     @NotBlank
     @NotNull
-
     private String cpf;
 
     @NotBlank
     @NotNull
     private String name;
+
+    @NotBlank
+    @NotNull
+    private String senha;
 
     @Email
     @NotBlank

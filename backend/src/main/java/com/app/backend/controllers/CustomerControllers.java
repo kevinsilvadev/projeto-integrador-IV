@@ -22,12 +22,12 @@ public class CustomerControllers {
     @Autowired
     private CustomerRepository customerRepository;
 
-
     @GetMapping(value = "/customer")
     public ResponseEntity<List<Customer>> findAll() {
         List<Customer> customer1 = customerService.findAll();
         return ResponseEntity.ok().body(customer1);
     }
+
     @PostMapping(value = "/customer")
     public ResponseEntity<Customer> insert(@RequestBody Customer obj) throws Exception {
         obj = customerService.insertCustomer(obj);
@@ -35,11 +35,16 @@ public class CustomerControllers {
         return ResponseEntity.created(uri).body(obj);
     }
 
-
     @GetMapping(value = "/customer/{cpf}")
     public ResponseEntity<List<Customer>> findByCpf(@RequestParam  String cpf) {
         return new ResponseEntity<List<Customer>>(customerRepository.findByCpf(cpf), HttpStatus.OK);
     }
+    @PutMapping(value = "/customer/cpf")
+    public ResponseEntity<Void> update(@RequestParam Customer obj) {
+        obj = customerService.update(obj);
+        return ResponseEntity.noContent().build();
+    }
+
     @PreAuthorize("hasRole('admin')")
     @DeleteMapping(value = "/customer/{id}")
     public ResponseEntity<Customer> deleteByid(@PathVariable String id) {
