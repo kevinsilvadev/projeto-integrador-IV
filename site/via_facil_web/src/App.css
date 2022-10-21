@@ -8,6 +8,13 @@
 
 /* Estilização das páginas */
 
+/* Parceria background */
+
+.parcerias-content{
+  background: linear-gradient(165.09deg, #323233 6.23%, #1cd8e9 87.54%);
+  color: #fff;
+}
+
 
 
 /* Páginas [Login, SignUp] */
@@ -103,4 +110,40 @@
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
 }
+}
+
+/* Página addCompany */
+
+
+.addCompany_content {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 78px);
+  left: 78px;
+  transition: all 0.5s ease;
+}
+
+.title-add-company {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.title-add-company h1 {
+  font-size: xxx-large;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 15%;
+}
+
+.addCompany_content.active {
+  width: calc(100% - 240px);
+  left: 240px;
+}
+
+.formCompany {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

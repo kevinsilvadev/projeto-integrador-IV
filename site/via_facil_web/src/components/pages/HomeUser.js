@@ -13,18 +13,20 @@ function HomeUser() {
     setState({ clicked: !state.clicked });
   };
 
-
   return (
     <>
       <div
-      className={state.clicked ? "HomeUser_content active" : "HomeUser_content"}>
-        <div 
-          className="HomeUser_VerticalNavBar">
+        className={
+          state.clicked ? "HomeUser_content active" : "HomeUser_content"
+        }
+      >
+        <video src="/videos/video-1.mp4" autoPlay loop muted />
 
-          <VerticalNavBar onClick={handleClick}/>
+        <div className="HomeUser_VerticalNavBar">
+          <VerticalNavBar onClick={handleClick} />
         </div>
-          <h1>Dashboard</h1>
-          <CalendarDate/>
+        <h1>Dashboard</h1>
+        <CalendarDate />
       </div>
     </>
   );

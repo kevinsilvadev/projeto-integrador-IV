@@ -4,15 +4,16 @@ import NavBar from "../navBar";
 import Parcerias from "../parcerias";
 import Vantagens from "../vantagens";
 
-
 function Home() {
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <HeroSection />
-      <Vantagens/>
-      <Parcerias/>
-      <Footer/>
+      <Vantagens />
+      <div className="parcerias-content">
+        <Parcerias />
+      </div>
+      <Footer />
     </>
   );
 }

@@ -7,20 +7,20 @@ export const VerticalMenuItems = [
     },
     {
       icon: "fas fa-id-card-alt",
-      title: "Chaveiro",
+      title: "Meu chaveiro",
        url: "/keychain-user",
       cName: "nav-vertical-links",
     },
     {
       icon: "fas fa-user",
-      title: "User",
+      title: "Usuário",
       url: "#",
       cName: "nav-vertical-links",
     },
     {
-      icon: "fas fa-envelope",
-      title: "Messages",
-      url: "#",
+      icon: "fas fa-store",
+      title: "Add Empresa",
+      url: "/add-company",
       cName: "nav-vertical-links",
     },
     {
