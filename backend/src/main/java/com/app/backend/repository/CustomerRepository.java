@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface CustomerRepository extends MongoRepository<Customer, String> {
-    List<Customer> findByCpf(String cpf);
+    Customer findByCpf(String cpf);
+    Customer findByEmail(String email);
+    Customer findByName(String name);
     Customer deleteByCpf(String cpf);
 }

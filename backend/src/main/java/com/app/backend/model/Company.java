@@ -26,7 +26,4 @@ public class Company {
     @DBRef
     private String companyName;
 
-
-
-
 }

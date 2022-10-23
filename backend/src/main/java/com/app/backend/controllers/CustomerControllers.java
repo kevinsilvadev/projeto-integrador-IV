@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -35,11 +36,21 @@ public class CustomerControllers {
         return ResponseEntity.created(uri).body(obj);
     }
 
-
     @GetMapping(value = "/customer/{cpf}")
-    public ResponseEntity<List<Customer>> findByCpf(@RequestParam  String cpf) {
-        return new ResponseEntity<List<Customer>>(customerRepository.findByCpf(cpf), HttpStatus.OK);
+    public ResponseEntity<Customer> findByCpf(@RequestParam  String cpf) {
+        return new ResponseEntity<Customer>(customerRepository.findByCpf(cpf), HttpStatus.OK);
     }
+
+    @GetMapping(value = "customer/{name}")
+    public ResponseEntity<Customer> findByName(@RequestParam String name){
+        return new ResponseEntity<Customer>(customerRepository.findByName(name), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "customer/{email}")
+    public ResponseEntity<Customer> findByEmail(@RequestParam String email){
+        return new ResponseEntity<Customer>(customerRepository.findByName(email), HttpStatus.OK);
+    }
+
     @PreAuthorize("hasRole('admin')")
     @DeleteMapping(value = "/customer/{id}")
     public ResponseEntity<Customer> deleteByid(@PathVariable String id) {
