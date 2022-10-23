@@ -44,5 +44,4 @@ public class CompanyControllers {
         company.delete(cnpj);
         return ResponseEntity.noContent().build();
     }
-
 }

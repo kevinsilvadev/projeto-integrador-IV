@@ -4,6 +4,7 @@ import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
 import com.app.backend.model.Customer;
 import com.app.backend.repository.CustomerRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,7 @@ public class CustomerService {
     private CustomerRepository repo;
 
     public Customer insertCustomer(Customer obj)  {
-        if(!isValid(obj) || isOnDB(obj)){
-            throw new ResourceInvalidDataException("INVALID OR DUPLICATED DATA FOR CUSTOMER INSERT");
-        }
+        isValid(obj);
         return repo.save(obj);
     }
     public List<Customer> findAll() {
@@ -35,35 +34,22 @@ public class CustomerService {
     }
 
     private boolean isValid(Customer customer) {
-
         if(customer.getName() == null || customer.getName() == "" || customer.getCpf() == null || customer.getCpf() == "" || customer.getEmail() == null || customer.getEmail() == "" ) {
-            return false;
+            throw new ResourceInvalidDataException("INVALID DATA FOR CUSTOMER INSERT");
         }
-
-        return true;
-    }
-
-    private boolean isOnDB(Customer customer) {
-
-        if(repo.findByCpf(customer.getCpf()) != null){
-            return true;
-        } else if (repo.findByEmail(customer.getEmail()) != null){
-            return true;
-        }
-
         return false;
     }
-
-    public Customer update(Customer newObj) {
-
-        if(!isValid(newObj)){
-            throw new ResourceInvalidDataException("INVALID DATA FOR CUSTOMER UPDATE");
-        }
-
-        Customer obj = repo.findByCpf(newObj.getCpf());
-
-        repo.delete(obj);
-
+/*
+    public Client update(Client obj) {
+         Client newObj = repo.findByCpf(obj.getCpf());
+        updateData(newObj, obj);
         return repo.save(newObj);
     }
+
+    private void updateData(Client newObj, Client obj) {
+        newObj.setName(obj.getName());
+        newObj.setEmail(obj.getEmail());
+
+    }*/
+
 }
