@@ -32,15 +32,15 @@
 .HomeUser_content {
   position: absolute;
   height: 100%;
-  width: calc(100% - 78px);
-  left: 78px;
+  width: calc(100% - 82px);
+  left: 82px;
   transition: all 0.5s ease;
-  display: flex;
+  margin-top: 10px;
 }
 
 .HomeUser_content.active {
-  width: calc(100% - 240px);
-  left: 240px;
+  width: calc(100% - 244px);
+  left: 244px;
 }
 
 /* Página Keychain */

@@ -15,8 +15,7 @@
   margin-top: 0.5rem;
 }
 
-h3,
-p {
+.overview-title h3,p {
   /* Resetting default value */
   margin: 0;
   padding: 0;

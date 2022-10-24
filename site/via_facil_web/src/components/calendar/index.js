@@ -1,4 +1,4 @@
-import React from 'react'
+import './Calendar.css'
 
 const CalendarDate = () => {
   return (

@@ -20,7 +20,7 @@ export default function AboutUs() {
                 profession="Web Developer"
                 imageProfile="https://github.com/Elias-FS.png"
                 linkGithub="https://github.com/Elias-FS"
-                linkInstagram=""
+                linkInstagram="https://www.instagram.com/elias_fs_/"
                 linkLinkedin="https://www.linkedin.com/in/elias-fausto-de-souza/"
               />
             </div>
@@ -32,8 +32,8 @@ export default function AboutUs() {
                 profession="Web Developer"
                 imageProfile="https://github.com/emiliobiasi.png"
                 linkGithub="https://github.com/emiliobiasi"
-                linkInstagram=""
-                linkLinkedin="https://www.linkedin.com/in/elias-fausto-de-souza/"
+                linkInstagram="https://www.instagram.com/emilio_biasi/"
+                linkLinkedin="https://www.linkedin.com/in/em%C3%ADlio-biasi-9b5323209/"
               />
             </div>
           </div>
@@ -44,8 +44,8 @@ export default function AboutUs() {
                 profession="Web Developer"
                 imageProfile="https://github.com/kevinsilvadev.png"
                 linkGithub="https://github.com/kevinsilvadev"
-                linkInstagram=""
-                linkLinkedin="https://www.linkedin.com/in/elias-fausto-de-souza/"
+                linkInstagram="https://www.instagram.com/kevinrsilva/"
+                linkLinkedin="https://www.linkedin.com/in/kevin-silva-back-end/"
               />
             </div>
           </div>
@@ -56,8 +56,8 @@ export default function AboutUs() {
                 profession="Web Developer"
                 imageProfile="https://github.com/GianDutra.png"
                 linkGithub="https://github.com/GianDutra"
-                linkInstagram=""
-                linkLinkedin="https://www.linkedin.com/in/elias-fausto-de-souza/"
+                linkInstagram="https://www.instagram.com/gian_chike/"
+                linkLinkedin="https://www.linkedin.com/in/gian-vitor-dutra-880a2a211/"
               />
             </div>
           </div>
@@ -68,8 +68,8 @@ export default function AboutUs() {
                 profession="Web Developer"
                 imageProfile="https://github.com/ThiagoSantos21.png"
                 linkGithub="https://github.com/ThiagoSantos21"
-                linkInstagram=""
-                linkLinkedin="https://www.linkedin.com/in/elias-fausto-de-souza/"
+                linkInstagram="https://www.instagram.com/thiagolima_santos/"
+                linkLinkedin="https://www.linkedin.com/in/thiago-lima-santos-18abb820b/"
               />
             </div>
           </div>

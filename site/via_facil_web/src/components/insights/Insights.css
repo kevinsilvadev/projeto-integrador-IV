@@ -1,0 +1,93 @@
+.insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+
+.insights > div {
+  background-color: #fca;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.404);
+  transition: all 300ms ease;
+}
+
+.insights > div:hover {
+  box-shadow: none;
+}
+
+.insights > div span {
+  background-color: cyan;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.insights > div.expenses span {
+  background: green;
+}
+
+.insights > div.income span {
+    background: yellow;
+  }
+
+.insights > div .middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.insights h3 {
+  margin: 1rem 0 0.6rem;
+  font-size: 1rem;
+}
+
+.insights .progress {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+}
+
+.insights svg {
+  width: 7rem;
+  height: 7rem;
+}
+
+.insights svg circle {
+  fill: none;
+  stroke: #ff0;
+  stroke-width: 14;
+  stroke-linecap: round;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 110;
+  stroke-dashoffset: 92;
+}
+
+.insights .sales svg circle {
+  stroke-dashoffset: -30;
+  stroke-dasharray: 200;
+}
+
+.insights .expenses svg circle {
+  stroke-dashoffset: 20;
+  stroke-dasharray: 80;
+}
+
+.insights .income svg circle {
+  stroke-dashoffset: 35;
+  stroke-dasharray: 110;
+}
+
+.insights .progress .number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

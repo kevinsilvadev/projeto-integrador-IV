@@ -29,7 +29,7 @@ const VerticalNavBar = ({onClick}) => {
         </div>
         <ul>
           <li>
-            <i onClick={handleClick} className="fas fa-search"></i>
+            <i onClick={onClick} onClickCapture={handleClick} className="fas fa-search"></i>
             <input type="text" placeholder="Search..." />
           </li>
           {VerticalMenuItems.map((item, index) => {
