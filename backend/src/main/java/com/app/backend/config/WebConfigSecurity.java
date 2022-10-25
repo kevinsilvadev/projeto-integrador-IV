@@ -1,4 +1,4 @@
-package com.app.backend.config;
+/*package com.app.backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,4 +34,4 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 
     }
 
-}
+}*/
