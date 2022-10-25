@@ -11,6 +11,4 @@ public interface CustomerRepository extends MongoRepository<Customer, String> {
     Customer findByEmail(String email);
     Customer findByName(String name);
     Customer deleteByCpf(String cpf);
-
-    Customer update(Customer newObj);
 }

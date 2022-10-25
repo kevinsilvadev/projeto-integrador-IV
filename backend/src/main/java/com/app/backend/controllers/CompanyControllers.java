@@ -36,7 +36,7 @@ public class CompanyControllers {
 
     @GetMapping(value = "/company/companyName")
     public ResponseEntity<List<Company>> findByCnpj(@RequestParam String companyName) {
-        return new ResponseEntity<List<Company>>(companyRepository.findByCompanyName(companyName), HttpStatus.OK);
+        return new ResponseEntity(companyRepository.findByCompanyName(companyName), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/company/{cnpj}")

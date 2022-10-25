@@ -39,17 +39,6 @@ public class CustomerService {
         }
         return false;
     }
-/*
-    public Client update(Client obj) {
-         Client newObj = repo.findByCpf(obj.getCpf());
-        updateData(newObj, obj);
-        return repo.save(newObj);
-    }
 
-    private void updateData(Client newObj, Client obj) {
-        newObj.setName(obj.getName());
-        newObj.setEmail(obj.getEmail());
-
-    }*/
 
 }

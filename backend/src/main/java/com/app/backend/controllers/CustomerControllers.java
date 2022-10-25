@@ -37,13 +37,15 @@ public class CustomerControllers {
 
     @GetMapping(value = "/customer/{cpf}")
     public ResponseEntity<List<Customer>> findByCpf(@RequestParam  String cpf) {
-        return new ResponseEntity<List<Customer>>(customerRepository.findByCpf(cpf), HttpStatus.OK);
+        return new ResponseEntity<List<Customer>>((List<Customer>) customerRepository.findByCpf(cpf), HttpStatus.OK);
     }
+
+    /*
     @PutMapping(value = "/customer/cpf")
     public ResponseEntity<Void> update(@RequestParam Customer obj) {
         obj = customerService.update(obj);
         return ResponseEntity.noContent().build();
-    }
+    }*/
 
     @PreAuthorize("hasRole('admin')")
     @DeleteMapping(value = "/customer/{id}")
