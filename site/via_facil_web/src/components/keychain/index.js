@@ -4,10 +4,10 @@ import "./Keychain.css";
 const Keychain = ({ name, imageUrl }) => {
   return (
     <div className="keychain-container-glass">
-      <div class="flip-card">
+      <div className="flip-card">
         <h1>Seu chaveiro</h1>
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
+        <div className="flip-card-inner">
+          <div className="flip-card-front">
             <div className="keychain-hole"></div>
             <h2>Emissor de Segunda via</h2>
             <h3>Via fácil</h3>
@@ -17,7 +17,7 @@ const Keychain = ({ name, imageUrl }) => {
             />
             <h4>{name}</h4>
           </div>
-          <div class="flip-card-back">
+          <div className="flip-card-back">
             <div className="keychain-hole"></div>
             <img
               src="https://br.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/core_market/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"

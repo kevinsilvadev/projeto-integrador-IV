@@ -43,6 +43,12 @@
   left: 244px;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+}
+
 /* Página Keychain */
 
 .keychain-content {
