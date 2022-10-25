@@ -40,9 +40,10 @@ public class Customer implements Serializable {
     @NotNull
     private String email;
 
-    public Customer(String cpf, String name, String email) {
+    public Customer(String cpf, String name, String senha, String email) {
         this.cpf = cpf;
         this.name = name;
+        this.senha = senha;
         this.email = email;
     }
 
