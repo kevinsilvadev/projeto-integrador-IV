@@ -1,5 +1,6 @@
 package com.app.backend.services;
 
+import ch.qos.logback.core.net.server.Client;
 import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
 import com.app.backend.model.Customer;
@@ -39,17 +40,17 @@ public class CustomerService {
         }
         return false;
     }
-/*
-    public Client update(Client obj) {
-         Client newObj = repo.findByCpf(obj.getCpf());
+
+    public Customer update(Customer obj) {
+        Customer newObj = repo.findByCpf(obj.getCpf());
         updateData(newObj, obj);
         return repo.save(newObj);
     }
 
-    private void updateData(Client newObj, Client obj) {
+    private void updateData(Customer newObj, Customer obj) {
         newObj.setName(obj.getName());
         newObj.setEmail(obj.getEmail());
 
-    }*/
+    }
 
 }
