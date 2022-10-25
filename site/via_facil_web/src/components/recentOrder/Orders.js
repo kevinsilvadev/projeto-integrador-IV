@@ -1,16 +1,20 @@
 import "./recentOrder.css";
 
-const Orders = () => {
+const Orders = ({ name, protocol, value, status, img }) => {
   return (
-    <div>
-      <tr>
-        <td>Foldable Mini Drone</td>
-        <td>85631</td>
-        <td>Due</td>
-        <td className="warning">Peding</td>
-        <td className="cor-primaria">Details</td>
-      </tr>
-    </div>
+    <>
+      <tbody>
+        <tr>
+          <td>{name}</td>
+          <td>{protocol}</td>
+          <td>R$ {value}</td>
+          <td className="warning">{status}</td>
+          <td className="cor-primaria">
+            <img className="company-image" src={img} alt="" />
+          </td>
+        </tr>
+      </tbody>
+    </>
   );
 };
 

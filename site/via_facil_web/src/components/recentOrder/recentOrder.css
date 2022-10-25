@@ -7,12 +7,12 @@
 }
 
 .recent-orders table {
-    background: #ff0;
+    background: var(--color-white);
     width: 100%;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
     text-align: center;
-    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.404);
+    box-shadow: var(--box-shadow);
     transition: all 300ms ease;
 }
 
@@ -20,10 +20,10 @@
     box-shadow: none;
 }
 
-.recent-orders table, tboby, td {
+.recent-orders table tbody td {
     height: 2.8rem;
-    border-bottom: 1px solid #fff;
-    color: #000;
+    border-bottom: 1px solid var(--color-light);
+    color: var(--color-dark-variant);
 }
 
 .recent-orders table, tbody, tr:last-child, td {
@@ -34,4 +34,13 @@
     text-align: center;
     display: block;
     margin: 1rem auto;
+    color: gray;
 }
+
+.recent-orders img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    align-self: left;
+    /*background: #333;*/
+  }

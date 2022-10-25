@@ -1,14 +1,61 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  outline: 0;
+  appearance: none;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* Estilização das páginas */
+:root {
+  --color-primary: #7380ec;
+  --color-danger: #ff7782;
+  --color-success: #41f1b6;
+  --color-warning: #ffbb55;
+  --color-white: #fff;
+  --color-info-dark: #7d8da1;
+  --color-info-light: #dce1eb;
+  --color-dark: #363949;
+  --color-light: rgba(132, 139, 200, 0.18);
+  --color-primary-variant: #111e88;
+  --color-dark-variant: #677483;
+  --color-background: #f6f6f9;
 
-/* Parceria background */
+  --card-border-radius: 2rem;
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+
+  --card-padding: 1.8rem;
+  --padding-1: 1.2rem;
+
+  --box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.404);
+}
+
+.primary {
+  color: var(--color-primary);
+}
+
+.danger {
+  color: var(--color-danger);
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.warning {
+  color: var(--color-warning);
+}
+
+
+
+/* ============================= Estilização das páginas ============================= */
+
+/* ============================= Parceria background ============================= */
 
 .parcerias-content{
   background: linear-gradient(165.09deg, #323233 6.23%, #1cd8e9 87.54%);
@@ -17,7 +64,7 @@
 
 
 
-/* Páginas [Login, SignUp] */
+/* ============================= Páginas [Login, SignUp] ============================= */
 
 
 .section_form_login_SignUp {
@@ -27,15 +74,16 @@
   min-height: 100vh;
 }
 
-/* Página HomeUser */
+/* ============================= Página HomeUser ============================= */
 
 .HomeUser_content {
   position: absolute;
-  height: 100%;
   width: calc(100% - 82px);
   left: 82px;
   transition: all 0.5s ease;
   margin-top: 10px;
+  user-select: none;
+  overflow: hidden;
 }
 
 .HomeUser_content.active {
@@ -49,7 +97,98 @@
   padding: 10px;
 }
 
-/* Página Keychain */
+
+.homeUser-row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.homeUser-header {
+  background-color: #9933cc;
+  color: #ffffff;
+  padding: 15px;
+}
+
+.homeUser-aside {
+  padding: 15px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.homeUser-footer {
+  background-color: #0099cc;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+}
+
+  /* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+  
+}
+
+@media only screen and (min-width: 1200px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+  
+}
+
+@media only screen and (max-width: 1380px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+/* ============================= Página Keychain ============================= */
 
 .keychain-content {
   position: absolute;
@@ -65,7 +204,7 @@
   min-height: 100vh;
 }
 
-/* ProfileCards */
+/* ============================= ProfileCards ============================= */
 
 /* Create four equal columns that floats next to each other */
 
@@ -106,7 +245,6 @@
   float: left;
   width: 50%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
 }
 }
 @media screen and (max-width: 668px) {
@@ -114,11 +252,10 @@
   float: left;
   width: 100%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
 }
 }
 
-/* Página addCompany */
+/* ============================= Página addCompany ============================= */
 
 
 .addCompany_content {
