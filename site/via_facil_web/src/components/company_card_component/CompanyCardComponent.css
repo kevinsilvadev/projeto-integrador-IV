@@ -1,0 +1,51 @@
+.image-company-card-component {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 60px;
+}
+
+.image-company-card-component img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  align-self: left;
+  /*background: #333;*/
+}
+
+.content-company-card-component {
+  width: 100%;
+  background: #fff;
+  padding: 10px 20px;
+  margin: 0 20px 0 0;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-company-card-component p {
+  color: gray;
+  font-size: small;
+}
+
+.mini-card-company-component {
+  margin: 5px;
+}
+
+.company-link {
+  text-decoration: none;
+}
+
+.company-name {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  color: #000;
+  text-decoration: none;
+}
+
+.company-image {
+}

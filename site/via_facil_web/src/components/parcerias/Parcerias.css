@@ -1,0 +1,61 @@
+/* Create four equal columns that floats next to each other */
+.column1 {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row h1 {
+  padding-left: 10%;
+  padding-top: 70px;
+  font-size: xxx-large;
+}
+
+.parcerias-container {
+  display: flex;
+  justify-content: center;
+}
+
+.row p {
+  text-align: justify;
+  width: 100%;
+  margin-left: 10%;
+  padding-right: 10%;
+  padding-top: 5px;
+  color: #fff;
+}
+
+
+@media screen and (max-width: 1280px) {
+  .column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+}
+@media screen and (max-width: 668px) {
+.column {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.column1 {
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+}

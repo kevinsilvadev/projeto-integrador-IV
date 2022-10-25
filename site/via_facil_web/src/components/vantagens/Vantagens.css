@@ -1,0 +1,26 @@
+.vantagens-container {
+    display: flex;
+    justify-content: center;
+    column-count: 2;
+  }
+
+.title {
+    padding: 80px;
+    text-align: center;
+    font-size: 3.0rem;
+    color: #000;
+}
+
+.section-vantagens {
+  background: #fff;
+  height: 80vh;
+  width: 100%;
+}
+
+@media screen and (max-width: 820px) {
+  .section-vantagens {
+    background: #fff;
+    height: 200vh;
+    width: 100%;
+  }
+}
