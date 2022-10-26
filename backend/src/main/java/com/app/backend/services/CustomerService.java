@@ -1,14 +1,11 @@
 package com.app.backend.services;
-
+import com.app.backend.dto.CustomerDTO;
 import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
 import com.app.backend.model.Customer;
 import com.app.backend.repository.CustomerRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -20,17 +17,14 @@ public class CustomerService {
         isValid(obj);
         return repo.save(obj);
     }
+
     public List<Customer> findAll() {
        return repo.findAll();
     }
 
-    @PreAuthorize("hasRole('admin')")
-    public void delete(String id) {
-        if(!repo.existsById(id)) {
-            throw new ResourceNotFoundException("ID NOT FOUND");
-        } else {
-            repo.deleteById(id);
-        }
+
+    public Customer FromDTO(CustomerDTO objDto) {
+        return new Customer(objDto.getId(), objDto.getName(), objDto.getEmail(), objDto.getSenha());
     }
 
     private boolean isValid(Customer customer) {
@@ -39,6 +33,15 @@ public class CustomerService {
         }
         return false;
     }
+    public Customer update(Customer obj) {
+        Customer newObj = repo.findByCpf(obj.getCpf());
+        updateData(newObj, obj);
+        return repo.save(newObj);
+    }
 
-
+    private void updateData(Customer newObj, Customer obj) {
+        newObj.setName(obj.getName());
+        newObj.setEmail(obj.getEmail());
+        newObj.setSenha(obj.getSenha());
+    }
 }

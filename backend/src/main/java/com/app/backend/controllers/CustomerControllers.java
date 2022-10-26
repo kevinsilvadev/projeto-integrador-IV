@@ -1,5 +1,6 @@
 package com.app.backend.controllers;
 
+import com.app.backend.dto.CustomerDTO;
 import com.app.backend.model.Customer;
 import com.app.backend.repository.CustomerRepository;
 import com.app.backend.services.CustomerService;
@@ -30,27 +31,31 @@ public class CustomerControllers {
 
     @PostMapping(value = "/customer")
     public ResponseEntity<Customer> insert(@RequestBody Customer obj) throws Exception {
+        System.out.println("Sexo");
         obj = customerService.insertCustomer(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 
-    @GetMapping(value = "/customer/{cpf}")
+    @GetMapping(value = "/customer/cpf")
     public ResponseEntity<List<Customer>> findByCpf(@RequestParam  String cpf) {
-        return new ResponseEntity<List<Customer>>((List<Customer>) customerRepository.findByCpf(cpf), HttpStatus.OK);
+        System.out.println("Entrei aqui");
+        return new ResponseEntity(customerRepository.findByCpf(cpf), HttpStatus.OK);
     }
 
-    /*
+
     @PutMapping(value = "/customer/cpf")
-    public ResponseEntity<Void> update(@RequestParam Customer obj) {
+    public ResponseEntity<Void> update(@RequestBody CustomerDTO objDTO, @RequestParam String cpf) {
+        Customer obj = customerService.FromDTO(objDTO);
+        obj.setCpf(cpf);
         obj = customerService.update(obj);
         return ResponseEntity.noContent().build();
-    }*/
+    }
 
-    @PreAuthorize("hasRole('admin')")
-    @DeleteMapping(value = "/customer/{id}")
-    public ResponseEntity<Customer> deleteByid(@PathVariable String id) {
-        customerService.delete(id);
+
+    @DeleteMapping(value = "/customer/cpf")
+    public ResponseEntity<Customer> deleteByid(@RequestParam String cpf) {
+        customerRepository.deleteByCpf(cpf);
         return ResponseEntity.noContent().build();
     }
 }

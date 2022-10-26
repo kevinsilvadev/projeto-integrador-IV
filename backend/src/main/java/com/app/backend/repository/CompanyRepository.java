@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface CompanyRepository extends MongoRepository<Company, String> {
-
-    List<Company> findByCompanyName(String companyName);
+    Company findByName(String Name);
+    Company findByCnpj(String cnpj);
+    Company deleteByCnpj(String cpnj);
 }

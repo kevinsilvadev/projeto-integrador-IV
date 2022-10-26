@@ -1,6 +1,9 @@
 package com.app.backend.controllers;
 
+import com.app.backend.dto.CompanyDTO;
+import com.app.backend.dto.CustomerDTO;
 import com.app.backend.model.Company;
+import com.app.backend.model.Customer;
 import com.app.backend.repository.CompanyRepository;
 import com.app.backend.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,15 +36,22 @@ public class CompanyControllers {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
-
-    @GetMapping(value = "/company/companyName")
-    public ResponseEntity<List<Company>> findByCnpj(@RequestParam String companyName) {
-        return new ResponseEntity(companyRepository.findByCompanyName(companyName), HttpStatus.OK);
+    @PutMapping(value = "/company/cnpj")
+    public ResponseEntity<Void> update(@RequestBody CompanyDTO objDTO, @RequestParam String cnpj) {
+        Company obj = company.FromDTO(objDTO);
+        obj.setCnpj(cnpj);
+        obj = company.update(obj);
+        return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(value = "/company/{cnpj}")
-    public ResponseEntity<Company> deleteById(@PathVariable String cnpj) {
-        company.delete(cnpj);
+    @GetMapping(value = "/company/companyName")
+    public ResponseEntity<List<Company>> findByCompanyName(@RequestParam String Name) {
+        return new ResponseEntity(companyRepository.findByName(Name), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/company/cnpj")
+    public ResponseEntity<Customer> deleteByid(@RequestParam String cnpj) {
+        companyRepository.deleteByCnpj(cnpj);
         return ResponseEntity.noContent().build();
     }
 }
