@@ -42,5 +42,10 @@
     object-fit: cover;
     border-radius: 5px;
     align-self: left;
-    /*background: #333;*/
-  }
+}
+
+@media screen and (max-width: 1200px) {
+    .recent-orders {
+        
+    }
+}

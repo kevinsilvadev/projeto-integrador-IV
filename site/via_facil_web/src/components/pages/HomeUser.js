@@ -4,7 +4,6 @@ import CalendarDate from "../calendar";
 import { useState } from "react";
 import Insights from "../insights";
 import RecentOrder from "../recentOrder";
-import CardHomeUser from "../cardHomeUser";
 import ButtonDarkMode from "../buttonDarkMode";
 
 function HomeUser() {
@@ -25,7 +24,7 @@ function HomeUser() {
 
       <div className="homeUser-row">
         <VerticalNavBar onClick={handleClick} />
-        <div className="col-9 col-s-9">
+        <div className="col-9 col-s-12">
           <CalendarDate />
           <div className="grid-container">
             <Insights
