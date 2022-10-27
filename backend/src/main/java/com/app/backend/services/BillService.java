@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BillService {
@@ -22,7 +21,7 @@ public class BillService {
     }
 
     private boolean isValid(Bill bill) {
-        if (bill.getCodigoDaVia() == null || bill.getCodigoDaVia() == "" || bill.getCompanyName() == null || bill.getAddress() == null || bill.getAddress() == "") {
+        if (bill.getDocumentNumber().isBlank() || bill.getDocumentNumber().isEmpty()) {
             throw new ResourceInvalidDataException("INVALID DOCUMENT FOR INSERTION");
         }
         return false;
@@ -32,18 +31,21 @@ public class BillService {
         return repo.findAll();
     }
 
-    public Bill findByCodigoDaVia (String codigoDaVia) {
-        Optional<Bill> obj = repo.findById(codigoDaVia);
-        return obj.orElseThrow(() -> new ResourceNotFoundException("DOCUMENT NOT FOUND"));
+    public Bill findByDocumentNumber (String documentNumber) {
+        Bill obj = repo.findByDocumentNumber(documentNumber);
+        return obj;
     }
 
-    public void delete(String codigoDaVia) {
-        if (!repo.existsById(codigoDaVia)) {
+    public void delete(String documentNumber) {
+        repo.deleteByDocumentNumber(documentNumber);
+        if (!repo.existsByDocumentNumber(documentNumber)) {
             throw new ResourceNotFoundException("ROUTE CODE DOES NOT EXIST IN THE DATABASE");
         } else {
-            repo.deleteById(codigoDaVia);
+            repo.deleteByDocumentNumber(documentNumber);
         }
     }
-
-
+    public Bill update(Bill obj) {
+        Bill newObj = repo.findByDocumentNumber(obj.getDocumentNumber());
+        return repo.save(newObj);
+    }
 }

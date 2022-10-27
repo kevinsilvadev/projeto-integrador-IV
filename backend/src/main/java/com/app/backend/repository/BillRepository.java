@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BillRepository extends MongoRepository<Bill, String> {
+    Bill findByDocumentNumber (String documentNumber);
+    Bill deleteByDocumentNumber (String documentNumber);
+    boolean existsByDocumentNumber(String documentNumber);
+
 }

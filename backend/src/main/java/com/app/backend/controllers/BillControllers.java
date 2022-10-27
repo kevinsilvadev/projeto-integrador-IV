@@ -1,6 +1,7 @@
 package com.app.backend.controllers;
 
 import com.app.backend.model.Bill;
+import com.app.backend.repository.BillRepository;
 import com.app.backend.services.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,9 @@ public class BillControllers {
     @Autowired
     private BillService billService;
 
+    @Autowired
+    private BillRepository repo;
+
     @GetMapping(value = "/bill")
     public ResponseEntity<List<Bill>> findAll() {
         List<Bill> bill1 = billService.findAll();
@@ -25,21 +29,29 @@ public class BillControllers {
     @PostMapping(value = "/bill")
     public ResponseEntity<Bill> insert(@RequestBody Bill obj) throws Exception {
         obj = billService.insertBill(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{codigoDaVia}").buildAndExpand(obj.getCodigoDaVia()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{documentNumber}").buildAndExpand(obj.getDocumentNumber()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 
-    @GetMapping(value = "/bill/{codigoDaVia}")
-    public ResponseEntity<Bill> findByCodigoDaVia(@PathVariable String codigoDaVia) {
-        Bill obj = billService.findByCodigoDaVia(codigoDaVia);
+    @GetMapping(value = "/bill/documentNumber")
+    public ResponseEntity<Bill> findByDocumentNumber(@RequestParam String documentNumber) {
+        Bill obj = billService.findByDocumentNumber(documentNumber);
         return ResponseEntity.ok().body(obj);
     }
 
-    @DeleteMapping(value = "/bill/{codigoDaVia}")
-    public ResponseEntity<Bill> deleteById(@PathVariable String codigoDaVia) {
-        billService.delete(codigoDaVia);
+    @PutMapping(value = "/bill/documentNumber")
+    public ResponseEntity<Void> update(@RequestBody Bill newObj, @RequestParam String documentNumber) {
+        Bill obj = repo.findByDocumentNumber(documentNumber);
+        obj.setDocumentNumber(newObj.getDocumentNumber());
+        repo.save(obj);
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping(value = "/bill/documentNumber")
+    public ResponseEntity<Bill> deleteByDocumentNumber(@RequestParam String documentNumber) {
+
+        repo.deleteByDocumentNumber(documentNumber);
+        return ResponseEntity.noContent().build();
+    }
 }
 

@@ -8,30 +8,65 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.web.PortResolverImpl;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Document
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Bill {
-
     @Id
     private String id;
 
     @NotBlank
-    private String codigoDaVia;
+    @NotNull
+    private Company company;
 
     @NotBlank
-    @DBRef
-    private Company companyName;
+    @NotNull
+    private Customer customer;
 
     @NotBlank
-    private String address;
+    @NotNull
+    private String documentNumber;
 
-    private String date;
+    @NotBlank
+    @NotNull
+    private String barCodeNumber;
 
-    List<String> expenses =  new ArrayList<>();
+    @NotBlank
+    @NotNull
+    private String dueDate;
 
+    @NotBlank
+    @NotNull
+    private double documentValue;
+
+    @NotBlank
+    @NotNull
+    private double discount;
+
+    @NotBlank
+    @NotNull
+    private double penalty;
+
+    @NotBlank
+    @NotNull
+    private double amountCharged;
+
+    @NotBlank
+    @NotNull
+    private String instructions;
+
+    @NotBlank
+    @NotNull
+    private String uf;
+
+    @NotBlank
+    @NotNull
+    private String processingDate;
 
 }
