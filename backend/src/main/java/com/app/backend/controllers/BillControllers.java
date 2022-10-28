@@ -49,7 +49,6 @@ public class BillControllers {
 
     @DeleteMapping(value = "/bill/documentNumber")
     public ResponseEntity<Bill> deleteByDocumentNumber(@RequestParam String documentNumber) {
-
         repo.deleteByDocumentNumber(documentNumber);
         return ResponseEntity.noContent().build();
     }

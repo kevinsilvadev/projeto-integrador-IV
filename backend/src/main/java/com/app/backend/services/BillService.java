@@ -28,6 +28,7 @@ public class BillService {
     }
 
     public List<Bill> findAll () {
+
         return repo.findAll();
     }
 
@@ -37,7 +38,6 @@ public class BillService {
     }
 
     public void delete(String documentNumber) {
-        repo.deleteByDocumentNumber(documentNumber);
         if (!repo.existsByDocumentNumber(documentNumber)) {
             throw new ResourceNotFoundException("ROUTE CODE DOES NOT EXIST IN THE DATABASE");
         } else {

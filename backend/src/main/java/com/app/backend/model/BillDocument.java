@@ -1,38 +1,28 @@
 package com.app.backend.model;
 
-
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Getter
-@Setter
-@EqualsAndHashCode(exclude = "id")
 @Document
+@Data
 @AllArgsConstructor
-public class Company {
+@NoArgsConstructor
+public class BillDocument {
 
     @Id
     private String id;
 
     @NotBlank
-    private String name;
-
-    @NotBlank
-    private String cnpj;
+    @NotNull
+    private String url;
 
     @NotBlank
     @NotNull
-    private String agency;
-
-    @NotNull
-    @NotBlank
-    private String imgLogo;
-
+    private String documentNumber;
 }

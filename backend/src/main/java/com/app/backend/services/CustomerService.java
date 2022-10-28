@@ -24,7 +24,7 @@ public class CustomerService {
 
 
     public Customer FromDTO(CustomerDTO objDto) {
-        return new Customer(objDto.getId(), objDto.getName(), objDto.getEmail(), objDto.getSenha());
+        return new Customer(objDto.getId(), objDto.getCnpj(), objDto.getName(), objDto.getEmail(), objDto.getSenha());
     }
 
     private boolean isValid(Customer customer) {

@@ -29,6 +29,10 @@ public class Customer implements Serializable {
 
     @NotBlank
     @NotNull
+    private String cnpj;
+
+    @NotBlank
+    @NotNull
     private String name;
 
     @NotBlank
@@ -40,8 +44,9 @@ public class Customer implements Serializable {
     @NotNull
     private String email;
 
-    public Customer(String cpf, String name, String senha, String email) {
+    public Customer(String cpf, String cnpj, String name, String senha, String email) {
         this.cpf = cpf;
+        this.cnpj = cnpj;
         this.name = name;
         this.senha = senha;
         this.email = email;

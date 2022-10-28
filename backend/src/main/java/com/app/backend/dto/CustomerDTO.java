@@ -20,16 +20,17 @@ public class CustomerDTO implements Serializable {
     @Id
     private String id;
     private String cpf;
+    private String cnpj;
     private String name;
     private String email;
-
     private String senha;
 
     public CustomerDTO(Customer obj) {
-        id = obj.getId();
-        cpf = obj.getCpf();
-        name = obj.getName();
-        email = obj.getEmail();
-        senha  = obj.getSenha();
+        this.id = obj.getId();
+        this.cpf = obj.getCpf();
+        this.cnpj = obj.getCnpj();
+        this.name = obj.getName();
+        this.email = obj.getEmail();
+        this.senha  = obj.getSenha();
     }
 }

@@ -23,11 +23,15 @@ public class Bill {
 
     @NotBlank
     @NotNull
-    private Company company;
+    private String companyCnpj;
 
     @NotBlank
     @NotNull
-    private Customer customer;
+    private String customerCnpj;
+
+    @NotBlank
+    @NotNull
+    private String customerCpf;
 
     @NotBlank
     @NotNull
