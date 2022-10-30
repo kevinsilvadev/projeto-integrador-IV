@@ -10,6 +10,7 @@ import HomeUser from "./components/pages/HomeUser";
 import Keychain from "./components/pages/KeychainUser";
 import AboutUs from "./components/pages/AboutUs";
 import AddCompany from "./components/pages/AddCompany";
+import EditUser from "./components/pages/EditUser";
 
 
 function Rotas() {
@@ -36,6 +37,9 @@ function Rotas() {
             {" "}
           </Route>
           <Route path="/add-company" element={<AddCompany />}>
+            {" "}
+          </Route>
+          <Route path="/edit-user" element={<EditUser />}>
             {" "}
           </Route>
         </Routes>

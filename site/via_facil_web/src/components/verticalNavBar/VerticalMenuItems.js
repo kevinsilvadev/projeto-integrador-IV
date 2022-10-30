@@ -14,7 +14,7 @@ export const VerticalMenuItems = [
     {
       icon: "fas fa-user",
       title: "Usuário",
-      url: "#",
+      url: "/edit-user",
       cName: "nav-vertical-links",
     },
     {

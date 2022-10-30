@@ -93,6 +93,7 @@
   margin-top: 10px;
   user-select: none;
   overflow: hidden;
+  background: var(--color-background);
 }
 
 .HomeUser_content.active {
@@ -301,4 +302,13 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* ============================= Página EditUser ================= */
+
+.form-edit-user h1{
+  font-size: xxx-large;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 15%;
 }
