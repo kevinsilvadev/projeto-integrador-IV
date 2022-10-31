@@ -7,7 +7,7 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -60,21 +60,16 @@
   color: var(--color-warning);
 }
 
-
-
 /* ============================= Estilização das páginas ============================= */
 
 /* ============================= Parceria background ============================= */
 
-.parcerias-content{
+.parcerias-content {
   background: linear-gradient(165.09deg, #323233 6.23%, #1cd8e9 87.54%);
   color: #fff;
 }
 
-
-
 /* ============================= Páginas [Login, SignUp] ============================= */
-
 
 .section_form_login_SignUp {
   display: flex;
@@ -87,18 +82,16 @@
 
 .HomeUser_content {
   position: absolute;
-  width: calc(100% - 82px);
-  left: 82px;
+  width: calc(100% - 75px);
+  left: 75px;
   transition: all 0.5s ease;
-  margin-top: 10px;
   user-select: none;
   overflow: hidden;
-  background: var(--color-background);
 }
 
 .HomeUser_content.active {
-  width: calc(100% - 244px);
-  left: 244px;
+  width: calc(100% - 240px);
+  left: 240px;
 }
 
 .grid-container {
@@ -106,7 +99,6 @@
   grid-template-columns: repeat(3, 1fr);
   padding: 10px;
 }
-
 
 .homeUser-row::after {
   content: "";
@@ -134,7 +126,7 @@ html {
   color: #ffffff;
   text-align: center;
   font-size: 14px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .homeUser-footer {
@@ -145,61 +137,104 @@ html {
   padding: 15px;
 }
 
-  /* For mobile phones: */
+/* For mobile phones: */
 [class*="col-"] {
   width: 100%;
 }
 
 @media only screen and (min-width: 600px) {
   /* For tablets: */
-  .col-s-1 {width: 8.33%;}
-  .col-s-2 {width: 16.66%;}
-  .col-s-3 {width: 25%;}
-  .col-s-4 {width: 33.33%;}
-  .col-s-5 {width: 41.66%;}
-  .col-s-6 {width: 50%;}
-  .col-s-7 {width: 58.33%;}
-  .col-s-8 {width: 66.66%;}
-  .col-s-9 {width: 75%;}
-  .col-s-10 {width: 83.33%;}
-  .col-s-11 {width: 91.66%;}
-  .col-s-12 {width: 100%;}
-  
+  .col-s-1 {
+    width: 8.33%;
+  }
+  .col-s-2 {
+    width: 16.66%;
+  }
+  .col-s-3 {
+    width: 25%;
+  }
+  .col-s-4 {
+    width: 33.33%;
+  }
+  .col-s-5 {
+    width: 41.66%;
+  }
+  .col-s-6 {
+    width: 50%;
+  }
+  .col-s-7 {
+    width: 58.33%;
+  }
+  .col-s-8 {
+    width: 66.66%;
+  }
+  .col-s-9 {
+    width: 75%;
+  }
+  .col-s-10 {
+    width: 83.33%;
+  }
+  .col-s-11 {
+    width: 91.66%;
+  }
+  .col-s-12 {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
   /* For desktop: */
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
-
-  
+  .col-1 {
+    width: 8.33%;
+  }
+  .col-2 {
+    width: 16.66%;
+  }
+  .col-3 {
+    width: 25%;
+  }
+  .col-4 {
+    width: 33.33%;
+  }
+  .col-5 {
+    width: 41.66%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-7 {
+    width: 58.33%;
+  }
+  .col-8 {
+    width: 66.66%;
+  }
+  .col-9 {
+    width: 75%;
+  }
+  .col-10 {
+    width: 83.33%;
+  }
+  .col-11 {
+    width: 91.66%;
+  }
+  .col-12 {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 1380px) {
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
-    gap:0;
+    gap: 0;
   }
-
 }
 
 @media only screen and (max-width: 780px) {
   .grid-container {
     grid-template-columns: repeat(1, 1fr);
-    gap:0;
+    gap: 0;
   }
 }
-
 
 /* ============================= Página Keychain ============================= */
 
@@ -255,21 +290,20 @@ html {
 
 @media screen and (max-width: 1280px) {
   .column-profileCard {
-  float: left;
-  width: 50%;
-  padding: 10px;
-}
+    float: left;
+    width: 50%;
+    padding: 10px;
+  }
 }
 @media screen and (max-width: 668px) {
-.column-profileCard {
-  float: left;
-  width: 100%;
-  padding: 10px;
-}
+  .column-profileCard {
+    float: left;
+    width: 100%;
+    padding: 10px;
+  }
 }
 
 /* ============================= Página addCompany ============================= */
-
 
 .addCompany_content {
   position: absolute;
@@ -290,6 +324,13 @@ html {
   font-size: xxx-large;
   font-weight: bold;
   color: #000;
+  margin-bottom: 5%;
+}
+
+.title-add-company h2 {
+  font-size: xx-large;
+  font-weight: bold;
+  color: #000;
   margin-bottom: 15%;
 }
 
@@ -306,9 +347,59 @@ html {
 
 /* ============================= Página EditUser ================= */
 
-.form-edit-user h1{
+.form-edit-user h1 {
   font-size: xxx-large;
   font-weight: bold;
-  color: #000;
+  color: #fff;
   margin-bottom: 15%;
+}
+
+.profile-pic {
+  color: transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.profile-pic input {
+  display: none;
+  
+}
+
+.profile-pic img {
+  position: absolute;
+  object-fit: cover;
+  width: 165px;
+  height: 165px;
+  box-shadow: var(--box-shadow);
+  border-radius: 100px;
+  z-index: 0;
+}
+
+.profile-pic .-label {
+  cursor: pointer;
+  height: 165px;
+  width: 165px;
+  z-index: 999;
+  border-radius: 100px;
+}
+
+.profile-pic .-label:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  color: #fff;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 100px;
+  margin-bottom: 0;
+}
+
+.profile-pic span {
+  display: inline-flex;
+  padding: 0.2em;
+  height: 2em;
 }
