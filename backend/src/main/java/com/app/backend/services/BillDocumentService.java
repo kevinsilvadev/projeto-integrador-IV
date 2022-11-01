@@ -2,6 +2,7 @@ package com.app.backend.services;
 
 import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
+import com.app.backend.model.Bill;
 import com.app.backend.model.BillDocument;
 import com.app.backend.repository.BillDocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,14 @@ public class BillDocumentService {
         } else {
             repo.deleteByUrl(url);
         }
+    }
+
+    public BillDocument update (BillDocument obj,BillDocument newObj){
+
+        obj.setUrl(newObj.getUrl());
+        obj.setDocumentNumber(newObj.getDocumentNumber());
+
+        return repo.save(obj);
     }
 
     boolean isValid (BillDocument obj){

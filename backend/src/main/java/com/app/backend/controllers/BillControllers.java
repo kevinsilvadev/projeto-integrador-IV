@@ -35,15 +35,14 @@ public class BillControllers {
 
     @GetMapping(value = "/bill/documentNumber")
     public ResponseEntity<Bill> findByDocumentNumber(@RequestParam String documentNumber) {
-        Bill obj = billService.findByDocumentNumber(documentNumber);
+        Bill obj = repo.findByDocumentNumber(documentNumber);
         return ResponseEntity.ok().body(obj);
     }
 
     @PutMapping(value = "/bill/documentNumber")
     public ResponseEntity<Void> update(@RequestBody Bill newObj, @RequestParam String documentNumber) {
         Bill obj = repo.findByDocumentNumber(documentNumber);
-        obj.setDocumentNumber(newObj.getDocumentNumber());
-        repo.save(obj);
+        billService.update(obj, newObj);
         return ResponseEntity.noContent().build();
     }
 

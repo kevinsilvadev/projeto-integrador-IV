@@ -28,15 +28,8 @@ public class BillService {
     }
 
     public List<Bill> findAll () {
-
         return repo.findAll();
     }
-
-    public Bill findByDocumentNumber (String documentNumber) {
-        Bill obj = repo.findByDocumentNumber(documentNumber);
-        return obj;
-    }
-
     public void delete(String documentNumber) {
         if (!repo.existsByDocumentNumber(documentNumber)) {
             throw new ResourceNotFoundException("ROUTE CODE DOES NOT EXIST IN THE DATABASE");
@@ -44,8 +37,22 @@ public class BillService {
             repo.deleteByDocumentNumber(documentNumber);
         }
     }
-    public Bill update(Bill obj) {
-        Bill newObj = repo.findByDocumentNumber(obj.getDocumentNumber());
-        return repo.save(newObj);
+    public Bill update(Bill obj, Bill newObj) {
+
+        obj.setDocumentNumber(newObj.getDocumentNumber());
+        obj.setDiscount(newObj.getDiscount());
+        obj.setAmountCharged(newObj.getAmountCharged());
+        obj.setUf(newObj.getUf());
+        obj.setCompanyCnpj(newObj.getCompanyCnpj());
+        obj.setPenalty(newObj.getPenalty());
+        obj.setDueDate(newObj.getDueDate());
+        obj.setInstructions(newObj.getInstructions());
+        obj.setCustomerCpf(newObj.getCustomerCpf());
+        obj.setCustomerCnpj(newObj.getCustomerCnpj());
+        obj.setBarCodeNumber(newObj.getBarCodeNumber());
+        obj.setProcessingDate(newObj.getProcessingDate());
+        obj.setDocumentValue(newObj.getDocumentValue());
+
+        return repo.save(obj);
     }
 }

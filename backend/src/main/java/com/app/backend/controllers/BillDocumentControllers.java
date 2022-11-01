@@ -12,17 +12,17 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-public class BillDocumenteControllers {
+public class BillDocumentControllers {
 
     @Autowired
     private BillDocumentRepository repo;
 
     @Autowired
-    private BillDocumentService documentService;
+    private BillDocumentService billDocumentService;
 
     @PostMapping(value="/billDocument")
     public ResponseEntity<BillDocument> insert (@RequestBody BillDocument obj) throws Exception {
-        obj = documentService.insert(obj);
+        obj = billDocumentService.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{url}").buildAndExpand(obj.getUrl()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
@@ -38,5 +38,13 @@ public class BillDocumenteControllers {
         List<BillDocument> list = repo.findAll();
         return ResponseEntity.ok().body(list);
     }
-    
+
+    @PutMapping(value="/billDocument/documentNumber")
+    public ResponseEntity<BillDocument> update(@RequestBody BillDocument newObj, @RequestParam String documentNumber){
+        BillDocument obj = repo.findByDocumentNumber(documentNumber);
+        billDocumentService.update(obj, newObj);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }

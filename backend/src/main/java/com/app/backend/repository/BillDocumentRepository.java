@@ -9,5 +9,7 @@ public interface BillDocumentRepository extends MongoRepository<BillDocument, St
 
     BillDocument deleteByUrl(String url);
 
+    BillDocument findByDocumentNumber(String documentNumber);
+
     boolean existsByUrl(String url);
 }
