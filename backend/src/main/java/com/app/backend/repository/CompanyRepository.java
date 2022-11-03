@@ -10,4 +10,5 @@ public interface CompanyRepository extends MongoRepository<Company, String> {
     Company findByName(String Name);
     Company findByCnpj(String cnpj);
     Company deleteByCnpj(String cpnj);
+    boolean existsByCnpj(String cnpj);
 }

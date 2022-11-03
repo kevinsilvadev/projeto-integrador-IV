@@ -21,7 +21,6 @@ public class BillDocumentService {
 
         return repo.save(obj);
     }
-
     public void deleteByUrl (String url) throws Exception{
         if (!repo.existsByUrl(url)) {
             throw new ResourceNotFoundException("ROUTE CODE DOES NOT EXIST IN THE DATABASE");
@@ -29,7 +28,6 @@ public class BillDocumentService {
             repo.deleteByUrl(url);
         }
     }
-
     public BillDocument update (BillDocument obj,BillDocument newObj){
 
         obj.setUrl(newObj.getUrl());
@@ -37,7 +35,6 @@ public class BillDocumentService {
 
         return repo.save(obj);
     }
-
     boolean isValid (BillDocument obj){
 
         return !obj.getUrl().isBlank() && !obj.getUrl().isEmpty();

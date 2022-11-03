@@ -18,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Bill {
+
     @Id
     private String id;
 
@@ -25,18 +26,15 @@ public class Bill {
     @NotNull
     private String companyCnpj;
 
-    @NotBlank
-    @NotNull
     private String customerCnpj;
 
-    @NotBlank
-    @NotNull
     private String customerCpf;
 
-    @NotBlank
-    @NotNull
     private String documentNumber;
 
+    private double documentValue;
+
+    /*
     @NotBlank
     @NotNull
     private String barCodeNumber;
@@ -72,5 +70,6 @@ public class Bill {
     @NotBlank
     @NotNull
     private String processingDate;
+     */
 
 }

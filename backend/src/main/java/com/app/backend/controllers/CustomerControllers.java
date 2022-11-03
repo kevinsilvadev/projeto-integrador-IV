@@ -1,7 +1,9 @@
 package com.app.backend.controllers;
 
 import com.app.backend.dto.CustomerDTO;
+import com.app.backend.model.Company;
 import com.app.backend.model.Customer;
+import com.app.backend.repository.CompanyRepository;
 import com.app.backend.repository.CustomerRepository;
 import com.app.backend.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class CustomerControllers {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private CompanyRepository companyRepository;
+
     @GetMapping(value = "/customer")
     public ResponseEntity<List<Customer>> findAll() {
         List<Customer> customer1 = customerService.findAll();
@@ -34,6 +39,15 @@ public class CustomerControllers {
         obj = customerService.insertCustomer(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
+    }
+
+    @PostMapping(value = "/customer/addCompany")
+    public ResponseEntity<Customer> insert(@RequestParam String companyCnpj,@RequestParam String customerCpf) throws Exception {
+        Company company = companyRepository.findByCnpj(companyCnpj);
+        System.out.println(company);
+        Customer customer = customerService.addCompany(customerCpf,company);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getId()).toUri();
+        return ResponseEntity.created(uri).body(customer);
     }
 
     @GetMapping(value = "/customer/cpf")

@@ -44,6 +44,9 @@ public class Customer implements Serializable {
     @NotNull
     private String email;
 
+    @DBRef
+    List<Company> companyList = new ArrayList<>();
+
     public Customer(String cpf, String cnpj, String name, String senha, String email) {
         this.cpf = cpf;
         this.cnpj = cnpj;
@@ -51,9 +54,4 @@ public class Customer implements Serializable {
         this.senha = senha;
         this.email = email;
     }
-
-    //List<SecondWay> secondWayList = new ArrayList<>();
-
-    @DBRef
-    List<Company> companyList = new ArrayList<>();
 }
