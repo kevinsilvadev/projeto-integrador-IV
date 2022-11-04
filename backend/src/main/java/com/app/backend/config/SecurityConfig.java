@@ -1,3 +1,4 @@
+/*
 package com.app.backend.config;
 
 import java.util.Arrays;
@@ -21,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    @Autowired
     private Environment env;
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
@@ -34,6 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //http.csrf().disable().authorizeRequests().antMatchers("/billDocument").permitAll();
     }
 
+
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
@@ -42,4 +46,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-}
+
+}*/

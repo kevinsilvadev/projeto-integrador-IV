@@ -47,6 +47,9 @@ public class Customer implements Serializable {
     @DBRef
     List<Company> companyList = new ArrayList<>();
 
+    public Customer(){
+    }
+
     public Customer(String cpf, String cnpj, String name, String senha, String email) {
         this.cpf = cpf;
         this.cnpj = cnpj;
