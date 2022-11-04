@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "../button";
 import InputText from "../input";
 import "./Form.css";
+import api from "../../services/api";
 
 const FormEditUser = ({ title, body }) => {
   const [nome, setNome] = useState("");
@@ -11,6 +12,19 @@ const FormEditUser = ({ title, body }) => {
   var loadFile = function (event) {
     var image = document.getElementById("output");
     image.src = URL.createObjectURL(event.target.files[0]);
+  };
+
+  const click = () => {
+    api
+      .put("/customer", {
+        name: nome,
+        email: email,
+        senha: senha,
+      })
+      .then((response) => console.log(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro " + err);
+      });
   };
 
   return (
@@ -63,7 +77,9 @@ const FormEditUser = ({ title, body }) => {
             type={"password"}
             aoAlterado={(valorSenha) => setSenha(valorSenha)}
           />
-          <Button buttonStyle={FormEditUser}>Atualizar</Button>
+          <Button onClick={click} buttonStyle={FormEditUser}>
+            Atualizar
+          </Button>
         </form>
       </div>
     </div>

@@ -10,6 +10,8 @@ const NavBar = () => {
     setState({ clicked: !state.clicked });
   };
 
+  const click = () => {};
+
   return (
     <nav className="NavbarItems">
       <h1 className="navbar-logo">
@@ -29,7 +31,9 @@ const NavBar = () => {
           );
         })}
       </ul>
-      <Button>Login</Button>
+      <form action="/login">
+        <Button>Login</Button>
+      </form>
     </nav>
   );
 };

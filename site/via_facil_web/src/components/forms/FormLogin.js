@@ -1,12 +1,25 @@
+import { click } from "@testing-library/user-event/dist/click";
 import { useState } from "react";
 import { Button } from "../button";
 import InputText from "../input";
 import "./Form.css";
+import api from "../../services/api";
 
 const FormLogin = ({ title, body }) => {
-
-  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
+
+  const click = () => {
+    api
+      .post("/customer", {
+        cpf: cpf,
+        senha: senha,
+      })
+      .then((response) => console.log(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro " + err);
+      });
+  };
 
   return (
     <div className="card-container-glass">
@@ -21,11 +34,11 @@ const FormLogin = ({ title, body }) => {
           <p>{body}</p>
           <InputText
             obrigatorio={true}
-            label="Nome:"
-            placeholder="Username"
-            valor={nome}
+            label="CPF:"
+            placeholder="CPF"
+            valor={cpf}
             type={"text"}
-            aoAlterado={(valorNome) => setNome(valorNome)}
+            aoAlterado={(valorCpf) => setCpf(valorCpf)}
           />
           <InputText
             obrigatorio={true}
@@ -35,7 +48,9 @@ const FormLogin = ({ title, body }) => {
             type={"password"}
             aoAlterado={(valorSenha) => setSenha(valorSenha)}
           />
-          <Button buttonStyle={FormLogin}>Login</Button>
+          <Button onClick={click} buttonStyle={FormLogin}>
+            Login
+          </Button>
         </form>
       </div>
     </div>
