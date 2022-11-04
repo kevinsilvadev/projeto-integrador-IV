@@ -32,7 +32,8 @@
   margin-top: 0.5rem;
 }
 
-.card-title h3 p {
+.card-title h3,
+p {
   /* Resetting default value */
   margin: 0;
   padding: 0;
