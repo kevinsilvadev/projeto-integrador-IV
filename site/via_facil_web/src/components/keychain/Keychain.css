@@ -1,11 +1,11 @@
 .keychain-container-glass {
-    position: relative;
-    width: 600px;
-    height: 600px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: 600px;
+  height: 600px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .keychain-content-glass {
@@ -22,7 +22,7 @@
   perspective: 1000px;
 }
 
-.flip-card h1{
+.flip-card h1 {
   font-size: xxx-large;
   font-weight: bold;
   text-align: center;
@@ -53,7 +53,7 @@
 }
 
 .flip-card-front {
-  background: linear-gradient(45deg, #445E9B 0%, #151C29 100%);
+  background: linear-gradient(45deg, #445e9b 0%, #151c29 100%);
   color: black;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -62,23 +62,23 @@
 }
 
 .flip-card-front h2 {
-    color:#fff;
-    margin-top:12px;
+  color: #fff;
+  margin-top: 12px;
 }
 
 .flip-card-front h3 {
-    color:#fff;
-    margin-top:12px;
+  color: #fff;
+  margin-top: 12px;
 }
 
 .flip-card-front h4 {
-    color:#fff;
-    margin-top:12px;
-    font-size:32px;
+  color: #fff;
+  margin-top: 12px;
+  font-size: 32px;
 }
 
 .flip-card-back {
-  background: linear-gradient(45deg, #5079D9 0%, #151C29 100%);
+  background: linear-gradient(45deg, #5079d9 0%, #151c29 100%);
   color: white;
   transform: rotateY(180deg);
   border-radius: 10px;
@@ -92,7 +92,7 @@
   width: 210px;
   object-fit: cover;
   border-radius: 12px;
-  margin-top:12px;
+  margin-top: 12px;
 }
 
 .flip-card-back img {
@@ -115,4 +115,86 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-right: 1px solid rgba(255, 255, 255, 0.5);
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (max-width: 650px) {
+  .keychain-hole {
+    margin-left: 110px;
+  }
+
+  .flip-card {
+    width: 390px;
+    height: 390px;
+  }
+
+  .keychain-container-glass {
+    width: 300px;
+  }
+
+  .flip-card h1 {
+    font-size: xx-large;
+  }
+
+  .flip-card-front h2 {
+    font-size: 20px;
+  }
+
+  .flip-card-front h3 {
+    font-size: 15px;
+  }
+
+  .flip-card-front h4 {
+    font-size: 22px;
+  }
+
+  .flip-card-front img {
+    height: 200px;
+    width: 200px;
+  }
+
+  .flip-card-back img {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .keychain-hole {
+    margin-left: 75px;
+  }
+
+  .flip-card {
+    height: 300px;
+  }
+
+  .keychain-container-glass {
+    width: 210px;
+    height: 100px;
+  }
+
+  .flip-card h1 {
+    font-size: xx-large;
+  }
+
+  .flip-card-front h2 {
+    font-size: 15px;
+  }
+
+  .flip-card-front h3 {
+    font-size: 12px;
+  }
+
+  .flip-card-front h4 {
+    font-size: 16px;
+  }
+
+  .flip-card-front img {
+    height: 160px;
+    width: 160px;
+  }
+
+  .flip-card-back img {
+    height: 150px;
+    width: 150px;
+  }
 }

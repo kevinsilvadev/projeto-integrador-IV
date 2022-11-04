@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./components/pages/Home";
@@ -10,7 +9,7 @@ import HomeUser from "./components/pages/HomeUser";
 import Keychain from "./components/pages/KeychainUser";
 import AboutUs from "./components/pages/AboutUs";
 import AddCompany from "./components/pages/AddCompany";
-
+import EditUser from "./components/pages/EditUser";
 
 function Rotas() {
   return (
@@ -36,6 +35,9 @@ function Rotas() {
             {" "}
           </Route>
           <Route path="/add-company" element={<AddCompany />}>
+            {" "}
+          </Route>
+          <Route path="/edit-user" element={<EditUser />}>
             {" "}
           </Route>
         </Routes>
