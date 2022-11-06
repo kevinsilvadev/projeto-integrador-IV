@@ -1,5 +1,5 @@
 import { click } from "@testing-library/user-event/dist/click";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Button } from "../button";
 import InputText from "../input";
 import "./Form.css";
@@ -11,7 +11,7 @@ const FormLogin = ({ title, body }) => {
 
   const click = () => {
     api
-      .post("/customer", {
+      .post("/login", {
         cpf: cpf,
         senha: senha,
       })
@@ -20,6 +20,16 @@ const FormLogin = ({ title, body }) => {
         console.error("ops! ocorreu um erro " + err);
       });
   };
+
+  useEffect(() => {
+    api
+      .get("/customer")
+      .then((response) => console.log(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
+
 
   return (
     <div className="card-container-glass">
