@@ -1,0 +1,4 @@
+#Mon Oct 24 17:59:55 BRT 2022
+base.0=C\:\\Users\\thiag\\Documents\\repositorios\\projeto-integrador-IV\\mobile\\via_facil_mobile\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
