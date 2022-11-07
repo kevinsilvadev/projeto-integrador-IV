@@ -1,4 +1,4 @@
-/*
+
 package com.app.backend.data;
 
 import com.app.backend.model.Customer;
@@ -29,7 +29,7 @@ public class DetalhesUsuarioData implements UserDetails {
 
     @Override
     public String getUsername() {
-        return usuario.orElse(new Customer()).getEmail();
+        return usuario.orElse(new Customer()).getCpf();
     }
 
     @Override
@@ -52,4 +52,3 @@ public class DetalhesUsuarioData implements UserDetails {
         return true;
     }
 }
-*/

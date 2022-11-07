@@ -1,3 +1,4 @@
+
 package com.app.backend.services;
 import com.app.backend.dto.CustomerDTO;
 import com.app.backend.error.ResourceInvalidDataException;
@@ -6,6 +7,7 @@ import com.app.backend.model.Company;
 import com.app.backend.model.Customer;
 import com.app.backend.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -28,6 +30,7 @@ public class CustomerService {
         return repo.save(customer);
     }
 
+    @Bean
     private BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
