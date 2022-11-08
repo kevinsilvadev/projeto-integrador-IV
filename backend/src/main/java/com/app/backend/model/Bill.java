@@ -33,6 +33,12 @@ public class Bill {
 
     private double documentValue;
 
+    private double discount;
+
+    private double penalty;
+
+    private double amountCharged;
+
     /*
     @NotBlank
     @NotNull
@@ -41,22 +47,6 @@ public class Bill {
     @NotBlank
     @NotNull
     private String dueDate;
-
-    @NotBlank
-    @NotNull
-    private double documentValue;
-
-    @NotBlank
-    @NotNull
-    private double discount;
-
-    @NotBlank
-    @NotNull
-    private double penalty;
-
-    @NotBlank
-    @NotNull
-    private double amountCharged;
 
     @NotBlank
     @NotNull
