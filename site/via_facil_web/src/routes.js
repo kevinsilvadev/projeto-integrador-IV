@@ -1,6 +1,7 @@
+import { Fragment } from "react";
 import React from "react";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
@@ -10,40 +11,53 @@ import Keychain from "./components/pages/KeychainUser";
 import AboutUs from "./components/pages/AboutUs";
 import AddCompany from "./components/pages/AddCompany";
 import EditUser from "./components/pages/EditUser";
+import { isAuthenticated } from "./services/auth";
 
-function Rotas() {
+const Private = ({ Item }) => {
+  return isAuthenticated() ? <Item /> : <Home />;
+};
+
+const Rotas = () => {
   return (
-    <>
-      <Router>
+    <BrowserRouter>
+      <Fragment>
         <Routes>
           <Route path="/" element={<Home />}>
             {" "}
           </Route>
-          <Route path="/login" element={<Login />}>
+          <Route exact path="/login" element={<Login />}>
             {" "}
           </Route>
-          <Route path="/sign-up" element={<SignUp />}>
+          <Route exact path="/sign-up" element={<SignUp />}>
             {" "}
           </Route>
-          <Route path="/home-user" element={<HomeUser />}>
+          <Route exact path="/home-user" element={<Private Item={HomeUser} />}>
             {" "}
           </Route>
-          <Route path="/keychain-user" element={<Keychain />}>
+          <Route
+            exact
+            path="/keychain-user"
+            element={<Private Item={Keychain} />}
+          >
             {" "}
           </Route>
-          <Route path="/about-us" element={<AboutUs />}>
+          <Route exact path="/about-us" element={<AboutUs />}>
             {" "}
           </Route>
-          <Route path="/add-company" element={<AddCompany />}>
+          <Route
+            exact
+            path="/add-company"
+            element={<Private Item={AddCompany} />}
+          >
             {" "}
           </Route>
-          <Route path="/edit-user" element={<EditUser />}>
+          <Route exact path="/edit-user" element={<Private Item={EditUser} />}>
             {" "}
           </Route>
         </Routes>
-      </Router>
-    </>
+      </Fragment>
+    </BrowserRouter>
   );
-}
+};
 
 export default Rotas;

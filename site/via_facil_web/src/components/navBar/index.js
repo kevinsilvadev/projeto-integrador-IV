@@ -31,7 +31,7 @@ const NavBar = () => {
           );
         })}
       </ul>
-      <form action="/login">
+      <form className="btnLogin" action="/login">
         <Button>Login</Button>
       </form>
     </nav>
