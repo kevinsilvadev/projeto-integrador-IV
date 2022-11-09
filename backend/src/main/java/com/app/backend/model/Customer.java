@@ -10,8 +10,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 
 
 @Document
@@ -43,6 +44,9 @@ public class Customer implements Serializable {
     @NotBlank
     @NotNull
     private String email;
+
+    @DBRef
+    private Set<Role> roles = new HashSet<>();
 
     @DBRef
     List<Company> companyList = new ArrayList<>();

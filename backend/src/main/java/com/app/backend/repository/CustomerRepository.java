@@ -14,6 +14,7 @@ public interface CustomerRepository extends MongoRepository<Customer, String> {
     Customer findByEmail(String email);
     Customer findByName(String name);
     Customer deleteByCpf(String cpf);
-    boolean existsByCpf(String cpf);
-    boolean existsByCnpj(String cnpj);
+    Boolean existsByCpf(String cpf);
+    Boolean existsByCnpj(String cnpj);
+    Boolean existsByEmail(String email);
 }
