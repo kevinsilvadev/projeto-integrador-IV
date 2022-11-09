@@ -16,21 +16,21 @@ public class UserDetailsImpl implements UserDetails {
 
     private String id;
 
-    private String username;
+    private String cpf;
 
     private String email;
 
     @JsonIgnore
-    private String password;
+    private String senha;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(String id, String username, String email, String password,
+    public UserDetailsImpl(String id, String cpf, String email, String senha,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.username = username;
+        this.cpf = cpf;
         this.email = email;
-        this.password = password;
+        this.senha = senha;
         this.authorities = authorities;
     }
 
@@ -62,12 +62,12 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return senha;
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return cpf;
     }
 
     @Override

@@ -56,7 +56,7 @@ public class AuthController {
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(loginRequest.getCpf(), loginRequest.getSenha()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
@@ -92,8 +92,8 @@ public class AuthController {
                 signUpRequest.getCpf(),
                 signUpRequest.getCnpj(),
                 signUpRequest.getName(),
-                signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getSenha()));
+                encoder.encode(signUpRequest.getSenha()),
+                signUpRequest.getEmail());
 
         Set<String> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
