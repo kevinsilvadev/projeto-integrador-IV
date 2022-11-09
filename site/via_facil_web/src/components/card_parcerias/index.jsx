@@ -1,11 +1,10 @@
 import "./CardParcerias.css";
 
-const CardParcerias = ({ imageUrl, link }) => {
+const CardParcerias = ({ imageUrl, onClick }) => {
   return (
     <div className="container-card-parcerias">
       <div className="image-container2">
-        <img src={imageUrl} alt="" />
-        <a href={link} target="_blank" rel="noopener noreferrer"></a>
+        <img onClick={onClick} src={imageUrl} alt="" />
       </div>
     </div>
   );
