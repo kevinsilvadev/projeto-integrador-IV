@@ -36,7 +36,6 @@ public class Customer implements Serializable {
     @NotNull
     private String name;
 
-    @NotBlank
     @NotNull
     private String senha;
 
@@ -44,6 +43,9 @@ public class Customer implements Serializable {
     @NotBlank
     @NotNull
     private String email;
+
+    @NotNull
+    private String username;
 
     @DBRef
     private Set<Role> roles = new HashSet<>();

@@ -11,10 +11,12 @@ import java.util.Optional;
 public interface CustomerRepository extends MongoRepository<Customer, String> {
     Customer findByCpf(String cpf);
     Customer findByCnpj(String cnpj);
-    Customer findByEmail(String email);
-    Customer findByName(String name);
+    Optional<Customer> findByEmail(String email);
+    Optional<Customer> findByUsername(String username);
+    Optional<Customer> findByName(String name);
     Customer deleteByCpf(String cpf);
     Boolean existsByCpf(String cpf);
     Boolean existsByCnpj(String cnpj);
     Boolean existsByEmail(String email);
+
 }

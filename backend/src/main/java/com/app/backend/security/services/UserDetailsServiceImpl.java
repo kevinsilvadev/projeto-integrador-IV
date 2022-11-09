@@ -22,8 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String cpf) throws UsernameNotFoundException {
         Customer customer = Optional.of(customerRepository.findByCpf(cpf))
-                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + cpf));
-
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with cpf: " + cpf));
         return UserDetailsImpl.build(customer);
     }
 
