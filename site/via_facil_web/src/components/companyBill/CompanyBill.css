@@ -1,0 +1,38 @@
+.item1 {
+  grid-area: header;
+}
+.item2 {
+  grid-area: menu;
+}
+.item3 {
+  grid-area: main;
+}
+.item4 {
+  grid-area: right;
+}
+.item5 {
+  grid-area: footer;
+}
+
+.companyBill-container {
+  display: grid;
+  grid-template-areas: "menu main main main main right";
+  gap: 10px;
+  background-color: #2196f3;
+  padding: 10px;
+}
+
+.companyBill-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.companyBill-img img {
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 12px;
+  height: 100%;
+  border-radius: 5px;
+}

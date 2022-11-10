@@ -45,7 +45,7 @@
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #11101d;
   color: white;
   border-top-right-radius: 8px;
 }
@@ -83,6 +83,10 @@
   -webkit-animation-duration: 1s;
   animation-name: animatebottom;
   animation-duration: 1s;
+}
+
+.animate-bottom h1{
+  color: #5cb85c;
 }
 
 #myDiv {
