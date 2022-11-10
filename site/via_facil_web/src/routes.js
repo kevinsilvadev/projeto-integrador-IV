@@ -11,11 +11,11 @@ import Keychain from "./components/pages/KeychainUser";
 import AboutUs from "./components/pages/AboutUs";
 import AddCompany from "./components/pages/AddCompany";
 import EditUser from "./components/pages/EditUser";
-import { isAuthenticated } from "./services/auth";
+//import { isAuthenticated } from "./services/auth.service";
 
-const Private = ({ Item }) => {
+/*const Private = ({ Item }) => {
   return isAuthenticated() ? <Item /> : <Home />;
-};
+};*/
 
 const Rotas = () => {
   return (
@@ -31,13 +31,13 @@ const Rotas = () => {
           <Route exact path="/sign-up" element={<SignUp />}>
             {" "}
           </Route>
-          <Route exact path="/home-user" element={<Private Item={HomeUser} />}>
+         <Route exact path="/home-user" element={<HomeUser/>}>
             {" "}
           </Route>
           <Route
             exact
             path="/keychain-user"
-            element={<Private Item={Keychain} />}
+            element={<Keychain/>}
           >
             {" "}
           </Route>
@@ -47,11 +47,11 @@ const Rotas = () => {
           <Route
             exact
             path="/add-company"
-            element={<Private Item={AddCompany} />}
+            element={< AddCompany/>}
           >
             {" "}
           </Route>
-          <Route exact path="/edit-user" element={<Private Item={EditUser} />}>
+          <Route exact path="/edit-user" element={<EditUser/>}>
             {" "}
           </Route>
         </Routes>

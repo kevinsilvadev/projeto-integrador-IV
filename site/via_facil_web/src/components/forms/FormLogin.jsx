@@ -1,34 +1,29 @@
-import { click } from "@testing-library/user-event/dist/click";
-import { useState, useEffect} from "react";
+import { useState, useRef} from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../button";
 import InputText from "../input";
 import "./Form.css";
 import api from "../../services/api";
 
 const FormLogin = ({ title, body }) => {
+
+
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
 
   const click = () => {
     api
-      .post("/login", {
+      .post("/signin", {
         cpf: cpf,
         senha: senha,
+      }).then((response) => {
+        console.log(response.data)
       })
-      .then((response) => console.log(response.data))
+
       .catch((err) => {
         console.error("ops! ocorreu um erro " + err);
       });
   };
-
-  useEffect(() => {
-    api
-      .get("/customer")
-      .then((response) => console.log(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  }, []);
 
 
   return (
@@ -58,7 +53,7 @@ const FormLogin = ({ title, body }) => {
             type={"password"}
             aoAlterado={(valorSenha) => setSenha(valorSenha)}
           />
-          <Button onClick={click} buttonStyle={FormLogin}>
+          <Button buttonStyle={FormLogin} onClick={click}>
             Login
           </Button>
         </form>

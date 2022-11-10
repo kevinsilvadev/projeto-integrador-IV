@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../button";
 import InputText from "../input";
 import "./Form.css";
-import api from "../../services/api";
+import api from "../../services/api"
 
 const FormSignUp = ({ title, body }) => {
   const [nome, setNome] = useState("");
@@ -10,9 +10,10 @@ const FormSignUp = ({ title, body }) => {
   const [senha, setSenha] = useState("");
   const [cpf, setCpf] = useState("");
 
+
   const click = () => {
     api
-      .post("/customer", {
+      .post("/signup", {
         cpf: cpf,
         name: nome,
         email: email,
@@ -23,6 +24,7 @@ const FormSignUp = ({ title, body }) => {
         console.error("ops! ocorreu um erro " + err);
       });
   };
+
 
   return (
     <div className="card-container-glass">
