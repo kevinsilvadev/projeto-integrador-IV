@@ -56,7 +56,60 @@ function HomeUser() {
 
         <div className="col-3 col-s-12">
           <div className="homeUser-aside">
-            <CompanyBill img={"https://seeklogo.com/images/C/CPFL_Energia-logo-9641BA2E64-seeklogo.com.png"} name="CPFL Energia"/>
+            <CompanyBill
+              img={
+                "https://www.tvmagazine.com.br/imagens/icones/600/sky.png"
+              }
+              name="SKY"
+            />
+            <CompanyBill
+              img={
+                "https://atualizo.com.br/wp-content/uploads/2019/09/SANASA-LOGO-300x200.png"
+              }
+              name="SANASA Campinas"
+            />
+            <CompanyBill
+              img={
+                "https://www.puc-campinas.edu.br/wp-content/uploads/2022/06/logo-puc.png"
+              }
+              name="PUC Campinas"
+            />
+            <CompanyBill
+              img={
+                "https://www.valordeplanosdesaude.com.br/wp-content/uploads/2018/05/56e2ec480bef623ab7cb99c7ba670617-1024x659.jpg"
+              }
+              name="Unimed"
+            />
+            <CompanyBill
+              img={
+                "https://rocketworks.solutions/assets/img/custom-rocket/clientes/pignet.jpg"
+              }
+              name="Pignet"
+            />
+            <CompanyBill
+              img={
+                "https://seeklogo.com/images/C/CPFL_Energia-logo-9641BA2E64-seeklogo.com.png"
+              }
+              name="CPFL Energia"
+            />
+            <CompanyBill
+              img={
+                "https://2.bp.blogspot.com/-K1_D0PEZYaI/XLRe8RWKoBI/AAAAAAAAHSg/PK-WXwI9lDc0gTCxlJQJpztc-hK_DycygCLcBGAs/s1600/VIV-web-logo.png"
+              }
+              name="VIVO"
+            />
+            <CompanyBill
+              img={
+                "https://1000marcas.net/wp-content/uploads/2021/02/Claro-Logo.png"
+              }
+              name="Claro"
+            />
+            <CompanyBill
+              img={
+                "https://logosmarcas.net/wp-content/uploads/2021/03/TIM-Logo-1999-2004.jpg"
+              }
+              name="TIM"
+            />
           </div>
         </div>
       </div>

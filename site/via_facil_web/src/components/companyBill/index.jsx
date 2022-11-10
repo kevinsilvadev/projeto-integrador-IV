@@ -1,11 +1,10 @@
 import "./CompanyBill.css";
-import { Button } from "../button";
 
 const CompanyBill = ({img, name}) => {
   return (
     <div>
-      <div class="companyBill-container">
-        <div class="item2">
+      <div className="companyBill-container">
+        <div className="item2">
           <div className="companyBill-img">
             <img
               src={img}
@@ -13,9 +12,9 @@ const CompanyBill = ({img, name}) => {
             />
           </div>
         </div>
-        <div class="item3"><p>{name}</p></div>
-        <div class="item4">
-          <Button to="../../pages/SignUp.js">Boletos</Button>{" "}
+        <div className="item3"><p>{name}</p></div>
+        <div className="item4">
+          <button className="companyBill-button">Boletos</button>
         </div>
       </div>
     </div>
