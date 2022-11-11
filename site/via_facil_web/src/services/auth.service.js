@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/auth/";
+const API_URL = "http://localhost:8080/api/auth/";
 
 const register = (cpf, name, email, senha) => {
   return axios.post(API_URL + "signup", {
@@ -13,17 +13,17 @@ const register = (cpf, name, email, senha) => {
   });
 };
 
-const login = (username, password) => {
+const login = (cpf, senha) => {
   return axios
     .post(API_URL + "signin", {
-      username,
-      password,
+      cpf,
+      senha,
     })
     .then((response) => {
       if (response.data.username) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
-
+      console.log(response.data)
       return response.data;
     });
 };

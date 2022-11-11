@@ -6,7 +6,7 @@ export const MenuItems = [
   },
   {
     title: "Services",
-    url: "/home-user",
+    url: "/",
     cName: "nav-links",
   },
   {

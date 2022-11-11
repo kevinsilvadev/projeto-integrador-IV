@@ -3,28 +3,54 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../button";
 import InputText from "../input";
 import "./Form.css";
-import api from "../../services/api";
+import AuthService from "../../services/auth.service"
 
 const FormLogin = ({ title, body }) => {
 
-
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
+  const form = useRef();
+  const checkBtn = useRef();
+  const [loading, setLoading] = useState(false);
 
-  const click = () => {
-    api
-      .post("/signin", {
-        cpf: cpf,
-        senha: senha,
-      }).then((response) => {
-        console.log(response.data)
-      })
 
-      .catch((err) => {
-        console.error("ops! ocorreu um erro " + err);
-      });
+  const navigate = useNavigate();
+
+  const [message, setMessage] = useState("");
+
+
+  console.log(cpf)
+  console.log(senha)
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setMessage("");
+    if(cpf == "" || senha == "") {
+        alert("Preencha os campos!!")
+    } else {
+      AuthService.login(cpf, senha).then(
+        () => {
+          navigate("/home-user");
+        },
+        (error) => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+            if(error.response.data.message) {
+              alert("Usuário e senha incorretos")
+            }
+      
+          setLoading(false);
+          setMessage(resMessage);
+        }
+      );
+    }
+  
+ 
   };
-
 
   return (
     <div className="card-container-glass">
@@ -34,7 +60,7 @@ const FormLogin = ({ title, body }) => {
       <div className="square"></div>
       <div className="square"></div>
       <div className="card-content-glass">
-        <form className="form-glass">
+        <form onSubmit={handleLogin} ref={form} className="form-glass">
           <h2 className="title-glass">{title}</h2>
           <p>{body}</p>
           <InputText
@@ -43,6 +69,7 @@ const FormLogin = ({ title, body }) => {
             placeholder="CPF"
             valor={cpf}
             type={"text"}
+            
             aoAlterado={(valorCpf) => setCpf(valorCpf)}
           />
           <InputText
@@ -53,7 +80,7 @@ const FormLogin = ({ title, body }) => {
             type={"password"}
             aoAlterado={(valorSenha) => setSenha(valorSenha)}
           />
-          <Button buttonStyle={FormLogin} onClick={click}>
+          <Button buttonStyle={FormLogin} onClick={handleLogin}>
             Login
           </Button>
         </form>

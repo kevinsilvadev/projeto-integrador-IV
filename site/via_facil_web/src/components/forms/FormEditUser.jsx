@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../button";
 import InputText from "../input";
 import "./Form.css";
-import api from "../../services/api";
+import api2 from "../../services/api";
 
 const FormEditUser = ({ title, body }) => {
   const [nome, setNome] = useState("");
@@ -15,7 +15,7 @@ const FormEditUser = ({ title, body }) => {
   };
 
   const click = () => {
-    api
+    api2
       .put("/customer", {
         name: nome,
         email: email,

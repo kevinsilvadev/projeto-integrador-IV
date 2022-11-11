@@ -13,7 +13,7 @@ const FormSignUp = ({ title, body }) => {
 
   const click = () => {
     api
-      .post("/signup", {
+      .post("api/auth/signup", {
         cpf: cpf,
         name: nome,
         email: email,

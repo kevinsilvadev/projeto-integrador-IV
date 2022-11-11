@@ -1,11 +1,15 @@
 import "./verticalNavBar.css";
 import { useState } from "react";
 import { VerticalMenuItems } from "./VerticalMenuItems";
-
+import AuthService from "../../services/auth.service";
 
 
 const VerticalNavBar = ({onClick}) => {
   const [state, setState] = useState({ clicked: false });
+
+  const logout = () => {
+    AuthService.logout();
+  }
 
   const handleClick = () => {
     setState({ clicked: !state.clicked });
@@ -56,7 +60,7 @@ const VerticalNavBar = ({onClick}) => {
                 <div className="job">Web developer</div>
               </div>
             </div>
-            <a href="/" className="fas fa-sign-out-alt" id="log_out"></a>
+            <a href="/" onClick={logout} className="fas fa-sign-out-alt" id="log_out"></a>
           </div>
         </div>
       </div>
