@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping("/api/customer")
 public class CustomerControllers {
 
     @Autowired
@@ -30,14 +31,13 @@ public class CustomerControllers {
     private CompanyRepository companyRepository;
 
     @GetMapping(value = "/customer")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+
     public ResponseEntity<List<Customer>> findAll() {
         List<Customer> customer1 = customerService.findAll();
         return ResponseEntity.ok().body(customer1);
     }
 
     @PostMapping(value = "/customer")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<Customer> insert(@RequestBody Customer obj) throws Exception {
         obj = customerService.insertCustomer(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -45,7 +45,6 @@ public class CustomerControllers {
     }
 
     @PostMapping(value = "/customer/addCompany")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<Customer> insert(@RequestParam String companyCnpj,@RequestParam String customerCpf) throws Exception {
         Company company = companyRepository.findByCnpj(companyCnpj);
         System.out.println(company);
@@ -55,14 +54,12 @@ public class CustomerControllers {
     }
 
     @GetMapping(value = "/customer/cpf")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<List<Customer>> findByCpf(@RequestParam  String cpf) {
         return new ResponseEntity(customerRepository.findByCpf(cpf), HttpStatus.OK);
     }
 
 
     @PutMapping(value = "/customer/cpf")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<Void> update(@RequestBody CustomerDTO objDTO, @RequestParam String cpf) {
         Customer obj = customerService.FromDTO(objDTO);
         obj.setCpf(cpf);
@@ -72,7 +69,6 @@ public class CustomerControllers {
 
 
     @DeleteMapping(value = "/customer/cpf")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<Customer> deleteByid(@RequestParam String cpf) {
         customerRepository.deleteByCpf(cpf);
         return ResponseEntity.noContent().build();

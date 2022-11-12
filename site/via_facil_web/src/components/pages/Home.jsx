@@ -4,7 +4,10 @@ import NavBar from "../navBar";
 import Parcerias from "../parcerias";
 import Vantagens from "../vantagens";
 
+
 function Home() {
+
+  
   return (
     <>
       <NavBar />

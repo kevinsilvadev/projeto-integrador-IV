@@ -1,10 +1,10 @@
 import VerticalNavBar from "../verticalNavBar";
 import "../../App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CardParcerias from "../card_parcerias";
 import Parcerias from "../parcerias";
 import Modal from "../modal";
-
+import CompanyService from "../../services/company.service"
 function HomeUser() {
   const [state, setState] = useState({ clicked: false });
   const [openModal, setOpenModal] = useState(false);
@@ -12,6 +12,25 @@ function HomeUser() {
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
+
+
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    CompanyService.getCompanies().then(
+      (response) => {
+        console.log(response.data)
+      },
+      (error) => {
+        const _content =
+          (error.response && error.response.data) ||
+          error.message ||
+          error.toString();
+
+        setContent(_content);
+      }
+    );
+  }, []);
 
   return (
     <>

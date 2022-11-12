@@ -1,13 +1,10 @@
 import axios from "axios";
+import accessToken from "./auth-header"
 
-const API_URL = "http://localhost:3000/customer";
+const API_URL = "http://localhost:8080/api/company/";
 
-const getPublicContent = () => {
+const getCompanies = () => {
   return axios.get(API_URL + "all");
-};
-
-const getUserBoard = () => {
-  return axios.get(API_URL + "user");
 };
 
 const getModeratorBoard = () => {
@@ -18,11 +15,10 @@ const getAdminBoard = () => {
   return axios.get(API_URL + "admin");
 };
 
-const UserService = {
-  getPublicContent,
-  getUserBoard,
+const CompanyService = {
+  getCompanies,
   getModeratorBoard,
   getAdminBoard,
 }
 
-export default UserService;
+export default CompanyService;
