@@ -1,21 +1,20 @@
 package com.app.backend.payload;
 
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
-import javax.validation.constraints.*;
-
 @Data
-public class SignupRequest {
-
+public class UpdateRequest {
     @NotBlank
     private String cpf;
 
     @NotBlank
     private String cnpj;
-
-    private String urlPhoto;
 
     @NotBlank
     @Size(min = 3, max = 20)

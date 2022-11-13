@@ -1,7 +1,8 @@
 import "./verticalNavBar.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { VerticalMenuItems } from "./VerticalMenuItems";
 import AuthService from "../../services/auth.service";
+import CustomerService from "../../services/customer.service"
 
 
 const VerticalNavBar = ({onClick}) => {
@@ -14,6 +15,26 @@ const VerticalNavBar = ({onClick}) => {
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
+
+  const customer = AuthService.getCurrentUser()
+
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    CustomerService.getAll().then(
+      (response) => {
+        setContent(response.data)
+      },
+      (error) => {
+        const _content =
+          (error.response && error.response.data) ||
+          error.message ||
+          error.toString();
+
+        setContent(_content);
+      }
+    );
+  }, []);
 
   return (
     <div className="nav-bar-vertical">
@@ -52,12 +73,11 @@ const VerticalNavBar = ({onClick}) => {
           <div className="profile">
             <div className="profile_details">
               <img
-                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                src={customer.urlPhoto}
                 alt="Foto do usuário"
               />
               <div className="name_job">
-                <div className="name">Nome</div>
-                <div className="job">Web developer</div>
+                <div className="name">{customer.name}</div>
               </div>
             </div>
             <a href="/" onClick={logout} className="fas fa-sign-out-alt" id="log_out"></a>

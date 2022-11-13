@@ -19,7 +19,7 @@ function HomeUser() {
   useEffect(() => {
     CompanyService.getCompanies().then(
       (response) => {
-        console.log(response.data)
+        setContent(response.data)
       },
       (error) => {
         const _content =
@@ -55,7 +55,7 @@ function HomeUser() {
             <div className="column">
               <div className="parcerias-container">
                 <CardParcerias
-                  imageUrl="https://www.tvmagazine.com.br/imagens/icones/600/sky.png"
+                  imageUrl={content}
                   onClick={() => setOpenModal(true)}
                 />
               </div>

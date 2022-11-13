@@ -6,6 +6,7 @@ import com.app.backend.model.Company;
 import com.app.backend.model.Customer;
 import com.app.backend.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -27,11 +28,9 @@ public class CustomerService {
         return repo.save(customer);
     }
 
-
-    /*
     private BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }*/
+    }
 
     public List<Customer> findAll() {
        return repo.findAll();
@@ -39,7 +38,7 @@ public class CustomerService {
 
 
     public Customer FromDTO(CustomerDTO objDto) {
-        return new Customer(objDto.getId(), objDto.getCnpj(), objDto.getName(), objDto.getEmail(), objDto.getSenha());
+        return new Customer(objDto.getId(), objDto.getCpf(), objDto.getUrlPhoto(), objDto.getName(), objDto.getSenha(), objDto.getEmail());
     }
 
     private boolean isValid(Customer customer) {
@@ -55,8 +54,9 @@ public class CustomerService {
     }
 
     private void updateData(Customer newObj, Customer obj) {
+        newObj.setUrlPhoto(obj.getUrlPhoto());
         newObj.setName(obj.getName());
+        newObj.setSenha(passwordEncoder().encode(obj.getSenha()));
         newObj.setEmail(obj.getEmail());
-        newObj.setSenha(obj.getSenha());
     }
 }

@@ -10,14 +10,12 @@ import javax.validation.Valid;
 import com.app.backend.enums.ERole;
 import com.app.backend.model.Customer;
 import com.app.backend.model.Role;
-import com.app.backend.payload.JwtResponse;
-import com.app.backend.payload.LoginRequest;
-import com.app.backend.payload.MessageResponse;
-import com.app.backend.payload.SignupRequest;
+import com.app.backend.payload.*;
 import com.app.backend.repository.CustomerRepository;
 import com.app.backend.repository.RoleRepository;
 import com.app.backend.security.jwt.JwtUtils;
 import com.app.backend.security.services.UserDetailsImpl;
+import com.app.backend.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -52,6 +50,9 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+    @Autowired
+    CustomerService customerService;
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -72,6 +73,8 @@ public class AuthController {
                 userDetails.getId(),
                 userDetails.getCpf(),
                 userDetails.getEmail(),
+                userDetails.getName(),
+                userDetails.getUrlPhoto(),
                 roles));
     }
 
@@ -93,6 +96,7 @@ public class AuthController {
         Customer customer = new Customer(
                 signUpRequest.getCpf(),
                 signUpRequest.getCnpj(),
+                signUpRequest.getUrlPhoto(),
                 signUpRequest.getName(),
                 encoder.encode(signUpRequest.getSenha()),
                 signUpRequest.getEmail());
@@ -132,4 +136,6 @@ public class AuthController {
 
         return ResponseEntity.ok(new MessageResponse("Customer registered successfully!"));
     }
+
+
 }
