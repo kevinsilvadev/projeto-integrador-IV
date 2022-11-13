@@ -23,15 +23,12 @@ public class CompanyDTO implements Serializable {
 
     private String cnpj;
 
-    private String agency;
-
     private String imgLogo;
 
     public CompanyDTO(Company obj) {
         id = obj.getId();
         name = obj.getName();
         cnpj = obj.getCnpj();
-        agency = obj.getAgency();
         imgLogo  = obj.getImgLogo();
     }
 

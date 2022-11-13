@@ -27,10 +27,6 @@ public class Company {
     @NotBlank
     private String cnpj;
 
-    @NotBlank
-    @NotNull
-    private String agency;
-
     @NotNull
     @NotBlank
     private String imgLogo;

@@ -17,13 +17,13 @@ const ProfileCard = ({
         <h3>{name}</h3>
         <p>{profession}</p>
         <div className="social-links">
-          <a href={linkInstagram}>
+          <a href={linkInstagram} target="_blank">
             <i className="fab fa-instagram" />
           </a>
-          <a href={linkGithub}>
+          <a href={linkGithub} target="_blank">
             <i className="fab fa-github" />
           </a>
-          <a href={linkLinkedin}>
+          <a href={linkLinkedin} target="_blank">
             <i className="fab fa-linkedin" />
           </a>
         </div>

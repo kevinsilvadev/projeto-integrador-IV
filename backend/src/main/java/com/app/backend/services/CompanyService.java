@@ -43,7 +43,7 @@ public class CompanyService {
     }
 
     public Company FromDTO(CompanyDTO objDto) {
-        return new Company(objDto.getId(), objDto.getName(), objDto.getCnpj(), objDto.getAgency(), objDto.getImgLogo());
+        return new Company(objDto.getId(), objDto.getName(), objDto.getCnpj(), objDto.getImgLogo());
     }
 
 
