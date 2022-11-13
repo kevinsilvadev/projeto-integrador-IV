@@ -16,8 +16,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
 @RequestMapping("/api/customer")
 public class CustomerControllers {
 
@@ -30,7 +30,7 @@ public class CustomerControllers {
     @Autowired
     private CompanyRepository companyRepository;
 
-    @GetMapping(value = "/customer")
+    @GetMapping(value = "/all")
 
     public ResponseEntity<List<Customer>> findAll() {
         List<Customer> customer1 = customerService.findAll();
@@ -59,7 +59,7 @@ public class CustomerControllers {
     }
 
 
-    @PutMapping(value = "/customer/cpf")
+    @PutMapping(value = "/cpf")
     public ResponseEntity<Void> update(@RequestBody CustomerDTO objDTO, @RequestParam String cpf) {
         Customer obj = customerService.FromDTO(objDTO);
         obj.setCpf(cpf);

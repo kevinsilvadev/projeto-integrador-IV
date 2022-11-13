@@ -2,30 +2,44 @@ import { useState } from "react";
 import { Button } from "../button";
 import InputText from "../input";
 import "./Form.css";
-import api2 from "../../services/api";
+import AuthService from "../../services/auth.service";
+import api from "../../services/api"
 
 const FormEditUser = ({ title, body }) => {
   const [nome, setNome] = useState("");
   const [senha, setSenha] = useState("");
   const [email, setEmail] = useState("");
+  const [content, setContent] = useState("");
+
 
   var loadFile = function (event) {
     var image = document.getElementById("output");
-    image.src = URL.createObjectURL(event.target.files[0]);
+    return image.src = URL.createObjectURL(event.target.files[0]);
+  
   };
+  
+  
 
-  const click = () => {
-    api2
-      .put("/customer", {
-        name: nome,
-        email: email,
-        senha: senha,
-      })
-      .then((response) => console.log(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro " + err);
-      });
-  };
+const customer = AuthService.getCurrentUser();
+console.log(customer)
+
+const click = (e) => {
+
+  e.preventDefault();
+
+  api
+    .put(`api/customer/cpf?cpf=${customer.username}`, {
+      urlPhoto: loadFile,
+      name: nome,
+      email: email,
+      senha: senha
+    })
+    .then((response) => console.log(response.data))
+    .catch((err) => {
+     
+  })
+}
+
 
   return (
     <div className="card-container-glass">

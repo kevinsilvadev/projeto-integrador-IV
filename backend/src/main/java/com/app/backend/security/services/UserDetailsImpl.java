@@ -20,6 +20,8 @@ public class UserDetailsImpl implements UserDetails {
 
     private String name;
 
+    private String urlPhoto;
+
     private String email;
 
     @JsonIgnore
@@ -27,11 +29,12 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(String id, String cpf, String name, String email, String senha,
+    public UserDetailsImpl(String id, String cpf, String name, String urlPhoto, String email, String senha,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
+        this.urlPhoto = urlPhoto;
         this.email = email;
         this.senha = senha;
         this.authorities = authorities;
@@ -46,6 +49,7 @@ public class UserDetailsImpl implements UserDetails {
                 customer.getId(),
                 customer.getCpf(),
                 customer.getName(),
+                customer.getUrlPhoto(),
                 customer.getEmail(),
                 customer.getSenha(),
                 authorities);
@@ -69,12 +73,18 @@ public class UserDetailsImpl implements UserDetails {
         return senha;
     }
 
-
     public String getUsername() {
         System.out.println(cpf);
         return cpf;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUrlPhoto() {
+        return urlPhoto;
+    }
 
     public String getCpf() {
         return cpf;

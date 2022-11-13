@@ -13,6 +13,8 @@ const register = (cpf, name, email, senha) => {
   });
 };
 
+
+
 const login = (cpf, senha) => {
   return axios
     .post(API_URL + "signin", {
