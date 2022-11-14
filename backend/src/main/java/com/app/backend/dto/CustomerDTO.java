@@ -1,5 +1,6 @@
 package com.app.backend.dto;
 
+import com.app.backend.model.Company;
 import com.app.backend.model.Customer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Document
 @Getter
@@ -25,7 +27,8 @@ public class CustomerDTO implements Serializable {
     private String urlPhoto;
     private String name;
     private String email;
-    private String senha;
+
+    private List<Company> companyList;
 
     public CustomerDTO(Customer obj) {
         this.id = obj.getId();
@@ -33,6 +36,6 @@ public class CustomerDTO implements Serializable {
         this.urlPhoto = obj.getUrlPhoto();
         this.name = obj.getName();
         this.email = obj.getEmail();
-        this.senha  = obj.getSenha();
+        this.companyList = obj.getCompanyList();
     }
 }

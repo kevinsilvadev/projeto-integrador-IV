@@ -44,14 +44,7 @@ public class CustomerControllers {
         return ResponseEntity.created(uri).body(obj);
     }
 
-    @PostMapping(value = "/customer/addCompany")
-    public ResponseEntity<Customer> insert(@RequestParam String companyCnpj,@RequestParam String customerCpf) throws Exception {
-        Company company = companyRepository.findByCnpj(companyCnpj);
-        System.out.println(company);
-        Customer customer = customerService.addCompany(customerCpf,company);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getId()).toUri();
-        return ResponseEntity.created(uri).body(customer);
-    }
+
 
     @GetMapping(value = "/customer/cpf")
     public ResponseEntity<List<Customer>> findByCpf(@RequestParam  String cpf) {

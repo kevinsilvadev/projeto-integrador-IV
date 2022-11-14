@@ -5,9 +5,19 @@ import CardParcerias from "../card_parcerias";
 import Parcerias from "../parcerias";
 import Modal from "../modal";
 import CompanyService from "../../services/company.service"
+import api from "../../services/api"
+import AuthService from "../../services/auth.service";
+
+
 function HomeUser() {
   const [state, setState] = useState({ clicked: false });
   const [openModal, setOpenModal] = useState(false);
+  const [companyList, setCompanyList] = useState("");
+  const [name, setNome] = useState("");
+  const [senha, setSenha] = useState("");
+  const [email, setEmail] = useState("");
+  const [urlPhoto, setUrlPhoto] = useState("");
+
 
   const handleClick = () => {
     setState({ clicked: !state.clicked });
@@ -30,6 +40,12 @@ function HomeUser() {
     );
   }, []);
 
+  const click = (i) => {
+
+   
+  }
+
+
   function renderCompanies(){
     let ret = [];
     for(let i = 0; i < content.length; i++){
@@ -38,7 +54,16 @@ function HomeUser() {
           <div className="parcerias-container">
             <CardParcerias
               imageUrl={content[i].imgLogo}
-              onClick={() => setOpenModal(true)}
+              onClick={() => {
+                setOpenModal(true)
+                const customer = AuthService.getCurrentUser();             
+                api
+                  .post(`http://localhost:8080/api/auth/addCompany?companyCnpj=${content[i].cnpj}&customerCpf=${customer.username}`)
+                  .then((response) => console.log(content[i].id))
+                  .catch((err) => {
+                    console.log(err)
+                })
+              }}
             />
           </div>
         </li>
@@ -46,6 +71,8 @@ function HomeUser() {
     }
     return ret
   }
+
+
   
   return (
     <>

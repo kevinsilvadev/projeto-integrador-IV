@@ -42,7 +42,7 @@ const VerticalNavBar = ({onClick}) => {
         <div className="logo_content">
           <div className="logo">
             <i className="fab fa-react"></i>
-            <div className="logo_name">Via Facil</div>
+            <div className="logo_name">V"ia Facil</div>
           </div>
           <div className="vertical-menu-icon">
             <i

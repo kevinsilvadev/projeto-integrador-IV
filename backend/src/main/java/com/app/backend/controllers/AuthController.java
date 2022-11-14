@@ -1,5 +1,6 @@
 package com.app.backend.controllers;
 
+import java.net.URI;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,9 +9,11 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import com.app.backend.enums.ERole;
+import com.app.backend.model.Company;
 import com.app.backend.model.Customer;
 import com.app.backend.model.Role;
 import com.app.backend.payload.*;
+import com.app.backend.repository.CompanyRepository;
 import com.app.backend.repository.CustomerRepository;
 import com.app.backend.repository.RoleRepository;
 import com.app.backend.security.jwt.JwtUtils;
@@ -23,12 +26,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -52,6 +51,9 @@ public class AuthController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    CompanyRepository companyRepository;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -137,5 +139,13 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("Customer registered successfully!"));
     }
 
+    @PostMapping(value = "/addCompany")
+    public ResponseEntity<Customer> insert(@RequestParam String companyCnpj,@RequestParam String customerCpf) throws Exception {
+        Company company = companyRepository.findByCnpj(companyCnpj);
+        System.out.println(company);
+        Customer customer = customerService.addCompany(customerCpf,company);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getId()).toUri();
+        return ResponseEntity.created(uri).body(customer);
+    }
 
 }

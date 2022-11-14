@@ -67,10 +67,12 @@ public class Customer implements Serializable {
         this.senha = senha;
         this.email = email;
     }
-    public Customer(String urlPhoto, String name, String email, String senha) {
+    public Customer(String id, String cpf, String urlPhoto, String name, String email, List<Company> companyList) {
         this.urlPhoto = urlPhoto;
         this.name = name;
         this.email = email;
-        this.senha = senha;
+        this.companyList = companyList;
     }
+
+
 }

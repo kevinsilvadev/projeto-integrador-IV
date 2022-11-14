@@ -38,7 +38,7 @@ public class CustomerService {
 
 
     public Customer FromDTO(CustomerDTO objDto) {
-        return new Customer(objDto.getId(), objDto.getCpf(), objDto.getUrlPhoto(), objDto.getName(), objDto.getSenha(), objDto.getEmail());
+        return new Customer(objDto.getId(), objDto.getCpf(), objDto.getUrlPhoto(), objDto.getName(), objDto.getEmail(), objDto.getCompanyList());
     }
 
     private boolean isValid(Customer customer) {
@@ -56,7 +56,7 @@ public class CustomerService {
     private void updateData(Customer newObj, Customer obj) {
         newObj.setUrlPhoto(obj.getUrlPhoto());
         newObj.setName(obj.getName());
-        newObj.setSenha(passwordEncoder().encode(obj.getSenha()));
         newObj.setEmail(obj.getEmail());
+        newObj.setCompanyList(obj.getCompanyList());
     }
 }

@@ -1,20 +1,22 @@
 package com.app.backend.payload;
 
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 @Data
-public class UpdateRequest {
+public class InsertCompany {
     @NotBlank
     private String cpf;
 
     @NotBlank
     private String cnpj;
+
+    private String urlPhoto;
 
     @NotBlank
     @Size(min = 3, max = 20)
@@ -30,6 +32,8 @@ public class UpdateRequest {
     @NotBlank
     @Size(min = 6, max = 40)
     private String senha;
+
+    private List<List> companyList;
 
 
 }
