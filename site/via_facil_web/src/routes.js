@@ -11,6 +11,7 @@ import Keychain from "./components/pages/KeychainUser";
 import AboutUs from "./components/pages/AboutUs";
 import AddCompany from "./components/pages/AddCompany";
 import EditUser from "./components/pages/EditUser";
+import ViewBill from "./components/pages/ViewBill";
 import  authHeader  from "./services/auth-header";
 
 const Private = ({ Item }) => {
@@ -53,6 +54,9 @@ const Rotas = () => {
             {" "}
           </Route>
           <Route exact path="/edit-user" element={<Private Item={EditUser} />}>
+            {" "}
+          </Route>
+          <Route exact path="/view-bill" element={<Private Item={ViewBill} />}>
             {" "}
           </Route>
         </Routes>

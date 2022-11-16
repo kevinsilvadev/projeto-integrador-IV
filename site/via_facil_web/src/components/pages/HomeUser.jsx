@@ -61,6 +61,7 @@ function HomeUser() {
                 "https://www.tvmagazine.com.br/imagens/icones/600/sky.png"
               }
               name="SKY"
+              onClick={"/login"}
             />
             <CompanyBill
               img={
