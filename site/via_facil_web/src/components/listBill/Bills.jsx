@@ -1,6 +1,10 @@
+import { useState } from "react";
+import Modal from "../modalViewBill";
 import "./recentOrder.css";
 
 const Bills = ({ protocol, value, status, img }) => {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <>
       <tbody>
@@ -9,10 +13,12 @@ const Bills = ({ protocol, value, status, img }) => {
           <td>R$ {value}</td>
           <td className="warning">{status}</td>
           <td className="cor-primaria">
-            <img className="company-image" src={img} alt="" />
+            <button onClick={() => {
+                setOpenModal(true)}} className="bill-button">Emitir</button>
           </td>
         </tr>
       </tbody>
+      <Modal open={openModal} onClose={() => setOpenModal(false)} />
     </>
   );
 };

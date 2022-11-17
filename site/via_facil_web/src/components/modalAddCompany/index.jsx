@@ -1,7 +1,7 @@
-import nft from "./nft.jpg";
+import paymentBill from "./payment-bill.jpg";
 import "./Modal.css";
 
-const Modal = ({ open, onClose }) => {
+const ModalAddCompany = ({ open, onClose }) => {
   var myVar;
 
   function myFunction() {
@@ -22,7 +22,7 @@ const Modal = ({ open, onClose }) => {
           e.stopPropagation();
         }}
       >
-        <img className="modal-img" src={nft} alt="/" />
+        <img className="modal-img" src={paymentBill} alt="imagem bill" />
         <div className="modalRight">
           <div className="modal-header">
             <span onClick={onClose} class="close">
@@ -47,4 +47,4 @@ const Modal = ({ open, onClose }) => {
   );
 };
 
-export default Modal;
+export default ModalAddCompany;

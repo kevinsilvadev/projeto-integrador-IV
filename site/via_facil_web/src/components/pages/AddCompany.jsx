@@ -3,10 +3,11 @@ import "../../App.css";
 import { useState, useEffect } from "react";
 import CardParcerias from "../card_parcerias";
 import Parcerias from "../parcerias";
-import Modal from "../modal";
+import Modal from "../modalAddCompany";
 import CompanyService from "../../services/company.service"
 import api from "../../services/api"
 import AuthService from "../../services/auth.service";
+import ModalAddCompany from "../modalAddCompany";
 
 
 function HomeUser() {
@@ -82,7 +83,7 @@ function HomeUser() {
         }
       >
         <video src="/videos/video-1.mp4" autoPlay loop muted />
-        <Modal open={openModal} onClose={() => setOpenModal(false)} />
+        <ModalAddCompany open={openModal} onClose={() => setOpenModal(false)} />
         <div className="addCompany_VerticalNavBar">
           <VerticalNavBar onClick={handleClick} />
         </div>
