@@ -74,7 +74,6 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     public String getUsername() {
-        System.out.println(cpf);
         return cpf;
     }
 

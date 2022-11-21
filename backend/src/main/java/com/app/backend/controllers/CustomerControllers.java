@@ -60,6 +60,14 @@ public class CustomerControllers {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping(value="/company")
+    public ResponseEntity<List<Company>> getCompanyList(@RequestParam String cpf) {
+        System.out.println(cpf);
+        Customer obj = customerRepository.findByCpf(cpf);
+        //System.out.println(obj);
+        return new ResponseEntity(obj.getCompanyList(), HttpStatus.OK);
+    }
+
 
     @DeleteMapping(value = "/customer/cpf")
     public ResponseEntity<Customer> deleteByid(@RequestParam String cpf) {

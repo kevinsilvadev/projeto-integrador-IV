@@ -8,6 +8,7 @@ import api from "../../services/api";
 import AuthService from "../../services/auth.service";
 import CompanyService from "../../services/company.service";
 import CompanyBill from "../companyBill";
+import CustomerService from "../../services/customer.service";
 
 function HomeUser() {
   const [state, setState] = useState({ clicked: false });
@@ -18,9 +19,10 @@ function HomeUser() {
   };
 
   const [content, setContent] = useState("");
+  const customer = AuthService.getCurrentUser();
 
   useEffect(() => {
-    CompanyService.getCompanies().then(
+    const companies = CustomerService.getCompanies(customer.username).then(
       (response) => {
         setContent(response.data);
       },
@@ -32,6 +34,7 @@ function HomeUser() {
         setContent(_content);
       }
     );
+    console.log(content);
   }, []);
 
   function renderLinkedCompanies() {
