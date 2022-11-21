@@ -28,8 +28,7 @@
 .image-container2 img {
   align-self: center;
   overflow: hidden;
-  width: 100%;
-  height: 100px;
+  width: 75%;
 }
 
 @media screen and (max-width: 920px) {

@@ -1,18 +1,62 @@
 import VerticalNavBar from "../verticalNavBar";
 import "../../App.css";
 import CalendarDate from "../calendar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Insights from "../insights";
 import RecentOrder from "../recentOrder";
-
+import api from "../../services/api";
+import AuthService from "../../services/auth.service";
+import CompanyService from "../../services/company.service";
 import CompanyBill from "../companyBill";
 
 function HomeUser() {
   const [state, setState] = useState({ clicked: false });
+  const [openModal, setOpenModal] = useState(false);
 
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
+
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    CompanyService.getCompanies().then(
+      (response) => {
+        setContent(response.data);
+      },
+      (error) => {
+        const _content =
+          (error.response && error.response.data) ||
+          error.message ||
+          error.toString();
+        setContent(_content);
+      }
+    );
+  }, []);
+
+  function renderLinkedCompanies() {
+    let ret = [];
+    for (let i = 0; i < content.length; i++) {
+      ret.push(
+        <CompanyBill
+          img={content[i].imgLogo}
+          name={content[i].name}
+          onClick={() => {
+            const customer = AuthService.getCurrentUser();
+            api
+              .post(
+                `http://localhost:8080/api/auth/addCompany?companyCnpj=${content[i].cnpj}&customerCpf=${customer.username}`
+              )
+              .then((response) => console.log(content[i].id))
+              .catch((err) => {
+                console.log(err);
+              });
+          }}
+        />
+      );
+    }
+    return ret;
+  }
 
   return (
     <div
@@ -55,63 +99,7 @@ function HomeUser() {
         </div>
 
         <div className="col-3 col-s-12">
-          <div className="homeUser-aside">
-            <CompanyBill
-              img={
-                "https://www.tvmagazine.com.br/imagens/icones/600/sky.png"
-              }
-              name="SKY"
-              onClick={"/login"}
-            />
-            <CompanyBill
-              img={
-                "https://atualizo.com.br/wp-content/uploads/2019/09/SANASA-LOGO-300x200.png"
-              }
-              name="SANASA Campinas"
-            />
-            <CompanyBill
-              img={
-                "https://www.puc-campinas.edu.br/wp-content/uploads/2022/06/logo-puc.png"
-              }
-              name="PUC Campinas"
-            />
-            <CompanyBill
-              img={
-                "https://www.valordeplanosdesaude.com.br/wp-content/uploads/2018/05/56e2ec480bef623ab7cb99c7ba670617-1024x659.jpg"
-              }
-              name="Unimed"
-            />
-            <CompanyBill
-              img={
-                "https://rocketworks.solutions/assets/img/custom-rocket/clientes/pignet.jpg"
-              }
-              name="Pignet"
-            />
-            <CompanyBill
-              img={
-                "https://seeklogo.com/images/C/CPFL_Energia-logo-9641BA2E64-seeklogo.com.png"
-              }
-              name="CPFL Energia"
-            />
-            <CompanyBill
-              img={
-                "https://2.bp.blogspot.com/-K1_D0PEZYaI/XLRe8RWKoBI/AAAAAAAAHSg/PK-WXwI9lDc0gTCxlJQJpztc-hK_DycygCLcBGAs/s1600/VIV-web-logo.png"
-              }
-              name="VIVO"
-            />
-            <CompanyBill
-              img={
-                "https://1000marcas.net/wp-content/uploads/2021/02/Claro-Logo.png"
-              }
-              name="Claro"
-            />
-            <CompanyBill
-              img={
-                "https://logosmarcas.net/wp-content/uploads/2021/03/TIM-Logo-1999-2004.jpg"
-              }
-              name="TIM"
-            />
-          </div>
+          <div className="homeUser-aside">{renderLinkedCompanies()}</div>
         </div>
       </div>
 
