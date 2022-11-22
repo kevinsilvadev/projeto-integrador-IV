@@ -136,3 +136,15 @@
   width: 60px;
   height: 60px;
 }
+
+@media screen and (max-width: 680px) {
+  .card-container-glass {
+    width: 260px;
+    min-height: 280px;
+    margin-left: 10px;
+  }
+
+  .square {
+    display: none;
+  }
+}
