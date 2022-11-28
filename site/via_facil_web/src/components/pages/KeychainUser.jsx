@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../App.css";
 import Keychain from "../keychain";
 import VerticalNavBar from "../verticalNavBar";
+import CustomerService from "../../services/customer.service"
+import AuthService from "../../services/auth.service";
 
 function HomeUser() {
   const [state, setState] = useState({ clicked: false });
@@ -9,6 +11,27 @@ function HomeUser() {
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
+
+  const [content, setContent] = useState("");
+
+  const customer = AuthService.getCurrentUser()
+
+  useEffect(() => {
+    CustomerService.getAll().then(
+      (response) => {
+        setContent(response.data)
+      },
+      (error) => {
+        const _content =
+          (error.response && error.response.data) ||
+          error.message ||
+          error.toString();
+
+        setContent(_content);
+      }
+    );
+  }, []);
+
   return (
     <div
       className={state.clicked ? "HomeUser_content active" : "HomeUser_content"}
@@ -19,8 +42,8 @@ function HomeUser() {
       </div>
       <div className="section_form_login_SignUp">
         <Keychain
-          name="Donald Flintch Cortez"
-          imageUrl="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+          name={customer.name}
+          imageUrl={customer.urlPhoto}
         />
       </div>
     </div>

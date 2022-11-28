@@ -116,7 +116,7 @@ html {
 }
 
 .homeUser-header {
-  background-color: #9933cc;
+  background-color: #1d1b31;
   color: #ffffff;
   padding: 15px;
 }
@@ -324,14 +324,15 @@ html {
   font-size: xxx-large;
   font-weight: bold;
   color: #000;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 
 .title-add-company h2 {
   font-size: xx-large;
   font-weight: bold;
+  text-align: center;
   color: #000;
-  margin-bottom: 15%;
+  margin-bottom: 3%;
 }
 
 .addCompany_content.active {
@@ -343,6 +344,26 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 1080px) {
+  .title-add-company h1 {
+    font-size: xx-large;
+  }
+  
+  .title-add-company h2 {
+    font-size: x-large;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .title-add-company h1 {
+    font-size: x-large;
+  }
+  
+  .title-add-company h2 {
+    font-size: large;
+  }
 }
 
 /* ============================= Página EditUser ================= */
