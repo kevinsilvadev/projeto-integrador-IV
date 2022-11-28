@@ -3,6 +3,7 @@ package com.app.backend.services;
 import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
 import com.app.backend.model.Bill;
+import com.app.backend.model.Company;
 import com.app.backend.model.Customer;
 import com.app.backend.repository.BillRepository;
 import com.app.backend.repository.CompanyRepository;
@@ -11,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class BillService {
@@ -27,21 +26,31 @@ public class BillService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Bill insertBill(Bill obj) throws Exception {
-        isValid(obj);
-        obj.setDocumentNumber(generateDocumentNumber());
-        obj.setDocumentValue(generateDocumentValue());
-        obj.setDiscount(generateDiscount());
-        obj.setPenalty(generatePenalty());
-        obj.setAmountCharged(generateAmountCharged(obj));
-        return billRepository.save(obj);
+    public Bill getBill(String cpf, String cnpj) throws Exception {
+        ArrayList<Bill> bill;
+        Customer customer = customerRepository.findByCpf(cpf);
+        Company company = companyRepository.findByCnpj(cnpj);
+        if(customer == null || company==null)
+            throw new Exception("INVALID DATA");
+
+        if(billRepository.existsByCustomerAndCompany(customer,company)){
+            bill = billRepository.findByCustomerAndCompany(customer, company);
+            System.out.println(bill.get(bill.size()-1));
+            Date d = new Date();
+            d.setMonth(d.getMonth()-1);
+
+            if(bill.get(bill.size()-1).getDueDate().compareTo(d) > 0)
+                return bill.get(bill.size()-1);
+        }
+
+        return billRepository.save(new Bill(customer,company));
     }
 
     private boolean isValid(Bill bill) {
         /*if (bill.getDocumentNumber().isBlank() || bill.getDocumentNumber().isEmpty()) {
             throw new ResourceInvalidDataException("INVALID DOCUMENT FOR INSERTION");
         }*/
-        if((!customerRepository.existsByCpf(bill.getCustomerCpf()) || !customerRepository.existsByCnpj(bill.getCustomerCnpj())) || !companyRepository.existsByCnpj(bill.getCompanyCnpj()))
+        if(!customerRepository.existsByCpf(bill.getCustomer().getCpf()) || !companyRepository.existsByCnpj(bill.getCompany().getCnpj()))
             throw new ResourceInvalidDataException("INVALID DOCUMENT FOR INSERTION");
         return false;
     }

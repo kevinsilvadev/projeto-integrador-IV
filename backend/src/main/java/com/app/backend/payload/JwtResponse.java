@@ -1,6 +1,9 @@
 package com.app.backend.payload;
 
 
+import com.app.backend.model.Company;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class JwtResponse {
@@ -15,7 +18,9 @@ public class JwtResponse {
     private String urlPhoto;
     private List<String> roles;
 
-    public JwtResponse(String accessToken, String id, String username, String email, String name, String urlPhoto, List<String> roles) {
+    private List<Company> companyList = new ArrayList<>();
+
+    public JwtResponse(String accessToken, String id, String username, String email, String name, String urlPhoto, List<String> roles, List<Company> companyList) {
         this.token = accessToken;
         this.id = id;
         this.username = username;
@@ -23,6 +28,8 @@ public class JwtResponse {
         this.name = name;
         this.roles = roles;
         this.urlPhoto = urlPhoto;
+        this.companyList.addAll(companyList);
+        System.out.println(this.companyList);
     }
 
     public String getAccessToken() {
@@ -75,5 +82,9 @@ public class JwtResponse {
 
     public List<String> getRoles() {
         return roles;
+    }
+
+    public List<Company> getCompanyList() {
+        return companyList;
     }
 }

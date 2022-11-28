@@ -1,6 +1,17 @@
+import { useEffect } from "react";
 import Bills from "./Bills";
 import "./recentOrder.css";
+import BillService from "../../services/bill.service";
+import AuthService from "../../services/auth.service";
+
 const ListBill = () => {
+  useEffect(()=> {
+    BillService.getBill(AuthService.getCurrentUser().username,AuthService.getCurrentUser().companyList[0].cnpj).then(
+      (response) => {
+        console.log(response.data)
+      },
+    )
+  })
   return (
     <div className="recent-bills">
       <h2>Boletos disponíveis</h2>

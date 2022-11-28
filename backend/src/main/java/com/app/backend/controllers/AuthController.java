@@ -9,15 +9,18 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import com.app.backend.enums.ERole;
+import com.app.backend.model.Bill;
 import com.app.backend.model.Company;
 import com.app.backend.model.Customer;
 import com.app.backend.model.Role;
 import com.app.backend.payload.*;
+import com.app.backend.repository.BillRepository;
 import com.app.backend.repository.CompanyRepository;
 import com.app.backend.repository.CustomerRepository;
 import com.app.backend.repository.RoleRepository;
 import com.app.backend.security.jwt.JwtUtils;
 import com.app.backend.security.services.UserDetailsImpl;
+import com.app.backend.services.BillService;
 import com.app.backend.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -55,6 +58,9 @@ public class AuthController {
     @Autowired
     CompanyRepository companyRepository;
 
+    @Autowired
+    BillService billService;
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -69,15 +75,17 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-
-
-        return ResponseEntity.ok(new JwtResponse(jwt,
+        JwtResponse jwtResponse = new JwtResponse(
+                jwt,
                 userDetails.getId(),
                 userDetails.getCpf(),
                 userDetails.getEmail(),
                 userDetails.getName(),
                 userDetails.getUrlPhoto(),
-                roles));
+                roles,
+                userDetails.getCompanyList());
+
+        return ResponseEntity.ok(jwtResponse);
     }
 
     @PostMapping("/signup")
@@ -148,4 +156,10 @@ public class AuthController {
         return ResponseEntity.created(uri).body(customer);
     }
 
+    @PostMapping(value = "/generate")
+    public ResponseEntity<Bill> generateBill(@RequestParam String cpf, @RequestParam String cnpj) throws Exception {
+        Bill obj = billService.getBill(cpf,cnpj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{documentNumber}").buildAndExpand(obj.getDocumentNumber()).toUri();
+        return ResponseEntity.created(uri).body(obj);
+    }
 }

@@ -26,6 +26,7 @@ function HomeUser() {
 
   const [content, setContent] = useState("");
   
+  console.log(AuthService.getCurrentUser());
   useEffect(() => {
     CompanyService.getCompanies().then(
       (response) => {

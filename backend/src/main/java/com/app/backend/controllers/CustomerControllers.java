@@ -46,8 +46,9 @@ public class CustomerControllers {
 
 
 
-    @GetMapping(value = "/customer/cpf")
+    @GetMapping(value = "/cpf")
     public ResponseEntity<List<Customer>> findByCpf(@RequestParam  String cpf) {
+
         return new ResponseEntity(customerRepository.findByCpf(cpf), HttpStatus.OK);
     }
 
@@ -62,9 +63,7 @@ public class CustomerControllers {
 
     @GetMapping(value="/company")
     public ResponseEntity<List<Company>> getCompanyList(@RequestParam String cpf) {
-        System.out.println(cpf);
         Customer obj = customerRepository.findByCpf(cpf);
-        //System.out.println(obj);
         return new ResponseEntity(obj.getCompanyList(), HttpStatus.OK);
     }
 

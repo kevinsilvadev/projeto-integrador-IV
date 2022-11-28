@@ -17,7 +17,6 @@ public class CustomerService {
 
     public Customer insertCustomer(Customer obj)  {
         isValid(obj);
-       // obj.setSenha(passwordEncoder().encode(obj.getSenha()));
         return repo.save(obj);
     }
 
@@ -28,14 +27,9 @@ public class CustomerService {
         return repo.save(customer);
     }
 
-    private BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     public List<Customer> findAll() {
        return repo.findAll();
     }
-
 
     public Customer FromDTO(CustomerDTO objDto) {
         return new Customer(objDto.getId(), objDto.getCpf(), objDto.getUrlPhoto(), objDto.getName(), objDto.getEmail(), objDto.getCompanyList());

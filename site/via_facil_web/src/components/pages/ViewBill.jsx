@@ -17,7 +17,6 @@ function ViewBill() {
       <div className="homeUser-header">
         <h1>Seus boletos da empresa "X"</h1>
       </div>
-
       <div className="homeUser-row">
         <VerticalNavBar onClick={handleClick} />
         <div className="col-12 col-s-12">

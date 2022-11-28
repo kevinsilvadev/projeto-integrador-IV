@@ -1,11 +1,13 @@
 package com.app.backend.security.services;
 
+import com.app.backend.model.Company;
 import com.app.backend.model.Customer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -27,10 +29,12 @@ public class UserDetailsImpl implements UserDetails {
     @JsonIgnore
     private String senha;
 
+    private List<Company> companyList = new ArrayList<>();
+
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(String id, String cpf, String name, String urlPhoto, String email, String senha,
-                           Collection<? extends GrantedAuthority> authorities) {
+                           Collection<? extends GrantedAuthority> authorities, List<Company> companyList) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
@@ -38,6 +42,7 @@ public class UserDetailsImpl implements UserDetails {
         this.email = email;
         this.senha = senha;
         this.authorities = authorities;
+        this.companyList.addAll(companyList);
     }
 
     public static UserDetailsImpl build(Customer customer) {
@@ -52,7 +57,8 @@ public class UserDetailsImpl implements UserDetails {
                 customer.getUrlPhoto(),
                 customer.getEmail(),
                 customer.getSenha(),
-                authorities);
+                authorities,
+                customer.getCompanyList());
     }
 
     @Override
@@ -75,6 +81,10 @@ public class UserDetailsImpl implements UserDetails {
 
     public String getUsername() {
         return cpf;
+    }
+
+    public List<Company> getCompanyList(){
+        return companyList;
     }
 
     public String getName() {

@@ -2,16 +2,19 @@ package com.app.backend.controllers;
 
 import com.app.backend.model.Bill;
 import com.app.backend.repository.BillRepository;
+import com.app.backend.repository.CustomerRepository;
 import com.app.backend.services.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.sound.midi.SysexMessage;
 import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/bill")
 public class BillControllers {
 
     @Autowired
@@ -20,15 +23,18 @@ public class BillControllers {
     @Autowired
     private BillRepository repo;
 
-    @GetMapping(value = "/bill")
+    @Autowired
+    private CustomerRepository customer;
+
+    @GetMapping(value = "/findAll")
     public ResponseEntity<List<Bill>> findAll() {
         List<Bill> bill1 = billService.findAll();
         return ResponseEntity.ok().body(bill1);
     }
 
-    @PostMapping(value = "/bill")
-    public ResponseEntity<Bill> insert(@RequestBody Bill obj) throws Exception {
-        obj = billService.insertBill(obj);
+    @PostMapping(value = "/generate")
+    public ResponseEntity<Bill> generateBill(@RequestParam String cpf, @RequestParam String cnpj) throws Exception {
+        Bill obj = billService.getBill(cpf,cnpj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{documentNumber}").buildAndExpand(obj.getDocumentNumber()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
