@@ -1,0 +1,18 @@
+.container-qrcode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.input-qrcode {
+    height: 38px;
+    border-radius: 8px;
+    max-width: 300px;
+    width: 100%;
+    margin: 24px 0;
+    padding: 8px;
+    outline: 0;
+    border: 1px solid #b6b6b6;
+}

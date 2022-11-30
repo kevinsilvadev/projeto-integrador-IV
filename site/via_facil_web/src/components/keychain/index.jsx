@@ -1,4 +1,5 @@
 import React from "react";
+import QRCODE from "../qrCode";
 import "./Keychain.css";
 
 const Keychain = ({ name, imageUrl }) => {
@@ -16,10 +17,8 @@ const Keychain = ({ name, imageUrl }) => {
           </div>
           <div className="flip-card-back">
             <div className="keychain-hole"></div>
-            <img
-              src="https://br.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/core_market/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"
-              alt="Foto do usuário"
-            />
+            <QRCODE/>
+            
           </div>
         </div>
       </div>
