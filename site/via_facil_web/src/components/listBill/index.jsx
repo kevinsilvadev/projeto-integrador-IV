@@ -35,7 +35,7 @@ const ListBill = () => {
     for (let i = 0; i < content.length; i++) {
       ret.push(
         <Bills
-          protocol={content[i].dueDate}
+          protocol= {content[i].dueDate}
           value={content[i].documentValue}
           status={content[i].discount}
         />
