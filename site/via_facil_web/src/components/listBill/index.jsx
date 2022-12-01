@@ -32,14 +32,15 @@ const ListBill = () => {
 
   function renderLinkedBill(){
     let ret = [];
-  
+    for (let i = 0; i < content.length; i++) {
       ret.push(
         <Bills
-          protocol={content.dueDate}
-          value={content.documentValue}
-          status={content.discount}
+          protocol={content[i].dueDate}
+          value={content[i].documentValue}
+          status={content[i].discount}
         />
       )
+    }
     
     return ret
   }
