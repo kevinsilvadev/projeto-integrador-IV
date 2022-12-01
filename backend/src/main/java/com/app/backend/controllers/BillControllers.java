@@ -32,12 +32,12 @@ public class BillControllers {
         return ResponseEntity.ok().body(bill1);
     }
 
-    @PostMapping(value = "/generate")
+    /*@PostMapping(value = "/generate")
     public ResponseEntity<Bill> generateBill(@RequestParam String cpf, @RequestParam String cnpj) throws Exception {
-        Bill obj = billService.getBill(cpf,cnpj);
+        List<Bill> obj = billService.getBill(cpf,cnpj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{documentNumber}").buildAndExpand(obj.getDocumentNumber()).toUri();
         return ResponseEntity.created(uri).body(obj);
-    }
+    }*/
 
     @GetMapping(value = "/bill/documentNumber")
     public ResponseEntity<Bill> findByDocumentNumber(@RequestParam String documentNumber) {

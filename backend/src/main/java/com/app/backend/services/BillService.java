@@ -26,24 +26,24 @@ public class BillService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Bill getBill(String cpf, String cnpj) throws Exception {
-        ArrayList<Bill> bill;
+    public List<Bill> getBill(String cpf, String cnpj) throws Exception {
         Customer customer = customerRepository.findByCpf(cpf);
         Company company = companyRepository.findByCnpj(cnpj);
+        List<Bill> bill = billRepository.findByCustomerAndCompany(customer, company);
         if(customer == null || company==null)
             throw new Exception("INVALID DATA");
 
         if(billRepository.existsByCustomerAndCompany(customer,company)){
-            bill = billRepository.findByCustomerAndCompany(customer, company);
-            System.out.println(bill.get(bill.size()-1));
             Date d = new Date();
             d.setMonth(d.getMonth()-1);
 
             if(bill.get(bill.size()-1).getDueDate().compareTo(d) > 0)
-                return bill.get(bill.size()-1);
+                return bill;
         }
-
-        return billRepository.save(new Bill(customer,company));
+        Bill obj = new Bill(customer,company);
+        bill.add(obj);
+        billRepository.save(obj);
+        return bill;
     }
 
     private boolean isValid(Bill bill) {

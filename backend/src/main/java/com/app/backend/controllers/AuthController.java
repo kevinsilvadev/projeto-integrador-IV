@@ -23,6 +23,7 @@ import com.app.backend.security.services.UserDetailsImpl;
 import com.app.backend.services.BillService;
 import com.app.backend.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -157,9 +158,9 @@ public class AuthController {
     }
 
     @PostMapping(value = "/generate")
-    public ResponseEntity<Bill> generateBill(@RequestParam String cpf, @RequestParam String cnpj) throws Exception {
-        Bill obj = billService.getBill(cpf,cnpj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{documentNumber}").buildAndExpand(obj.getDocumentNumber()).toUri();
-        return ResponseEntity.created(uri).body(obj);
+    public ResponseEntity<List<Bill>> generateBill(@RequestParam String cpf, @RequestParam String cnpj) throws Exception {
+        List<Bill> obj = billService.getBill(cpf,cnpj);
+        //URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{documentNumber}").buildAndExpand(obj.getDocumentNumber()).toUri();
+        return new ResponseEntity(obj, HttpStatus.OK);
     }
 }
