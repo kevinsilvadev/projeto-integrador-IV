@@ -13,7 +13,7 @@ const CompanyBill = ({ img, name, redirect }) => {
           <p>{name}</p>
         </div>
         <div className="item4">
-          <form action="/view-bill">
+          <form action={redirect}>
             <button className="companyBill-button">
               Boletos
             </button>

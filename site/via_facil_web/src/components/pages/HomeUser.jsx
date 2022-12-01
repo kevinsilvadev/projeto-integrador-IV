@@ -13,13 +13,12 @@ import CustomerService from "../../services/customer.service";
 function HomeUser() {
   const [state, setState] = useState({ clicked: false });
   const [openModal, setOpenModal] = useState(false);
+  const [content, setContent] = useState("");
+  const customer = AuthService.getCurrentUser();
 
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
-
-  const [content, setContent] = useState("");
-  const customer = AuthService.getCurrentUser();
 
   useEffect(() => {
     const companies = CustomerService.getCompanies(customer.username).then(
@@ -44,6 +43,7 @@ function HomeUser() {
         <CompanyBill
           img={content[i].imgLogo}
           name={content[i].name}
+          redirect={"/view-bill"}
           onClick={() => {
             const customer = AuthService.getCurrentUser();
             api

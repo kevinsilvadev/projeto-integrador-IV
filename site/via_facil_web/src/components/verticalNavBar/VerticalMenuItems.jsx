@@ -44,7 +44,7 @@ export const VerticalMenuItems = [
   {
     icon: "fas fa-heart",
     title: "Saved",
-    url: "#",
+    url: "/view-company/qrcode",
     cName: "nav-vertical-links",
   },
   {

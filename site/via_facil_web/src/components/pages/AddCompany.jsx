@@ -13,20 +13,17 @@ import ModalAddCompany from "../modalAddCompany";
 function HomeUser() {
   const [state, setState] = useState({ clicked: false });
   const [openModal, setOpenModal] = useState(false);
-  const [companyList, setCompanyList] = useState("");
-  const [name, setNome] = useState("");
-  const [senha, setSenha] = useState("");
-  const [email, setEmail] = useState("");
-  const [urlPhoto, setUrlPhoto] = useState("");
+  const [content, setContent] = useState("");
 
 
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
 
-  const [content, setContent] = useState("");
-  
   console.log(AuthService.getCurrentUser());
+
+
+  
   useEffect(() => {
     CompanyService.getCompanies().then(
       (response) => {

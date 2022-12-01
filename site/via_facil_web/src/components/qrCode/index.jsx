@@ -4,7 +4,7 @@ import "./QRCode.css";
 const QRCODE = () => {
   return (
     <div className="container-qrcode">
-        <QRCode value="www.google.com"/>
+        <QRCode value="www.google.com/hasgfddsjklhgjkl"/>
     </div>
   );
 };
