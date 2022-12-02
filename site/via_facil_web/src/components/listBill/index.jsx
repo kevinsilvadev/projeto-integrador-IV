@@ -59,7 +59,6 @@ const ListBill = () => {
         </thead>
         {renderLinkedBill()}
       </table>
-      <a href="#">Show All</a>
     </div>
   );
 };

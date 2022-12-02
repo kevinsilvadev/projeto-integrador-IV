@@ -15,7 +15,7 @@ const NavBar = () => {
   return (
     <nav className="NavbarItems">
       <h1 className="navbar-logo">
-        LOGO <i className="fab fa-react"></i>
+        Via Fácil <i className="fab fa-react"></i>
       </h1>
       <div className="menu-icon" onClick={handleClick}>
         <i className={state.clicked ? "fas fa-times" : "fas fa-bars"}></i>

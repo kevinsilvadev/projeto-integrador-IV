@@ -1,21 +1,21 @@
 export const MenuItems = [
   {
-    title: "Home",
+    title: "Início",
     url: "/",
     cName: "nav-links",
   },
   {
-    title: "Services",
+    title: "Serviços",
     url: "/",
     cName: "nav-links",
   },
   {
-    title: "Products",
+    title: "Inscreva-se",
     url: "/sign-up",
     cName: "nav-links",
   },
   {
-    title: "About Us",
+    title: "Sobre nós",
     url: "/about-us",
     cName: "nav-links",
   },
