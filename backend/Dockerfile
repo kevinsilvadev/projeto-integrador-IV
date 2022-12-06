@@ -1,5 +1,7 @@
 FROM 3.8.6-openjdk-11
 
+USER root
+
 WORKDIR /app
 
 COPY . .
