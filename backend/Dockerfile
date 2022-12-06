@@ -1,9 +1,9 @@
-FROM openjdk
+FROM maven:4.0.0-openjdk-11
 
 WORKDIR /app
 
-COPY target/backend-0.0.1-SNAPSHOT.jar  /app/backend.jar
+COPY . .
 
-ENTRYPOINT [ "java","-jar","backend.jar" ]
+RUN mvn clean install
 
-EXPOSE 8080
+CMD mvn spring-boot:run
