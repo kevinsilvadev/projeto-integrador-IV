@@ -1,10 +1,10 @@
-import QRCode from "react-qr-code";
 import "./QRCode.css";
+import QRCode from "react-qr-code";
 
 const QRCODE = () => {
   return (
     <div className="container-qrcode">
-        <QRCode value="www.google.com/hasgfddsjklhgjkl"/>
+      <QRCode value="www.google.com/hasgfddsjklhgjkl" />
     </div>
   );
 };

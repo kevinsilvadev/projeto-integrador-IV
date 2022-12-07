@@ -1,32 +1,29 @@
-import { useState, useRef} from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../button";
 import InputText from "../input";
 import "./Form.css";
-import AuthService from "../../services/auth.service"
+import AuthService from "../../services/auth.service";
 
 const FormLogin = ({ title, body }) => {
-
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
   const form = useRef();
   const checkBtn = useRef();
   const [loading, setLoading] = useState(false);
 
-
   const navigate = useNavigate();
 
   const [message, setMessage] = useState("");
 
-
-  console.log(cpf)
-  console.log(senha)
+  console.log(cpf);
+  console.log(senha);
 
   const handleLogin = (e) => {
     e.preventDefault();
     setMessage("");
-    if(cpf == "" || senha == "") {
-        alert("Preencha os campos!!")
+    if (cpf == "" || senha == "") {
+      alert("Preencha os campos!!");
     } else {
       AuthService.login(cpf, senha).then(
         () => {
@@ -39,17 +36,15 @@ const FormLogin = ({ title, body }) => {
               error.response.data.message) ||
             error.message ||
             error.toString();
-            if(error.response.data.message) {
-              alert("Usuário e senha incorretos")
-            }
-      
+          if (error.response.data.message) {
+            alert("Usuário e senha incorretos");
+          }
+
           setLoading(false);
           setMessage(resMessage);
         }
       );
     }
-  
- 
   };
 
   return (
@@ -69,7 +64,6 @@ const FormLogin = ({ title, body }) => {
             placeholder="CPF"
             valor={cpf}
             type={"text"}
-            
             aoAlterado={(valorCpf) => setCpf(valorCpf)}
           />
           <InputText

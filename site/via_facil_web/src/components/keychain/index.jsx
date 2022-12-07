@@ -17,8 +17,7 @@ const Keychain = ({ name, imageUrl }) => {
           </div>
           <div className="flip-card-back">
             <div className="keychain-hole"></div>
-            <QRCODE/>
-            
+            <QRCODE />
           </div>
         </div>
       </div>

@@ -1,29 +1,28 @@
 import "./verticalNavBar.css";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { VerticalMenuItems } from "./VerticalMenuItems";
 import AuthService from "../../services/auth.service";
-import CustomerService from "../../services/customer.service"
+import CustomerService from "../../services/customer.service";
 
-
-const VerticalNavBar = ({onClick}) => {
+const VerticalNavBar = ({ onClick }) => {
   const [state, setState] = useState({ clicked: false });
 
   const logout = () => {
     AuthService.logout();
-  }
+  };
 
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
 
-  const customer = AuthService.getCurrentUser()
+  const customer = AuthService.getCurrentUser();
 
   const [content, setContent] = useState("");
 
   useEffect(() => {
     CustomerService.getAll().then(
       (response) => {
-        setContent(response.data)
+        setContent(response.data);
       },
       (error) => {
         const _content =
@@ -41,8 +40,7 @@ const VerticalNavBar = ({onClick}) => {
       <div className={state.clicked ? "sidebar active" : "sidebar"}>
         <div className="logo_content">
           <div className="logo">
-            <i className="fab fa-react"></i>
-            <div className="logo_name">Via Facil</div>
+            <div className="logo_name">Menu</div>
           </div>
           <div className="vertical-menu-icon">
             <i
@@ -54,7 +52,11 @@ const VerticalNavBar = ({onClick}) => {
         </div>
         <ul>
           <li>
-            <i onClick={onClick} onClickCapture={handleClick} className="fas fa-search"></i>
+            <i
+              onClick={onClick}
+              onClickCapture={handleClick}
+              className="fas fa-search"
+            ></i>
             <input type="text" placeholder="Search..." />
           </li>
           {VerticalMenuItems.map((item, index) => {
@@ -72,15 +74,17 @@ const VerticalNavBar = ({onClick}) => {
         <div className="profile_content">
           <div className="profile">
             <div className="profile_details">
-              <img
-                src={customer.urlPhoto}
-                alt="Foto do usuário"
-              />
+              <img src={customer.urlPhoto} alt="Foto do usuário" />
               <div className="name_job">
                 <div className="name">{customer.name}</div>
               </div>
             </div>
-            <a href="/" onClick={logout} className="fas fa-sign-out-alt" id="log_out"></a>
+            <a
+              href="/"
+              onClick={logout}
+              className="fas fa-sign-out-alt"
+              id="log_out"
+            ></a>
           </div>
         </div>
       </div>
