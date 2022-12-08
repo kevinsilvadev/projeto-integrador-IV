@@ -111,5 +111,4 @@ public class Bill {
         DecimalFormat format = new DecimalFormat("##.##");
         return Double.parseDouble(format.format(documentValue * (1 - (discount * 0.01) + (penalty * 0.01))).replace(',','.'));
     }
-
 }

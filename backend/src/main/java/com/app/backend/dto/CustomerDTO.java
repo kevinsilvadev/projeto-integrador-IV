@@ -23,7 +23,6 @@ public class CustomerDTO implements Serializable {
     private String id;
 
     private String cpf;
-
     private String urlPhoto;
     private String name;
     private String email;

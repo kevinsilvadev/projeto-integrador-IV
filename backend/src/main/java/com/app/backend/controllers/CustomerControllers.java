@@ -45,10 +45,8 @@ public class CustomerControllers {
     }
 
 
-
     @GetMapping(value = "/cpf")
     public ResponseEntity<List<Customer>> findByCpf(@RequestParam  String cpf) {
-
         return new ResponseEntity(customerRepository.findByCpf(cpf), HttpStatus.OK);
     }
 
@@ -66,7 +64,6 @@ public class CustomerControllers {
         Customer obj = customerRepository.findByCpf(cpf);
         return new ResponseEntity(obj.getCompanyList(), HttpStatus.OK);
     }
-
 
     @DeleteMapping(value = "/customer/cpf")
     public ResponseEntity<Customer> deleteByid(@RequestParam String cpf) {

@@ -1,6 +1,8 @@
 package com.app.backend.model;
 
+import com.app.backend.repository.CompanyRepository;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -32,7 +34,6 @@ public class Customer implements Serializable {
     @NotNull
     private String cnpj;
 
-
     private String urlPhoto;
 
     @NotBlank
@@ -55,6 +56,10 @@ public class Customer implements Serializable {
 
     @DBRef
     List<Company> companyList = new ArrayList<>();
+
+    @Autowired
+    CompanyRepository companyRepository;
+
 
     public Customer(){
     }

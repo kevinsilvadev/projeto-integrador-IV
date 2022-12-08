@@ -1,5 +1,6 @@
 package com.app.backend.handler;
 
+import com.app.backend.error.ResourceExistDataException;
 import com.app.backend.error.ResourceInvalidDataException;
 import com.app.backend.error.ResourceNotFoundException;
 import com.app.backend.model.ErrorDetail;
@@ -36,6 +37,15 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @ExceptionHandler(ResourceInvalidDataException.class)
     public  final ResponseEntity<ErrorDetail> resourceInvalidDataException (Exception ex, WebRequest request) {
+        ErrorDetail dt = new ErrorDetail(
+                new Date(),
+                ex.getMessage(),
+                request.getDescription(false));
+        return new ResponseEntity<>(dt, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ResourceExistDataException.class)
+    public  final ResponseEntity<ErrorDetail> resourceExistDataException (Exception ex, WebRequest request) {
         ErrorDetail dt = new ErrorDetail(
                 new Date(),
                 ex.getMessage(),

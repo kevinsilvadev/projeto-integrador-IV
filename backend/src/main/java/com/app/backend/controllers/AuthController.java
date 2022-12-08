@@ -151,7 +151,6 @@ public class AuthController {
     @PostMapping(value = "/addCompany")
     public ResponseEntity<Customer> insert(@RequestParam String companyCnpj,@RequestParam String customerCpf) throws Exception {
         Company company = companyRepository.findByCnpj(companyCnpj);
-        System.out.println(company);
         Customer customer = customerService.addCompany(customerCpf,company);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getId()).toUri();
         return ResponseEntity.created(uri).body(customer);

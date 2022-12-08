@@ -14,6 +14,8 @@ function HomeUser() {
   const [state, setState] = useState({ clicked: false });
   const [openModal, setOpenModal] = useState(false);
   const [content, setContent] = useState("");
+  const [message, setMessage] = useState("");
+
 
 
   const handleClick = () => {
@@ -58,9 +60,16 @@ function HomeUser() {
                 const customer = AuthService.getCurrentUser();             
                 api
                   .post(`http://localhost:8080/api/auth/addCompany?companyCnpj=${content[i].cnpj}&customerCpf=${customer.username}`)
-                  .then((response) => console.log(content[i].id))
-                  .catch((err) => {
-                    console.log(err)
+                  .catch((error) => {
+                    const resMessage =
+                    (error.response &&
+                      error.response.data &&
+                      error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+                  if (error.response.data.message) {
+                      alert(error.response.data.message)
+                  }
                 })
               }}
             />
