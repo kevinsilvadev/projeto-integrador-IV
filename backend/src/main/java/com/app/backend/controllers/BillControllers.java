@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/bill")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class BillControllers {
 
     @Autowired
@@ -39,20 +40,25 @@ public class BillControllers {
         return ResponseEntity.created(uri).body(obj);
     }*/
 
-    @GetMapping(value = "/bill/documentNumber")
+    @GetMapping(value = "/documentNumber")
     public ResponseEntity<Bill> findByDocumentNumber(@RequestParam String documentNumber) {
         Bill obj = repo.findByDocumentNumber(documentNumber);
         return ResponseEntity.ok().body(obj);
     }
 
-    @PutMapping(value = "/bill/documentNumber")
+    @GetMapping(value = "/recent")
+    public ResponseEntity<List<Bill>> getRecentBills(@RequestParam String cpf){
+        return ResponseEntity.ok().body(billService.getRecentBills(customer.findByCpf(cpf)));
+    }
+
+    @PutMapping(value = "/documentNumber")
     public ResponseEntity<Void> update(@RequestBody Bill newObj, @RequestParam String documentNumber) {
         Bill obj = repo.findByDocumentNumber(documentNumber);
         billService.update(obj, newObj);
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(value = "/bill/documentNumber")
+    @DeleteMapping(value = "/documentNumber")
     public ResponseEntity<Bill> deleteByDocumentNumber(@RequestParam String documentNumber) {
         repo.deleteByDocumentNumber(documentNumber);
         return ResponseEntity.noContent().build();

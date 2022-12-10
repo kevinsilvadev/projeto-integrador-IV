@@ -20,6 +20,7 @@ function HomeUser() {
   useEffect(() => {
     const companies = CustomerService.getCompanies(customer.username).then(
       (response) => {
+        console.log(response.data);
         setContent(response.data);
       },
       (error) => {
@@ -30,11 +31,11 @@ function HomeUser() {
         setContent(_content);
       }
     );
-    console.log(content);
   }, []);
 
   function renderLinkedCompanies() {
     let ret = [];
+    
     for (let i = 0; i < content.length; i++) {
       ret.push(
         <CompanyBill
@@ -47,7 +48,7 @@ function HomeUser() {
               .post(
                 `http://localhost:8080/api/auth/addCompany?companyCnpj=${content[i].cnpj}&customerCpf=${customer.username}`
               )
-              .then((response) => console.log(content[i].id))
+              .then((response) => localStorage.setItem("cnpj",JSON.stringify(content[i].cnpj)))
               .catch((err) => {
                 console.log(err);
               });
@@ -55,6 +56,7 @@ function HomeUser() {
         />
       );
     }
+    
     return ret;
   }
 

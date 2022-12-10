@@ -42,28 +42,6 @@ public class Bill {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dueDate;
 
-    /*
-    @NotBlank
-    @NotNull
-    private String barCodeNumber;
-
-    @NotBlank
-    @NotNull
-    private String dueDate;
-
-    @NotBlank
-    @NotNull
-    private String instructions;
-
-    @NotBlank
-    @NotNull
-    private String uf;
-
-    @NotBlank
-    @NotNull
-    private String processingDate;
-     */
-
     public Bill (Customer customer, Company company){
         this.customer = customer;
         this.company = company;
@@ -76,18 +54,18 @@ public class Bill {
     }
 
     private String generateDocumentNumber(){
-        String ret = "";
+        StringBuilder ret = new StringBuilder();
         Random random = new Random();
 
         for(int i =0;i<54;i++){
             if(i == 5 || i == 17 || i == 30)
-                ret = ret + '.';
+                ret.append('.');
             else if(i == 11 || i ==24 || i == 37 || i == 39)
-                ret = ret + ' ';
+                ret.append(' ');
             else
-                ret = ret + random.nextInt(9);
+                ret.append(random.nextInt(9));
         }
-        return ret;
+        return ret.toString();
     }
 
     private int generateDiscount() {

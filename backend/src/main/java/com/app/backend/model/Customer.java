@@ -79,5 +79,7 @@ public class Customer implements Serializable {
         this.companyList = companyList;
     }
 
+    
+
 
 }

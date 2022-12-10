@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public interface BillRepository extends MongoRepository<Bill, String> {
     Bill findByDocumentNumber (String documentNumber);
     ArrayList<Bill> findByCustomerAndCompany(Customer customer, Company company);
+    ArrayList<Bill> findByCustomer(Customer customer);
     Bill deleteByDocumentNumber (String documentNumber);
     boolean existsByDocumentNumber(String documentNumber);
     boolean existsByCustomerAndCompany(Customer customer, Company company);

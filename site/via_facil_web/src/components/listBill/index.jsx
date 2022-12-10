@@ -8,14 +8,15 @@ import AuthService from "../../services/auth.service";
 const ListBill = () => {
   const [content, setContent] = useState("");
   const customer = AuthService.getCurrentUser();
+
+  
   
   useEffect(() => {
     BillService.getBill(
-      AuthService.getCurrentUser().username,
-      AuthService.getCurrentUser().companyList[0].cnpj
+      customer.username,
+      JSON.parse(localStorage.getItem('cnpj'))
     ).then(
       (response) => {
-        console.log(response.data);
         setContent(response.data);
       },
       (error) => {
@@ -28,7 +29,7 @@ const ListBill = () => {
     );
   }, []);
 
-  console.log(content.length)
+  
 
   function renderLinkedBill(){
     let ret = [];

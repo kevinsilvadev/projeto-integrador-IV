@@ -16,9 +16,6 @@ const FormLogin = ({ title, body }) => {
 
   const [message, setMessage] = useState("");
 
-  console.log(cpf);
-  console.log(senha);
-
   const handleLogin = (e) => {
     e.preventDefault();
     setMessage("");

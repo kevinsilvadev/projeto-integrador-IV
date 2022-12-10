@@ -62,6 +62,7 @@ public class CustomerControllers {
     @GetMapping(value="/company")
     public ResponseEntity<List<Company>> getCompanyList(@RequestParam String cpf) {
         Customer obj = customerRepository.findByCpf(cpf);
+        System.out.println(obj.getCompanyList());
         return new ResponseEntity(obj.getCompanyList(), HttpStatus.OK);
     }
 

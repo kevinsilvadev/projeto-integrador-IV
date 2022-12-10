@@ -46,15 +46,6 @@ public class BillService {
         return bill;
     }
 
-    private boolean isValid(Bill bill) {
-        /*if (bill.getDocumentNumber().isBlank() || bill.getDocumentNumber().isEmpty()) {
-            throw new ResourceInvalidDataException("INVALID DOCUMENT FOR INSERTION");
-        }*/
-        if(!customerRepository.existsByCpf(bill.getCustomer().getCpf()) || !companyRepository.existsByCnpj(bill.getCompany().getCnpj()))
-            throw new ResourceInvalidDataException("INVALID DOCUMENT FOR INSERTION");
-        return false;
-    }
-
     public List<Bill> findAll () {
         return billRepository.findAll();
     }
@@ -67,43 +58,19 @@ public class BillService {
         }
     }
 
-    private String generateDocumentNumber(){
-        String ret = "";
-        Random random = new Random();
+    public List<Bill> getRecentBills(Customer customer){
+        List<Bill> aux;
+        List<Bill> ret = new ArrayList<>();
+        aux = billRepository.findByCustomer(customer);
 
-        for(int i =0;i<54;i++){
-            if(i == 5 || i == 17 || i == 30)
-                ret = ret + '.';
-            else if(i == 11 || i ==24 || i == 37 || i == 39)
-                ret = ret + ' ';
-            else
-                ret = ret + random.nextInt(9);
+        for(int i=1; i<=5;i++){
+            if(i > aux.size())
+                break;
+            ret.add(aux.get(aux.size()-i));
         }
+
         return ret;
     }
-
-    private int generateDiscount() {
-        if(new Random().nextInt(2) == 0)
-            return 0;
-        return new Random().nextInt(10);
-    }
-
-    private int generatePenalty() {
-        if(new Random().nextInt(2) == 0)
-            return 0;
-        return new Random().nextInt(10);
-    }
-
-    private double generateDocumentValue() {
-        DecimalFormat format = new DecimalFormat("##.##");
-        return Double.parseDouble(format.format(new Random().nextDouble()*100).replace(',','.'));
-    }
-
-    private double generateAmountCharged(Bill obj){
-        DecimalFormat format = new DecimalFormat("##.##");
-        return Double.parseDouble(format.format(obj.getDocumentValue() * (1 - (obj.getDiscount() * 0.01) + (obj.getPenalty() * 0.01))).replace(',','.'));
-    }
-
     public Bill update(Bill obj, Bill newObj) {
 
         obj.setDocumentNumber(newObj.getDocumentNumber());
