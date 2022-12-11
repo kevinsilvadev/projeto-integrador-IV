@@ -95,7 +95,7 @@ function HomeUser() {
           <VerticalNavBar onClick={handleClick} />
         </div>
         <div className="title-add-company">
-          <h1>Empresas disponíveis</h1>
+          <h1>Empresas que você talvez seja cliente</h1>
         </div>
         <div className="title-add-company">
           <h2>Clique em uma empresa para realizar um cadastro único.</h2>

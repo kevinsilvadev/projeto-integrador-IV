@@ -48,13 +48,14 @@ const ListBill = () => {
 
   return (
     <div className="recent-bills">
-      <h2>Boletos disponíveis</h2>
+      <h2>Contas ainda não pagas:</h2>
       <table>
         <thead>
           <tr>
-            <th>Data</th>
+            <th>Vencimento</th>
             <th>Valor R$</th>
             <th>Desconto</th>
+            <th>Status</th>
             <th></th>
           </tr>
         </thead>

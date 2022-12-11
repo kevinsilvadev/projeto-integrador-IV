@@ -41,12 +41,12 @@ const RecentOrder = () => {
   
   return (
     <div className="recent-orders">
-      <h2>Solicitações Recentes</h2>
+      <h2>Suas Contas Recentes</h2>
       <table>
         <thead>
           <tr>
             <th>Empresa</th>
-            <th>Data</th>
+            <th>Vencimento</th>
             <th>Valor R$</th>
             <th>Status</th>
             <th></th>

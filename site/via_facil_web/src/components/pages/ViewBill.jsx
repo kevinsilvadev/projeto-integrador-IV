@@ -15,7 +15,7 @@ function ViewBill() {
       className={state.clicked ? "HomeUser_content active" : "HomeUser_content"}
     >
       <div className="homeUser-header">
-        <h1>Seus Boletos</h1>
+        <h1>Suas Contas</h1>
       </div>
       <div className="homeUser-row">
         <VerticalNavBar onClick={handleClick} />

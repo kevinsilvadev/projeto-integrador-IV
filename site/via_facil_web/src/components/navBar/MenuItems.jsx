@@ -6,7 +6,12 @@ export const MenuItems = [
   },
   {
     title: "Serviços",
-    url: "/",
+    url: "#section1",
+    cName: "nav-links",
+  },
+  {
+    title: "Parcerias",
+    url: "#section2",
     cName: "nav-links",
   },
   {
