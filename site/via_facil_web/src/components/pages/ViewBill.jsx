@@ -4,6 +4,7 @@ import { useState } from "react";
 import ListBill from "../listBill";
 
 function ViewBill() {
+  
   const [state, setState] = useState({ clicked: false });
 
   const handleClick = () => {

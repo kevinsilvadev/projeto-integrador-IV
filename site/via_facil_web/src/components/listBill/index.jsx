@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import Bills from "./Bills";
 import "./recentOrder.css";
-import api from "../../services/api";
 import BillService from "../../services/bill.service";
 import AuthService from "../../services/auth.service";
+import {useLocation} from 'react-router-dom';
 
 const ListBill = () => {
   const [content, setContent] = useState("");
   const customer = AuthService.getCurrentUser();
-
+  const location = useLocation();
   
   
   useEffect(() => {
     BillService.getBill(
       customer.username,
-      JSON.parse(localStorage.getItem('cnpj'))
+      location.state
     ).then(
       (response) => {
         setContent(response.data);

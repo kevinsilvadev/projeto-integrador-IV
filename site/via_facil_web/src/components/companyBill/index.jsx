@@ -1,6 +1,7 @@
 import "./CompanyBill.css";
+import {Link} from "react-router-dom";
 
-const CompanyBill = ({ img, name, redirect }) => {
+const CompanyBill = ({ img, name, redirect, cnpj }) => {
   return (
     <div>
       <div className="companyBill-container">
@@ -13,9 +14,7 @@ const CompanyBill = ({ img, name, redirect }) => {
           <p>{name}</p>
         </div>
         <div className="item4">
-          <form action={redirect}>
-            <button className="companyBill-button">Boletos</button>
-          </form>
+          <Link className="companyBill-button" to={{pathname: redirect}} state={cnpj}>Boletos</Link>
         </div>
       </div>
     </div>

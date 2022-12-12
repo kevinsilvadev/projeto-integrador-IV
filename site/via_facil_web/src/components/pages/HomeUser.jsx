@@ -2,7 +2,6 @@ import VerticalNavBar from "../verticalNavBar";
 import "../../App.css";
 import { useEffect, useState } from "react";
 import RecentOrder from "../recentOrder";
-import api from "../../services/api";
 import AuthService from "../../services/auth.service";
 import CompanyBill from "../companyBill";
 import CustomerService from "../../services/customer.service";
@@ -13,6 +12,7 @@ function HomeUser() {
   const [openModal, setOpenModal] = useState(false);
   const [content, setContent] = useState("");
   const customer = AuthService.getCurrentUser();
+
 
   const handleClick = () => {
     setState({ clicked: !state.clicked });
@@ -43,19 +43,7 @@ function HomeUser() {
           img={content[i].imgLogo}
           name={content[i].name}
           redirect={"/view-bill"}
-          onClick={() => {
-            const customer = AuthService.getCurrentUser();
-            api
-              .post(
-                `http://localhost:8080/api/auth/addCompany?companyCnpj=${content[i].cnpj}&customerCpf=${customer.username}`
-              )
-              .then((response) =>
-                localStorage.setItem("cnpj", JSON.stringify(content[i].cnpj))
-              )
-              .catch((err) => {
-                console.log(err);
-              });
-          }}
+          cnpj={content[i].cnpj}
         />
       );
     }
