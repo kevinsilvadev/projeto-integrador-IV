@@ -1,6 +1,4 @@
-import VerticalNavBar from "../verticalNavBar";
 import "../../App.css";
-import { useState } from "react";
 import ListBill from "../listBill";
 
 function ViewBillQRCode() {
@@ -9,7 +7,7 @@ function ViewBillQRCode() {
       className={"HomeUser_content2"}
     >
       <div className="homeUser-header">
-        <h1>Seus boletos da empresa "X"</h1>
+        <h1>Suas Contas</h1>
       </div>
       <div className="homeUser-row">
         <div className="col-12 col-s-12">

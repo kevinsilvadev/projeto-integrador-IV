@@ -17,7 +17,6 @@ function HomeUser() {
   const [message, setMessage] = useState("");
 
 
-
   const handleClick = () => {
     setState({ clicked: !state.clicked });
   };
@@ -25,7 +24,6 @@ function HomeUser() {
   console.log(AuthService.getCurrentUser());
 
 
-  
   useEffect(() => {
     CompanyService.getCompanies().then(
       (response) => {

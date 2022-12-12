@@ -9,7 +9,7 @@ const RecentOrder = () => {
   const [content, setContent] = useState("");
 
   useEffect(() =>{
-    const recentBills = BillService.getRecentBills(AuthService.getCurrentUser().username).then(
+      BillService.getRecentBills(AuthService.getCurrentUser().username).then(
       (response) => {
         setContent(response.data);
       },

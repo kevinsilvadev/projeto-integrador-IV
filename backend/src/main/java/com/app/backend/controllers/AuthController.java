@@ -62,6 +62,9 @@ public class AuthController {
     @Autowired
     BillService billService;
 
+    @Autowired
+    private BillRepository billRepository;
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -85,6 +88,8 @@ public class AuthController {
                 userDetails.getUrlPhoto(),
                 roles,
                 userDetails.getCompanyList());
+            System.out.println(userDetails.getCompanyList());
+
 
         return ResponseEntity.ok(jwtResponse);
     }

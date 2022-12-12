@@ -42,6 +42,7 @@ public class Bill {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dueDate;
 
+
     public Bill (Customer customer, Company company){
         this.customer = customer;
         this.company = company;

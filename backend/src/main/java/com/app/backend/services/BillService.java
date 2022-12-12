@@ -11,6 +11,7 @@ import com.app.backend.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Array;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -30,6 +31,7 @@ public class BillService {
         Customer customer = customerRepository.findByCpf(cpf);
         Company company = companyRepository.findByCnpj(cnpj);
         List<Bill> bill = billRepository.findByCustomerAndCompany(customer, company);
+
         if(customer == null || company==null)
             throw new Exception("INVALID DATA");
 
@@ -37,11 +39,10 @@ public class BillService {
             Date d = new Date();
             d.setMonth(d.getMonth()-1);
 
-            if(bill.get(bill.size()-1).getDueDate().compareTo(d) > 0)
+          if(bill.get(bill.size()-1).getDueDate().compareTo(d) > 0)
                 return bill;
         }
-        Bill obj = new Bill(customer,company);
-        bill.add(obj);
+        Bill obj = new Bill(customer, company);
         billRepository.save(obj);
         return bill;
     }
@@ -68,7 +69,6 @@ public class BillService {
                 break;
             ret.add(aux.get(aux.size()-i));
         }
-
         return ret;
     }
     public Bill update(Bill obj, Bill newObj) {
