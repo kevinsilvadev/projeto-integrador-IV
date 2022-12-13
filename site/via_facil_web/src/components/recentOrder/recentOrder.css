@@ -14,10 +14,7 @@
   text-align: center;
   box-shadow: var(--box-shadow);
   transition: all 300ms ease;
-}
-
-.recent-orders table:hover {
-  box-shadow: none;
+  margin-bottom: 24px;
 }
 
 .recent-orders td {

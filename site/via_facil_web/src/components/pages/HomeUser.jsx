@@ -55,6 +55,13 @@ function HomeUser() {
     return ret;
   }
 
+  function naoTemEmpresas() {
+    if (content.length === 0) {
+      return <h3 className="semContas">Voce ainda não vinculou nenhuma empresa.</h3>
+    }
+    return
+  }
+
   return (
     <div
       className={state.clicked ? "HomeUser_content active" : "HomeUser_content"}
@@ -67,9 +74,10 @@ function HomeUser() {
         <VerticalNavBar onClick={handleClick} />
         <div className="col-12 col-s-12">
           <div className="homeUser-recentOrder">
-            <h2>Suas Empresas Vinculadas</h2>
+            <h2 className="h2-homeUser">Empresas que você é Cliente</h2>
             <div className="row-profileCard">
                 {renderLinkedCompanies()}
+                {naoTemEmpresas()}
             </div>
             <RecentOrder />
           </div>

@@ -8,7 +8,7 @@ export default function SignUp() {
     <>
     <NavBar/>
     <div className="section_form_login_SignUp">
-      <video src="/videos/video-2.mp4" autoPlay loop muted />
+      <video src="/videos/video-3.mp4" autoPlay loop muted />
       <FormSignUp title="Cadastre-se aqui!" />
     </div>
     <Footer/>

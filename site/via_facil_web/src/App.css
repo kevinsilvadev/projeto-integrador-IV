@@ -80,12 +80,11 @@
 
 /* ============================= Página HomeUser ============================= */
 
-.HomeUser_content h2 {
+.h2-homeUser {
   text-align: center;
   margin-top: 36px;
   margin-bottom: 36px;
   font-size: xx-large;
-
 }
 
 .HomeUser_content {
@@ -339,7 +338,7 @@ html {
 .title-add-company h1 {
   font-size: xxx-large;
   font-weight: bold;
-  color: #000;
+  color: rgb(255, 255, 255);
   margin-bottom: 3%;
 }
 
@@ -347,7 +346,7 @@ html {
   font-size: xx-large;
   font-weight: bold;
   text-align: center;
-  color: #000;
+  color: rgb(255, 255, 255);
   margin-bottom: 3%;
 }
 

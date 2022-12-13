@@ -125,7 +125,7 @@ const ListBill = () => {
   return (
     <div className="recent-bills">
       <h2>Contas ainda não pagas:</h2>
-      <table>
+      <table className="recent-bills-table">
         <thead>
           <tr>
             <th>Vencimento</th>
@@ -139,7 +139,7 @@ const ListBill = () => {
       </table>
       {temContas()}
       <h2>Contas que você já pagou:</h2>
-      <table>
+      <table className="recent-bills-table">
         <thead>
           <tr>
             <th>Vencimento</th>

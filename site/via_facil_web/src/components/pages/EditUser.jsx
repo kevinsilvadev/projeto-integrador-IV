@@ -15,7 +15,7 @@ function EditUser() {
     <div
       className={state.clicked ? "HomeUser_content active" : "HomeUser_content"}
     >
-      <video src="/videos/video-2.mp4" autoPlay loop muted />
+      <video src="/videos/video-3.mp4" autoPlay loop muted />
 
       <div className="HomeUser_VerticalNavBar">
         <VerticalNavBar onClick={handleClick} />

@@ -8,7 +8,7 @@ const Orders = ({ name, protocol, value, status, img }) => {
           <td>{name}</td>
           <td>{protocol}</td>
           <td>R$ {value}</td>
-          <td className="warning">{status}</td>
+          <td>{status}</td>
           <td className="cor-primaria">
             <img className="company-image" src={img} alt="" />
           </td>

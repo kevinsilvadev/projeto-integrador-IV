@@ -5,7 +5,7 @@ const ModalAddCompany = ({ open, onClose }) => {
   var myVar;
 
   function myFunction() {
-    myVar = setTimeout(showPage, 7000);
+    myVar = setTimeout(showPage, 3000);
   }
 
   function showPage() {

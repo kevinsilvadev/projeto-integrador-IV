@@ -4,7 +4,7 @@ const ModalViewBill = ({ open, onClose }) => {
   var myVar;
 
   function myFunction() {
-    myVar = setTimeout(showPage, 7000);
+    myVar = setTimeout(showPage, 3000);
   }
 
   function showPage() {
@@ -32,9 +32,9 @@ const ModalViewBill = ({ open, onClose }) => {
             <div id="loader-bill"></div>
 
             <div id="myDiv" className="animate-bottom">
-              <div class="bill-body">
-                <div class="bill-header">
-                  <h2>Seu banco</h2>
+              <div className="bill-body">
+                <div className="bill-header">
+                  <h2 className="h2-boleto">Seu banco</h2>
                 </div>
                 <table>
                   <tr>
@@ -106,7 +106,13 @@ const ModalViewBill = ({ open, onClose }) => {
                   <tr>
                     <td colspan="3">
                       Instruções
-                      <p>Conteúdo</p>
+                      <p className="p-intrucoes-boleto">Após vencimento cobrar R$ 0,12 por dia de atraso.
+Após vencimento cobrar multa de R$ 37,06.
+Pagável em qualquer rede bancária mesmo após o vencimento, não sendo necessário atualização do boleto até
+o dia 07/11/2021.
+Depósito em conta corrente não quita o boleto.
+Senhor caixa, ao efetuar o recebimento com cheque, favor anotar o nosso número do boleto no verso do
+cheque.</p>
                     </td>
                     <td colspan="1">
                       Valor Cobrado

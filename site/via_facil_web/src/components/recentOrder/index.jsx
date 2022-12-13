@@ -24,27 +24,24 @@ const RecentOrder = () => {
 
   function renderRecentBills(){
     let ret = [];
-    
     for(let i=0; i<content.length; i++){
-      
       ret.push(
         <Orders
           name={content[i].company.name}
           protocol={content[i].dueDate}
           value={content[i].documentValue}
-          status={content[i].status.toString()}
+          status={content[i].status}
           img={content[i].company.imgLogo}
         />
       )
     }
-
     return ret;
   }
   
   return (
     <div className="recent-orders">
       <h2>Suas Contas Recentes</h2>
-      <table>
+      <table className="recent-bills-table">
         <thead>
           <tr>
             <th>Empresa</th>

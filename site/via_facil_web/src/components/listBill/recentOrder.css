@@ -18,7 +18,7 @@
   margin-bottom: 24px;
 }
 
-.recent-bills table:hover {
+.recent-bills-table:hover {
   box-shadow: 0 1rem 1rem rgb(185, 217, 228);
 }
 
@@ -69,4 +69,12 @@ td {
   margin-top: 24px;
   color: gray;
 
+}
+
+.danger {
+  color: red;
+}
+
+.success {
+  color: green;
 }

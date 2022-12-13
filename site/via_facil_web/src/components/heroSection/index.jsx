@@ -5,7 +5,7 @@ import "./HeroSection.css";
 const HeroSection = () => {
   return (
     <>
-      <video src="/videos/video-2.mp4" autoPlay loop muted />
+      <video src="/videos/video-3.mp4" autoPlay loop muted />
       <div className="heroSection">
         <h1>
           Via <span>Fácil</span>

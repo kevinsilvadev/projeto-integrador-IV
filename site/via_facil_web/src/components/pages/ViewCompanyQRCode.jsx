@@ -56,7 +56,7 @@ function ViewCompanyQRCode() {
       className={"HomeUser_content2"}
     >
       <div className="homeUser-header">
-        <h1>Suas Empresas Vinculadas</h1>
+        <h1>Empresas que você é Cliente</h1>
       </div>
 
       <div className="homeUser-row">
