@@ -11,7 +11,7 @@ const Bills = ({ protocol, value, status, img }) => {
         <tr>
           <td>{protocol}</td>
           <td>R$ {value}</td>
-          <td className="warning">{status}%</td>
+          <td className="warning">{status}</td>
           <td className="cor-primaria">
             <button onClick={() => {
                 setOpenModal(true)}} className="bill-button">Emitir</button>

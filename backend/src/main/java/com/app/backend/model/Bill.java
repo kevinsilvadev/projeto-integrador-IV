@@ -42,6 +42,13 @@ public class Bill {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dueDate;
 
+    private Status status;
+
+    public enum Status {
+        PAGO,
+        PENDENTE
+    }
+
 
     public Bill (Customer customer, Company company){
         this.customer = customer;
@@ -52,6 +59,7 @@ public class Bill {
         this.documentValue = generateDocumentValue();
         this.amountCharged = generateAmountCharged(documentValue, discount, penalty);
         this.dueDate = new Date();
+        this.status = Status.PENDENTE;
     }
 
     private String generateDocumentNumber(){

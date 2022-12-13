@@ -5,7 +5,6 @@ import BillService from "../../services/bill.service";
 import AuthService from "../../services/auth.service";
 
 const RecentOrder = () => {
-  const [state, setState] = useState({ clicked: false });
   const [content, setContent] = useState("");
 
   useEffect(() =>{
@@ -21,16 +20,19 @@ const RecentOrder = () => {
           setContent(_content)
       }
     );
-    
   });
+
   function renderRecentBills(){
     let ret = [];
+    
     for(let i=0; i<content.length; i++){
+      
       ret.push(
         <Orders
           name={content[i].company.name}
           protocol={content[i].dueDate}
           value={content[i].documentValue}
+          status={content[i].status.toString()}
           img={content[i].company.imgLogo}
         />
       )

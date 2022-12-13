@@ -47,15 +47,16 @@
   font-size: 21px;
 }
 
-.companyBill-button {
+.card-companyBill-button {
   padding: 8px 20px;
   border-radius: 4px;
-  margin-top: 30px;
+
   outline: none;
   border: none;
   cursor: pointer;
   background: #3BBB6E;
   box-shadow: var(--box-shadow);
+ 
 }
 
 .companyBill-button:hover {
@@ -63,4 +64,8 @@
   background: #88FAB5;
   color: #000;
   transition: 250ms;
+}
+
+.item4 {
+  margin-top: 20px;
 }

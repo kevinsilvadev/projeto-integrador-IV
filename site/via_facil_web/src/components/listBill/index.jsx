@@ -28,9 +28,83 @@ const ListBill = () => {
       }
     );
   }, []);
-
   
+  let contasPendentes = [];
+  let contasPagas = [];
 
+  for (let i = 0; i < content.length; i++) {
+    if (content[i].status === "PENDENTE") {
+      contasPendentes.push(
+        <Bills
+          protocol= {content[i].dueDate}
+          value={content[i].documentValue}
+          status={content[i].status}
+        />
+      )
+    } else {
+      contasPagas.push(
+        <Bills
+          protocol= {content[i].dueDate}
+          value={content[i].documentValue}
+          status={content[i].status}
+        />
+      )
+    }
+  }
+
+  //console.log(contasPendentes[0])
+  //console.log(contasPendentes[1].props.protocol)
+  //console.log(contasPendentes[1].props.status)
+  //console.log(contasPendentes[1].props.value)
+
+
+  function renderLinkedBillPendentes(){
+    let ret = [];
+    for(let i = 0; i < contasPendentes.length; i++){
+      ret.push(
+        <Bills
+          protocol= {contasPendentes[i].props.protocol}
+          value={contasPendentes[i].props.value}
+          status={contasPendentes[i].props.status}
+        />
+      )
+    }
+
+    return ret;
+  }
+
+  function naoTemContas(){
+    if (contasPagas.length === 0) {
+      return <h3 className="semContas">Voce não possui contas pagas ainda.</h3>
+    }
+    return
+  }
+
+  function temContas(){
+    if (contasPendentes.length === 0) {
+      return <h3 className="semContas">Voce não possui contas pendentes.</h3>
+    }
+    return
+  }
+
+  function renderLinkedBillPagas(){
+   
+
+    let ret = [];
+    for(let i = 0; i < contasPagas.length; i++){
+      ret.push(
+        <Bills
+          protocol= {contasPagas[i].props.protocol}
+          value={contasPagas[i].props.value}
+          status={contasPagas[i].props.status}
+        />
+      )
+    }
+
+    return ret;
+  }
+
+  /*
   function renderLinkedBill(){
     let ret = [];
     for (let i = 0; i < content.length; i++) {
@@ -38,13 +112,15 @@ const ListBill = () => {
         <Bills
           protocol= {content[i].dueDate}
           value={content[i].documentValue}
-          status={content[i].discount}
+          status={content[i].status}
         />
       )
     }
     
     return ret
   }
+
+  */
 
   return (
     <div className="recent-bills">
@@ -54,13 +130,29 @@ const ListBill = () => {
           <tr>
             <th>Vencimento</th>
             <th>Valor R$</th>
-            <th>Desconto</th>
             <th>Status</th>
+            <th>Emissão</th>
             <th></th>
           </tr>
         </thead>
-        {renderLinkedBill()}
+        {renderLinkedBillPendentes()}
       </table>
+      {temContas()}
+      <h2>Contas que você já pagou:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Vencimento</th>
+            <th>Valor R$</th>
+            <th>Status</th>
+            <th>Emissão</th>
+            <th></th>
+          </tr>
+        </thead>
+        {renderLinkedBillPagas()}
+
+      </table>
+      {naoTemContas()}
     </div>
   );
 };

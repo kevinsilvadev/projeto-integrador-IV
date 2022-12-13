@@ -17,7 +17,7 @@ const CompanyCard = ({
         <h3>{name}</h3>
         <div className="social-links">
         <div className="item4">
-          <Link className="companyBill-button" to={{pathname: redirect}} state={cnpj}>Boletos</Link>
+          <Link className="card-companyBill-button" to={{pathname: redirect}} state={cnpj}>Boletos</Link>
         </div>
         </div>
       </div>

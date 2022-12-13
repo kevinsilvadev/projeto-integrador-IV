@@ -4,6 +4,7 @@
 
 .recent-bills h2 {
   margin-bottom: 0.8rem;
+  margin-top: 24px;
 }
 
 .recent-bills table {
@@ -14,10 +15,11 @@
   text-align: center;
   box-shadow: var(--box-shadow);
   transition: all 300ms ease;
+  margin-bottom: 24px;
 }
 
 .recent-bills table:hover {
-  box-shadow: none;
+  box-shadow: 0 1rem 1rem rgb(185, 217, 228);
 }
 
 .recent-bills table tbody td {
@@ -60,4 +62,11 @@ td {
   cursor: pointer;
   background: #3bbb6e;
   box-shadow: var(--box-shadow);
+}
+
+.semContas {
+  text-align: center;
+  margin-top: 24px;
+  color: gray;
+
 }
