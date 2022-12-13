@@ -87,11 +87,18 @@ public class AuthController {
                 userDetails.getName(),
                 userDetails.getUrlPhoto(),
                 roles,
-                userDetails.getCompanyList());
+                userDetails.getCompanyList(),
+                userDetails.getQrcode());
+
             System.out.println(userDetails.getCompanyList());
 
-
         return ResponseEntity.ok(jwtResponse);
+    }
+
+    @GetMapping(value = "/qrcode")
+    public ResponseEntity<List<Company>> findCompanyListByQrCode (@RequestParam String qrcode) {
+        List<Company> company1 = customerService.findCompanyListByQrCode(qrcode);
+        return ResponseEntity.ok().body(company1);
     }
 
     @PostMapping("/signup")

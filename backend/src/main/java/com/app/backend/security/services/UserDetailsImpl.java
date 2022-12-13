@@ -29,12 +29,14 @@ public class UserDetailsImpl implements UserDetails {
     @JsonIgnore
     private String senha;
 
+    private String qrcode;
+
     private List<Company> companyList = new ArrayList<>();
 
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(String id, String cpf, String name, String urlPhoto, String email, String senha,
-                           Collection<? extends GrantedAuthority> authorities, List<Company> companyList) {
+                           Collection<? extends GrantedAuthority> authorities, List<Company> companyList, String qrcode) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
@@ -43,6 +45,7 @@ public class UserDetailsImpl implements UserDetails {
         this.senha = senha;
         this.authorities = authorities;
         this.companyList.addAll(companyList);
+        this.qrcode = qrcode;
     }
 
     public static UserDetailsImpl build(Customer customer) {
@@ -58,7 +61,8 @@ public class UserDetailsImpl implements UserDetails {
                 customer.getEmail(),
                 customer.getSenha(),
                 authorities,
-                customer.getCompanyList());
+                customer.getCompanyList(),
+                customer.getQrcode());
     }
 
     @Override
@@ -82,6 +86,8 @@ public class UserDetailsImpl implements UserDetails {
     public String getUsername() {
         return cpf;
     }
+
+    public String getQrcode() { return qrcode; }
 
     public List<Company> getCompanyList(){
         return companyList;

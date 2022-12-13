@@ -22,6 +22,13 @@ const RecentOrder = () => {
     );
   });
 
+  function naoTemContas() {
+    if (content.length === 0) {
+      return <h3 className="semContas">Voce ainda não possui contas recentes, vincule-se a uma empresa para receber atualizações aqui.</h3>
+    }
+    return
+  }
+
   function renderRecentBills(){
     let ret = [];
     for(let i=0; i<content.length; i++){
@@ -53,6 +60,7 @@ const RecentOrder = () => {
         </thead>
         {renderRecentBills()}
       </table>
+      {naoTemContas()}
     </div>
   );
 };

@@ -20,6 +20,10 @@ public class CustomerService {
     @Autowired
     private CompanyRepository companyRepository;
 
+    public List<Company> findCompanyListByQrCode(String qrcode) {
+        return repo.findCompanyListByQrcode(qrcode);
+    }
+
     public Customer insertCustomer(Customer obj)  {
         isValid(obj);
         return repo.save(obj);

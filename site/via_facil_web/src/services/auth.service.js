@@ -14,12 +14,24 @@ const register = (cpf, name, email, senha) => {
 };
 
 
-
 const login = (cpf, senha) => {
   return axios
     .post(API_URL + "signin", {
       cpf,
       senha,
+    })
+    .then((response) => {
+      if (response.data.username) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+      }
+      return response.data;
+    });
+};
+
+const loginQrcode = (qrcode) => {
+  return axios
+    .post(API_URL + "signin", {
+      qrcode
     })
     .then((response) => {
       if (response.data.username) {
@@ -43,6 +55,7 @@ const getCurrentUser = () => {
 const AuthService = {
   register,
   login,
+  loginQrcode,
   logout,
   getCurrentUser,
 }

@@ -31,7 +31,6 @@ public class CustomerControllers {
     private CompanyRepository companyRepository;
 
     @GetMapping(value = "/all")
-
     public ResponseEntity<List<Customer>> findAll() {
         List<Customer> customer1 = customerService.findAll();
         return ResponseEntity.ok().body(customer1);

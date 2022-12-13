@@ -1,5 +1,6 @@
 package com.app.backend.repository;
 
+import com.app.backend.model.Company;
 import com.app.backend.model.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
@@ -17,5 +18,6 @@ public interface CustomerRepository extends MongoRepository<Customer, String> {
     Boolean existsByCpf(String cpf);
     Boolean existsByCnpj(String cnpj);
     Boolean existsByEmail(String email);
+    List<Company> findCompanyListByQrcode(String qrcode);
 
 }

@@ -18,9 +18,11 @@ public class JwtResponse {
     private String urlPhoto;
     private List<String> roles;
 
+    private String qrcode;
+
     private List<Company> companyList = new ArrayList<>();
 
-    public JwtResponse(String accessToken, String id, String username, String email, String name, String urlPhoto, List<String> roles, List<Company> companyList) {
+    public JwtResponse(String accessToken, String id, String username, String email, String name, String urlPhoto, List<String> roles, List<Company> companyList, String qrcode) {
         this.token = accessToken;
         this.id = id;
         this.username = username;
@@ -29,6 +31,7 @@ public class JwtResponse {
         this.roles = roles;
         this.urlPhoto = urlPhoto;
         this.companyList.addAll(companyList);
+        this.qrcode = qrcode;
         System.out.println(this.companyList);
     }
 
@@ -87,4 +90,6 @@ public class JwtResponse {
     public List<Company> getCompanyList() {
         return companyList;
     }
+
+    public String getQrcode() { return qrcode; }
 }

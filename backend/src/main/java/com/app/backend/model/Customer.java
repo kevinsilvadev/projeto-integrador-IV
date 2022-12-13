@@ -11,10 +11,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.nio.charset.Charset;
+import java.util.*;
 
 
 @Document
@@ -60,6 +58,9 @@ public class Customer implements Serializable {
     @Autowired
     CompanyRepository companyRepository;
 
+    private String qrcode;
+
+
 
     public Customer(){
     }
@@ -71,6 +72,7 @@ public class Customer implements Serializable {
         this.name = name;
         this.senha = senha;
         this.email = email;
+        this.qrcode = getAlphaNumericString();
     }
     public Customer(String id, String cpf, String urlPhoto, String name, String email, List<Company> companyList) {
         this.urlPhoto = urlPhoto;
@@ -78,6 +80,42 @@ public class Customer implements Serializable {
         this.email = email;
         this.companyList = companyList;
     }
+
+    static String getAlphaNumericString()
+    {
+        int n = 30;
+        // length is bounded by 256 Character
+        byte[] array = new byte[256];
+        new Random().nextBytes(array);
+
+        String randomString
+                = new String(array, Charset.forName("UTF-8"));
+
+        // Create a StringBuffer to store the result
+        StringBuffer r = new StringBuffer();
+
+        // remove all spacial char
+        String  AlphaNumericString
+                = randomString
+                .replaceAll("[^A-Za-z0-9]", "");
+
+        // Append first 20 alphanumeric characters
+        // from the generated random String into the result
+        for (int k = 0; k < AlphaNumericString.length(); k++) {
+
+            if (Character.isLetter(AlphaNumericString.charAt(k))
+                    && (n > 0)
+                    || Character.isDigit(AlphaNumericString.charAt(k))
+                    && (n > 0)) {
+
+                r.append(AlphaNumericString.charAt(k));
+                n--;
+            }
+        }
+        // return the resultant string
+        return r.toString();
+    }
+
 
 
 
