@@ -9,7 +9,7 @@ const QRCODE = () => {
 
   return (
     <div className="container-qrcode">
-      <QRCode value= {`http://localhost:3000/view-company/qrcode/${customer.qrcode}`}/>
+      <QRCode value= {`http://localhost:3000/${customer.qrcode}`}/>
     </div>
   );
 };
