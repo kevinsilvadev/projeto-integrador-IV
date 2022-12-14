@@ -1,6 +1,8 @@
 package com.app.backend.controllers;
 
 import com.app.backend.model.Bill;
+import com.app.backend.model.Company;
+import com.app.backend.model.Customer;
 import com.app.backend.repository.BillRepository;
 import com.app.backend.repository.CustomerRepository;
 import com.app.backend.services.BillService;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.sound.midi.SysexMessage;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -43,6 +46,12 @@ public class BillControllers {
     @GetMapping(value = "/documentNumber")
     public ResponseEntity<Bill> findByDocumentNumber(@RequestParam String documentNumber) {
         Bill obj = repo.findByDocumentNumber(documentNumber);
+        return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping(value = "/qrcode")
+    public ResponseEntity<List<Bill>> getBillQrcode(@RequestParam String qrcode, @RequestParam String cnpj) throws Exception {
+        List<Bill> obj = billService.getBillQrcode(qrcode, cnpj);
         return ResponseEntity.ok().body(obj);
     }
 

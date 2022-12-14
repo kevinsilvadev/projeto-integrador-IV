@@ -9,5 +9,4 @@ public class LoginQrcodeRequest {
     @NotBlank
     private String qrcode;
 
-
 }

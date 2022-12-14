@@ -21,7 +21,8 @@ public class CustomerService {
     private CompanyRepository companyRepository;
 
     public List<Company> findCompanyListByQrCode(String qrcode) {
-        return repo.findCompanyListByQrcode(qrcode);
+        Customer c = repo.findByQrcode(qrcode);
+        return c.getCompanyList();
     }
 
     public Customer insertCustomer(Customer obj)  {

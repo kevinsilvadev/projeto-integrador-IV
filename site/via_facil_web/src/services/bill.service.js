@@ -13,6 +13,10 @@ const getBill = (cpf,cnpj) =>{
         }});
 };
 
+const getBillQrcode = (qrcode, cnpj) => {
+    return axios.get(API + `qrcode?qrcode=${qrcode}&cnpj=${cnpj}`);
+}
+
 const getRecentBills = (cpf) =>{
     const aux = JSON.parse(localStorage.getItem('user'));
     
@@ -21,7 +25,8 @@ const getRecentBills = (cpf) =>{
 
 const BillService = {
     getBill,
-    getRecentBills
+    getRecentBills,
+    getBillQrcode
 }
 
 export default BillService;

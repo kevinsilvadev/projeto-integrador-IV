@@ -47,6 +47,27 @@ public class BillService {
         return bill;
     }
 
+    public List<Bill> getBillQrcode(String qrcode, String cnpj) throws Exception {
+        Customer customer = customerRepository.findByQrcode(qrcode);
+        Company company = companyRepository.findByCnpj(cnpj);
+        List<Bill> bill = billRepository.findByCustomerAndCompany(customer, company);
+
+        if(customer == null || company==null)
+            throw new Exception("INVALID DATA");
+
+        if(billRepository.existsByCustomerAndCompany(customer,company)){
+            Date d = new Date();
+            d.setMonth(d.getMonth()-1);
+
+            if(bill.get(bill.size()-1).getDueDate().compareTo(d) > 0)
+                return bill;
+        }
+        Bill obj = new Bill(customer, company);
+        billRepository.save(obj);
+        return bill;
+    }
+
+
     public List<Bill> findAll () {
         return billRepository.findAll();
     }

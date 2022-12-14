@@ -1,5 +1,5 @@
 import "../../App.css";
-import ListBill from "../listBill";
+import ListBillQrcode from "../listBillQrcodes";
 
 function ViewBillQRCode() {
   return (
@@ -12,7 +12,7 @@ function ViewBillQRCode() {
       <div className="homeUser-row">
         <div className="col-12 col-s-12">
           <div className="homeUser-recentOrder">
-            <ListBill />
+            <ListBillQrcode />
           </div>
         </div>
       </div>

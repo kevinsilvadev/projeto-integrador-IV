@@ -61,10 +61,10 @@ const Rotas = () => {
           <Route exact path="/view-bill" element={<Private Item={ViewBill} />}>
             {" "}
           </Route>
-          <Route exact path="/view-company/qrcode" element={<Private Item={ViewCompanyQRCode} />}>
+          <Route exact path="/:token" element={<ViewCompanyQRCode />}>
             {" "}
           </Route>
-          <Route exact path="/view-bill/qrcode" element={<Private Item={ViewBillQRCode} />}>
+          <Route exact path="/view-bill/qrcode" element={<ViewBillQRCode />}>
             {" "}
           </Route>
         </Routes>

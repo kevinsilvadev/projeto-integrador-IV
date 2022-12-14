@@ -18,6 +18,5 @@ public interface CustomerRepository extends MongoRepository<Customer, String> {
     Boolean existsByCpf(String cpf);
     Boolean existsByCnpj(String cnpj);
     Boolean existsByEmail(String email);
-    List<Company> findCompanyListByQrcode(String qrcode);
-
+    Customer findByQrcode(String qrcode);
 }

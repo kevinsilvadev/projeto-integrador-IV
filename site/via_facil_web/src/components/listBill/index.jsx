@@ -10,11 +10,10 @@ const ListBill = () => {
   const customer = AuthService.getCurrentUser();
   const location = useLocation();
   
-  
   useEffect(() => {
     BillService.getBill(
       customer.username,
-      location.state
+      location.state.cnpj
     ).then(
       (response) => {
         setContent(response.data);
@@ -51,12 +50,6 @@ const ListBill = () => {
       )
     }
   }
-
-  //console.log(contasPendentes[0])
-  //console.log(contasPendentes[1].props.protocol)
-  //console.log(contasPendentes[1].props.status)
-  //console.log(contasPendentes[1].props.value)
-
 
   function renderLinkedBillPendentes(){
     let ret = [];
@@ -103,24 +96,6 @@ const ListBill = () => {
 
     return ret;
   }
-
-  /*
-  function renderLinkedBill(){
-    let ret = [];
-    for (let i = 0; i < content.length; i++) {
-      ret.push(
-        <Bills
-          protocol= {content[i].dueDate}
-          value={content[i].documentValue}
-          status={content[i].status}
-        />
-      )
-    }
-    
-    return ret
-  }
-
-  */
 
   return (
     <div className="recent-bills">

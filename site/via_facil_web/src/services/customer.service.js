@@ -11,6 +11,8 @@ const getCompanies = (cpf) => {
   return axios.get(API_URL + `company?cpf=${cpf}`)
 };
 
+
+
 const CompanyService = {
     getAll,
     getCompanies

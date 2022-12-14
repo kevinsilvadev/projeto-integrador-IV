@@ -1,19 +1,19 @@
 import "../../App.css";
 import { useEffect, useState } from "react";
-import api from "../../services/api";
 import AuthService from "../../services/auth.service";
-import CompanyBill from "../companyBill";
-import CustomerService from "../../services/customer.service";
 import CompanyCard from "../CompanyCard";
+import { useLocation } from "react-router-dom";
 
 function ViewCompanyQRCode() {
-  const [openModal, setOpenModal] = useState(false);
 
   const [content, setContent] = useState("");
-  const customer = AuthService.getCurrentUser();
+  const location = useLocation();
+  const token = location.pathname.slice(1, 31)
+
+  console.log(token)
 
   useEffect(() => {
-    const companies = CustomerService.getCompanies(customer.username).then(
+    AuthService.getCompaniesByQrcode(token).then(
       (response) => {
         setContent(response.data);
       },
@@ -41,6 +41,7 @@ function ViewCompanyQRCode() {
               name={content[i].name}
               redirect={"/view-bill/qrcode"}
               cnpj={content[i].cnpj}
+              token={token}
             />
             </div>
           </div>
