@@ -90,7 +90,6 @@ public class AuthController {
                 userDetails.getCompanyList(),
                 userDetails.getQrcode());
 
-            System.out.println(userDetails.getCompanyList());
 
         return ResponseEntity.ok(jwtResponse);
     }
