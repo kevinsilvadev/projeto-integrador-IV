@@ -6,14 +6,15 @@ import com.app.backend.model.Customer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CustomerServiceTest {@Test
-void insertCustomer() {
+class CustomerServiceTest {
+    @Test
+    void insertCustomer() {
 
-    //Customer c1 = new Customer("aaaaaa","aaaaa","aaaa");
-    //CustomerService cs = new CustomerService();
+        //Customer c1 = new Customer("aaaaaa","aaaaa","aaaa");
+        //CustomerService cs = new CustomerService();
 
-    //assertEquals(cs.insertCustomer(c1),c1);
-}
+        //assertEquals(cs.insertCustomer(c1),c1);
+    }
 
 
 
