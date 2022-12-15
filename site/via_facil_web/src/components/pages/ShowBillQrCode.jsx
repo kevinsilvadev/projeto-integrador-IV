@@ -1,29 +1,16 @@
-import VerticalNavBar from "../verticalNavBar";
 import "../../App.css";
-import {useState} from "react";
-import ListBill from "../listBill";
 import {useLocation} from "react-router-dom";
 
-function ShowBill() {
+function ShowBillQrCode() {
   
-  const [state, setState] = useState({ clicked: false });
   const location = useLocation();
-  //console.log(location.state.bill.company);
-
-  console.log(location);
-  const handleClick = () => {
-    setState({ clicked: !state.clicked });
-  };
 
   return (
-    <div
-      className={state.clicked ? "HomeUser_content active" : "HomeUser_content"}
-    >
+    <div>
       <div className="homeUser-header">
         <h1>Seu Boleto</h1>
       </div>
       <div className="homeUser-row">
-        <VerticalNavBar onClick={handleClick} />
         <div className="col-12 col-s-12">
           <div className="homeUser-recentOrder">
           <div>
@@ -135,4 +122,4 @@ function ShowBill() {
   );
 }
 
-export default ShowBill;
+export default ShowBillQrCode;

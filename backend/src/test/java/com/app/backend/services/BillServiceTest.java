@@ -55,7 +55,7 @@ public class BillServiceTest extends ApplicationConfigTest {
 
     @Test
     @DisplayName("Pegando os bills recentes")
-    public void getRecentBills() throws Exception {
+    public void getRecentBills() {
         Customer customer = new Customer();
         billRepository.findByCustomer(customer);
         Mockito.when(billRepository.findByCustomer(ArgumentMatchers.eq(customer)));

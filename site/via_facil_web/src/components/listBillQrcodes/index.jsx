@@ -33,19 +33,11 @@ const ListBillQrcode = () => {
     for (let i = 0; i < content.length; i++) {
       if (content[i].status === "PENDENTE") {
         contasPendentes.push(
-          <Bills
-            protocol= {content[i].dueDate}
-            value={content[i].documentValue}
-            status={content[i].status}
-          />
+          content[i]
         )
       } else {
         contasPagas.push(
-          <Bills
-            protocol= {content[i].dueDate}
-            value={content[i].documentValue}
-            status={content[i].status}
-          />
+          content[i]
         )
       }
     }
@@ -55,9 +47,11 @@ const ListBillQrcode = () => {
       for(let i = 0; i < contasPendentes.length; i++){
         ret.push(
           <Bills
-            protocol= {contasPendentes[i].props.protocol}
-            value={contasPendentes[i].props.value}
-            status={contasPendentes[i].props.status}
+            bill={content[i]}
+            protocol= {contasPendentes[i].dueDate}
+            value={contasPendentes[i].documentValue}
+            status={contasPendentes[i].status}
+            redirect={"/show-bill/qrcode"}
           />
         )
       }
@@ -86,9 +80,11 @@ const ListBillQrcode = () => {
       for(let i = 0; i < contasPagas.length; i++){
         ret.push(
           <Bills
-            protocol= {contasPagas[i].props.protocol}
-            value={contasPagas[i].props.value}
-            status={contasPagas[i].props.status}
+            bill={content[i]}
+            protocol= {contasPagas[i].dueDate}
+            value={contasPagas[i].documentValue}
+            status={contasPagas[i].status}
+            redirect={"/show-bill/qrcode"}
           />
         )
       }
