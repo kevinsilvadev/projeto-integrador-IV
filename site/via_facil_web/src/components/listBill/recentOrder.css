@@ -7,6 +7,25 @@
   margin-top: 24px;
 }
 
+.companyBillQrCode-button {
+  padding: 8px 20px;
+  border-radius: 4px;
+  width: 30%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: #3BBB6E;
+  color: black;
+  box-shadow: var(--box-shadow);
+}
+
+.companyBillQrCode-button:hover {
+  transition: all 0.3s ease-out;
+  background: #88FAB5;
+  color: #000;
+  transition: 250ms;
+}
+
 .recent-bills table {
   background: var(--color-white);
   width: 100%;

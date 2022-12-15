@@ -10,7 +10,7 @@ const Bills = ({ redirect,protocol, value, status, bill }) => {
           <td>R$ {value}</td>
           <td className="warning">{status}</td>
           <td className="cor-primaria">
-            <Link to={{pathname: redirect}} state={{bill}}className="bill-button">
+            <Link className="companyBillQrCode-button" to={{pathname: redirect}} state={{bill}}>
               Emitir
             </Link>
           </td>
