@@ -22,11 +22,5 @@ export const VerticalMenuItems = [
     title: "Add Empresa",
     url: "/add-company",
     cName: "nav-vertical-links",
-  },
-  {
-    icon: "fas fa-qrcode",
-    title: "Saved",
-    url: "/view-company/qrcode",
-    cName: "nav-vertical-links",
-  },
+  }
 ];

@@ -365,7 +365,7 @@ html {
   .title-add-company h1 {
     font-size: xx-large;
   }
-  
+
   .title-add-company h2 {
     font-size: x-large;
   }
@@ -375,13 +375,13 @@ html {
   .title-add-company h1 {
     font-size: x-large;
   }
-  
+
   .title-add-company h2 {
     font-size: large;
   }
 }
 
-/* ============================= Página EditUser ================= */
+/* ============================= Página EditUser ============================= */
 
 .form-edit-user h1 {
   font-size: xxx-large;
@@ -437,4 +437,174 @@ html {
   display: inline-flex;
   padding: 0.2em;
   height: 2em;
+}
+
+/* ============================= Página Show-Bills ============================= */
+
+.container-show-bill {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bill-header {
+  display: flex;
+}
+
+.h2-boleto {
+  color: rgb(0, 0, 0);
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.bill-body {
+  background: #f5f5f5;
+  padding: 1.5em;
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 650px;
+  border: 6px solid rgb(0, 0, 0);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.12), 0 3px 3px rgba(0, 0, 0, 0.24);
+}
+
+.bill-body p {
+  text-align: justify;
+  margin-top: 0.2em;
+  margin-left: 0.5em;
+  color: rgb(0, 0, 0);
+}
+
+.p-intrucoes-boleto {
+  font-size: smaller;
+  margin: 5px;
+}
+
+.title-bill {
+  font-size: medium;
+}
+
+.text-content-bill{
+  font-size: smaller;
+}
+
+.bill-body th {
+  height: 90px;
+  text-align: left;
+}
+
+.bill-body td {
+  height: 60px;
+  text-align: left;
+}
+
+.bill-body td {
+  background: #f5f5f5;
+  border: 3px solid rgb(0, 0, 0);
+  margin-top: 1rem;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.bill-body th {
+  background: #f5f5f5;
+  border: 3px solid rgb(0, 0, 0);
+  margin-top: 1rem;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.bill-body table {
+  background: #f5f5f5;
+  border: 3px solid rgb(0, 0, 0);
+  margin-top: 1rem;
+  color: rgb(0, 0, 0);
+}
+
+.bill-body table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0 8px;
+}
+
+.bill-body button {
+  padding: 8px 20px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+  box-shadow: var(--box-shadow);
+}
+
+@media screen and (max-width: 1200px) {
+  .bill-body {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .bill-body {
+    width: 100%;
+  }
+  
+}
+
+@media screen and (max-width: 700px) {
+  .bill-body {
+    height: 750px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .title-bill {
+    font-size: small;
+  }
+  
+  .text-content-bill{
+    font-size: smaller;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .title-bill {
+    font-size: 12px;
+  }
+  
+  .text-content-bill{
+    font-size: 10px;
+  }
+
+  .p-intrucoes-boleto {
+    font-size: 10px;
+
+  }
+
+  .bill-body {
+    height: 750px;
+    padding: 0.5em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title-bill {
+    font-size: 9px;
+  }
+  
+  .text-content-bill{
+    font-size: 9px;
+  }
+
+  .p-intrucoes-boleto {
+    font-size: 10px;
+
+  }
+
+  .bill-body {
+    height: 750px;
+    padding: 0.5em;
+  }
 }

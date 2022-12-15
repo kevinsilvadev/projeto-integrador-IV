@@ -14,7 +14,9 @@ const HeroSection = () => {
           Faça a emissão da sua segunda via com maior facilidade e segurança com
           a VIA FÁCIL Sem mais burocrácias e demoras
         </p>
-        <Button to="../../pages/SignUp.js">Comece já</Button>
+        <form action="/sign-up">
+          <Button>Comece já</Button>
+        </form>
       </div>
     </>
   );

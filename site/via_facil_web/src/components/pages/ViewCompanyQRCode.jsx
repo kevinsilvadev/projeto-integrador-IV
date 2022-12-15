@@ -10,8 +10,6 @@ function ViewCompanyQRCode() {
   const location = useLocation();
   const token = location.pathname.slice(1, 31)
 
-  console.log(token)
-
   useEffect(() => {
     AuthService.getCompaniesByQrcode(token).then(
       (response) => {
@@ -52,6 +50,13 @@ function ViewCompanyQRCode() {
     return ret;
   }
 
+  function naoTemEmpresas() {
+    if (content.length === 0) {
+      return <h3 className="semContas">O cliente ainda não vinculou nenhuma empresa.</h3>
+    }
+    return
+  }
+
   return (
     <div
       className={"HomeUser_content2"}
@@ -64,6 +69,7 @@ function ViewCompanyQRCode() {
         
         <div className="col-12 col-s-12">
             {renderLinkedCompanies()}
+            {naoTemEmpresas()}
         </div>
       </div>
     </div>

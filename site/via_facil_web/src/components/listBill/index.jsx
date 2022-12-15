@@ -4,7 +4,6 @@ import "./recentOrder.css";
 import BillService from "../../services/bill.service";
 import AuthService from "../../services/auth.service";
 import { useLocation } from "react-router-dom";
-import ModalViewBill from "../modalViewBill";
 
 const ListBill = () => {
   const [content, setContent] = useState("");
@@ -12,6 +11,13 @@ const ListBill = () => {
   const location = useLocation();
   const [openModal, setOpenModal] = useState(false);
   const [amountCharged, setAmountCharged] = useState("");
+  const bill = {
+    amountCharged: '0',
+    documentValue: '0',
+    documentNumber: '0',
+    dueDate: '0',
+    penalty: '0'
+  }
 
   useEffect(() => {
     BillService.getBill(customer.username, location.state.cnpj).then(
@@ -34,25 +40,11 @@ const ListBill = () => {
   for (let i = 0; i < content.length; i++) {
     if (content[i].status === "PENDENTE") {
       contasPendentes.push(
-        <Bills
-          protocol={content[i].dueDate}
-          value={content[i].documentValue}
-          status={content[i].status}
-          onClick={() => {
-            setOpenModal(true);
-          }}
-        />
+        content[i]
       );
     } else {
       contasPagas.push(
-        <Bills
-          protocol={content[i].dueDate}
-          value={content[i].documentValue}
-          status={content[i].status}
-          onClick={() => {
-            setOpenModal(true);
-          }}
-        />
+        content[i]
       );
     }
   }
@@ -62,13 +54,11 @@ const ListBill = () => {
     for (let i = 0; i < contasPendentes.length; i++) {
       ret.push(
         <Bills
-          protocol={contasPendentes[i].props.protocol}
-          value={contasPendentes[i].props.value}
-          status={contasPendentes[i].props.status}
-          onClick={() => {
-            openBill(i);
-            setOpenModal(true);
-          }}
+          protocol={contasPendentes[i].dueDate}
+          value={contasPendentes[i].documentValue}
+          status={contasPendentes[i].status}
+          bill={content[i]}
+          redirect={"/show-bill"}
         />
       );
     }
@@ -95,9 +85,9 @@ const ListBill = () => {
     for (let i = 0; i < contasPagas.length; i++) {
       ret.push(
         <Bills
-          protocol={contasPagas[i].props.protocol}
-          value={contasPagas[i].props.value}
-          status={contasPagas[i].props.status}
+          protocol={contasPagas[i].dueDate}
+          value={contasPagas[i].documentValue}
+          status={contasPagas[i].status}
           onClick={() => {
             setOpenModal(true);
           }}
@@ -108,34 +98,6 @@ const ListBill = () => {
     return ret;
   }
 
-  function openBill(i) {
-    let bill = []
-    let y = true;
-    let vencimento = ""
-    
-    console.log(content[i])
-
-    if(content[i] !== undefined) {
-      console.log("deu certo")
-      bill.push(content[i])
-      console.log(bill[0])
-      y = false;
-    }
-
-
-    return (
-      <ModalViewBill
-        amountCharged={"bill[0].amountCharged"}
-        discount={"console.log(contasPendentes[0].props)"}
-        documentNumber={"asdadasdas"}
-        documentValue={"asdadasdas"}
-        dueDate={y ? "erro" : bill[0].validade}
-        penalty={"asdadasdas"}
-        open={openModal}
-        onClose={() => setOpenModal(false)}
-      />
-    );
-  }
 
   return (
     <div className="recent-bills">
@@ -150,7 +112,6 @@ const ListBill = () => {
             <th></th>
           </tr>
         </thead>
-        {openBill()}
         {renderLinkedBillPendentes()}
       </table>
       {temContas()}

@@ -15,6 +15,7 @@ import ViewBill from "./components/pages/ViewBill";
 import ViewCompanyQRCode from "./components/pages/ViewCompanyQRCode";
 import ViewBillQRCode from "./components/pages/ViewBillQRCode";
 import  authHeader  from "./services/auth-header";
+import ShowBill from "./components/pages/ShowBill";
 
 const Private = ({ Item }) => {
   return authHeader() ? <Item /> : <Home />;
@@ -59,6 +60,9 @@ const Rotas = () => {
             {" "}
           </Route>
           <Route exact path="/view-bill" element={<Private Item={ViewBill} />}>
+            {" "}
+          </Route>
+          <Route exact path="/show-bill" element={<Private Item={ShowBill} />}>
             {" "}
           </Route>
           <Route exact path="/:token" element={<ViewCompanyQRCode />}>

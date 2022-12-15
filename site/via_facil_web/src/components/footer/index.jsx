@@ -48,7 +48,6 @@ const Footer = () => {
           <div className="footer-logo">
             <a to="/" className="social-logo">
               Via Fácil
-              <i className="fab fa-typo3" />
             </a>
           </div>
           <small className="website-rights">Via Fácil © 2022</small>

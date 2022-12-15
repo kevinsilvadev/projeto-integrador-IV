@@ -41,7 +41,7 @@ export default function AboutUs() {
             <div className="profileCard-container">
               <ProfileCard
                 name="Kevin Silva"
-                profession="Web Developer"
+                profession="Backend Developer"
                 imageProfile="https://github.com/kevinsilvadev.png"
                 linkGithub="https://github.com/kevinsilvadev"
                 linkInstagram="https://www.instagram.com/kevinrsilva/"
@@ -65,7 +65,7 @@ export default function AboutUs() {
             <div className="profileCard-container">
               <ProfileCard
                 name="Thiago Santos"
-                profession="Web Developer"
+                profession="Backend Developer"
                 imageProfile="https://github.com/ThiagoSantos21.png"
                 linkGithub="https://github.com/ThiagoSantos21"
                 linkInstagram="https://www.instagram.com/thiagolima_santos/"

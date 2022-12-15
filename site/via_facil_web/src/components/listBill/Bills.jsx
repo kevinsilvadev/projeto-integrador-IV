@@ -1,7 +1,7 @@
 import "./recentOrder.css";
+import {Link} from "react-router-dom";
 
-const Bills = ({ protocol, value, status, onClick}) => {
-
+const Bills = ({ redirect,protocol, value, status, bill }) => {
   return (
     <>
       <tbody>
@@ -10,7 +10,9 @@ const Bills = ({ protocol, value, status, onClick}) => {
           <td>R$ {value}</td>
           <td className="warning">{status}</td>
           <td className="cor-primaria">
-            <button onClick={onClick} className="bill-button">Emitir</button>
+            <Link to={{pathname: redirect}} state={{bill}}className="bill-button">
+              Emitir
+            </Link>
           </td>
         </tr>
       </tbody>
