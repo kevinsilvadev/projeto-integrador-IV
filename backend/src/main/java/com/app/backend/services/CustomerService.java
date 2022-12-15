@@ -63,7 +63,7 @@ public class CustomerService {
         return repo.save(newObj);
     }
 
-    private void updateData(Customer newObj, Customer obj) {
+    protected void updateData(Customer newObj, Customer obj) {
         newObj.setUrlPhoto(obj.getUrlPhoto());
         newObj.setName(obj.getName());
         newObj.setEmail(obj.getEmail());

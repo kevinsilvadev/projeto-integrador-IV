@@ -53,8 +53,8 @@ public class CompanyService {
         return repo.save(newObj);
     }
 
-    private void updateData(Company newObj, Company obj) {
-        newObj.setName(obj.getCnpj());
+    protected void updateData(Company newObj, Company obj) {
+        newObj.setCnpj(obj.getCnpj());
         newObj.setName(obj.getName());
     }
 

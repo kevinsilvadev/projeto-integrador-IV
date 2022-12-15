@@ -18,7 +18,6 @@ public class BillDocumentService {
 
         if(!isValid(obj))
             throw new ResourceInvalidDataException("INVALID DATA FOR INSERTION");
-
         return repo.save(obj);
     }
     public void deleteByUrl (String url) throws Exception{
