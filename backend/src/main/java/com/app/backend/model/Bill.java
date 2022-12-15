@@ -42,6 +42,8 @@ public class Bill {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dueDate;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date generatedDate;
     private Status status;
 
     public enum Status {
@@ -58,7 +60,9 @@ public class Bill {
         this.penalty = generatePenalty();
         this.documentValue = generateDocumentValue();
         this.amountCharged = generateAmountCharged(documentValue, discount, penalty);
+        this.generatedDate = new Date();
         this.dueDate = new Date();
+        dueDate.setMonth(dueDate.getMonth()+1);
         this.status = Status.PENDENTE;
     }
 
